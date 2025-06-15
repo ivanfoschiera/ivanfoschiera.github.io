@@ -1,0 +1,9 @@
+/* style.css: custom styles (if any) for Ivan Foschiera's landing page */
+
+/* Smooth scrolling for anchor links (for in-page navigation or CTA jumps) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* You can add more custom CSS below if needed in the future. 
+   Currently, Tailwind utility classes handle most of the design. */
