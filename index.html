@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ivan Foschiera | Senior Manager | Operations & Engineering</title>
+  <title>Ivan Foschiera | Operations & Engineering Leader</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Senior Manager with 20+ years leading manufacturing, intralogistics, and plant leadership. Focus on operational excellence, Lean and CI, MES and ERP, analytics, and people development." />
+  <meta name="description" content="Operations and Engineering Leader with 20+ years building high-performance plants in hyperscale, manufacturing, and intralogistics. Calm under pressure. Sharp on execution." />
   <link rel="canonical" href="https://foschiera.com" />
   <meta name="robots" content="index,follow" />
-
-  <!-- Social -->
-  <meta property="og:title" content="Ivan Foschiera | Senior Manager | Operations & Engineering" />
+  <meta property="og:title" content="Ivan Foschiera | Operations & Engineering Leader" />
   <meta property="og:description" content="Plant and production leadership. Operational excellence. Lean and CI. MES and ERP. Analytics. People development." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foschiera.com" />
@@ -21,574 +18,1021 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    :root { color-scheme: dark; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(1200px circle at 20% 10%, rgba(59,130,246,0.18), transparent 60%),
-                  radial-gradient(1000px circle at 90% 30%, rgba(16,185,129,0.10), transparent 55%),
-                  linear-gradient(135deg, #0b1220 0%, #101a2e 55%, #0b1220 100%);
+    :root {
+      color-scheme: dark;
+      --blue:    #3b82f6;
+      --emerald: #10b981;
+      --violet:  #8b5cf6;
+      --amber:   #f59e0b;
     }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #080e1a;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, nav a, .display {
+      font-family: 'Sora', sans-serif;
+    }
+
+    /* Ambient glow background */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 600px at 15% 5%,  rgba(59,130,246,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 700px 500px at 85% 25%, rgba(16,185,129,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 600px 400px at 50% 80%, rgba(139,92,246,0.06) 0%, transparent 60%),
+        linear-gradient(160deg, #080e1a 0%, #0d1728 50%, #080e1a 100%);
+    }
+
+    /* Subtle grid overlay */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    main, header, footer { position: relative; z-index: 1; }
+
+    /* Card */
+    .card {
+      background: rgba(255,255,255,0.033);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+    .card-glow-blue:hover    { border-color: rgba(59,130,246,0.35);  box-shadow: 0 0 40px rgba(59,130,246,0.08); }
+    .card-glow-emerald:hover { border-color: rgba(16,185,129,0.35);  box-shadow: 0 0 40px rgba(16,185,129,0.08); }
+    .card-glow-violet:hover  { border-color: rgba(139,92,246,0.35);  box-shadow: 0 0 40px rgba(139,92,246,0.08); }
+    .card-glow-amber:hover   { border-color: rgba(245,158,11,0.35);  box-shadow: 0 0 40px rgba(245,158,11,0.08); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+    .delay-6 { animation-delay: 0.70s; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+
+    /* Accent line */
+    .accent-line { height: 3px; width: 48px; border-radius: 9999px; }
+
+    /* Stat card hover */
+    .stat-card { transition: transform 0.2s ease, border-color 0.2s ease; }
+    .stat-card:hover { transform: translateY(-3px); }
+
+    /* Skill pill */
+    .skill-pill { transition: background 0.15s, border-color 0.15s, color 0.15s; }
+    .skill-pill:hover { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
+
+    /* Nav underline */
+    nav a { position: relative; padding-bottom: 2px; }
+    nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: #3b82f6; transition: width 0.2s ease; }
+    nav a:hover::after { width: 100%; }
+
+    /* OTW badge */
+    .otw-badge {
+      background: linear-gradient(90deg, rgba(16,185,129,0.15), rgba(59,130,246,0.10));
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+
+    /* Award badge */
+    .award-badge {
+      background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+
+    /* Senna quote block */
+    .senna-block {
+      border-left: 2px solid rgba(59,130,246,0.5);
+      padding-left: 16px;
+    }
+
+    /* Billboard */
+    .billboard-section {
+      background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, transparent 50%, rgba(16,185,129,0.04) 100%);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Sweetsell featured */
+    .sweetsell-card {
+      border-left: 3px solid var(--blue) !important;
+      position: relative; overflow: hidden;
+    }
+    .sweetsell-card::before {
+      content: '"'; position: absolute; top: -10px; left: 18px;
+      font-family: 'Sora', sans-serif; font-size: 7rem; font-weight: 800;
+      color: rgba(59,130,246,0.08); line-height: 1; pointer-events: none;
+    }
+
+    /* Testimonial carousel */
+    .testimonial-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .testimonial-slide { min-width: 100%; padding: 0 2px; }
+    .quote-mark {
+      font-family: 'Sora', serif; font-size: 5rem; line-height: 1;
+      color: rgba(59,130,246,0.25); font-weight: 800; margin-bottom: -1rem;
+    }
+
+    /* Quote card impact card bottom bar */
+    .impact-card, .quote-card { position: relative; overflow: hidden; }
+    .impact-card::after, .quote-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .impact-card:hover::after, .quote-card:hover::after { opacity: 1; }
+    .impact-card.blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+    .impact-card.emerald::after { background: linear-gradient(90deg, transparent, #10b981, transparent); }
+    .impact-card.violet::after  { background: linear-gradient(90deg, transparent, #8b5cf6, transparent); }
+    .impact-card.amber::after   { background: linear-gradient(90deg, transparent, #f59e0b, transparent); }
+    .quote-card::after { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
   </style>
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Ivan Foschiera",
-    "jobTitle": "Senior Manager | Operations & Engineering",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "The Randstad",
-      "addressCountry": "Netherlands"
-    },
+    "jobTitle": "Operations & Engineering Leader",
+    "address": { "@type": "PostalAddress", "addressRegion": "The Randstad", "addressCountry": "Netherlands" },
     "email": "mailto:ivan@foschiera.com",
     "telephone": "+31686382315",
     "url": "https://foschiera.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/ivanfoschiera",
-      "https://github.com/ivanfoschiera"
-    ]
+    "sameAs": ["https://www.linkedin.com/in/ivanfoschiera", "https://github.com/ivanfoschiera"]
   }
   </script>
 </head>
 
 <body class="text-white">
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 bg-white text-black px-4 py-2 rounded-lg">
-    Skip to content
-  </a>
+  <div class="bg-canvas"></div>
+  <div class="bg-grid"></div>
 
-  <!-- Top bar -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-slate-950/40 border-b border-white/10">
-    <nav class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="font-extrabold tracking-tight text-lg">Ivan Foschiera</a>
-      <div class="hidden sm:flex items-center gap-5 text-sm text-slate-200">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 bg-white text-black px-4 py-2 rounded-lg">Skip to content</a>
+
+  <!-- ── Header ── -->
+  <header class="sticky top-0 z-40 backdrop-blur-md" style="background: rgba(8,14,26,0.75); border-bottom: 1px solid rgba(255,255,255,0.07);">
+    <nav class="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="#top" class="font-bold tracking-tight text-base" style="font-family: 'Sora', sans-serif;">Ivan Foschiera</a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a class="hover:text-white" href="#impact">Impact</a>
+        <a class="hover:text-white" href="#skills">Strengths</a>
         <a class="hover:text-white" href="#experience">Experience</a>
-        <a class="hover:text-white" href="#skills">Skills</a>
+        <a class="hover:text-white" href="#testimonials">Recommendations</a>
         <a class="hover:text-white" href="#credentials">Credentials</a>
         <a class="hover:text-white" href="#contact">Contact</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="mailto:ivan@foschiera.com"
-           class="hidden sm:inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/10 px-4 py-2 rounded-full text-sm">
-          <i class="fa-solid fa-envelope"></i>
-          <span>Email</span>
+      <div class="flex items-center gap-2">
+        <a href="mailto:ivan@foschiera.com" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-slate-200 transition" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
+          <i class="fa-solid fa-envelope text-blue-400"></i> Email
         </a>
         <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-          <i class="fa-brands fa-linkedin"></i>
-          <span>LinkedIn</span>
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold shadow-lg transition" style="background: #2563eb;">
+          <i class="fa-brands fa-linkedin"></i><span class="hidden sm:inline">LinkedIn</span>
         </a>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <section id="top" class="min-h-[86vh] flex items-center">
-      <div class="max-w-6xl mx-auto px-6 py-16 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-7">
-            <p class="inline-flex items-center gap-2 text-sm text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-              <i class="fa-solid fa-location-dot text-blue-400"></i>
-              The Randstad, Netherlands
-            </p>
 
-            <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mt-6">
+    <!-- ══ HERO ══ -->
+    <section id="top" class="min-h-screen flex items-center pt-6 pb-20">
+      <div class="max-w-6xl mx-auto px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          <!-- Left -->
+          <div class="lg:col-span-7">
+
+            <!-- OTW badge -->
+            <div class="flex flex-wrap items-center gap-3 fade-up">
+              <span class="otw-badge inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full font-medium text-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Available for new leadership opportunities
+              </span>
+              <span class="inline-flex items-center gap-2 text-xs text-slate-400 px-3 py-1.5 rounded-full" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                <i class="fa-solid fa-location-dot text-blue-400"></i>
+                The Randstad · On-site · Hybrid · Remote
+              </span>
+            </div>
+
+            <!-- Name -->
+            <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mt-6 leading-none fade-up delay-1" style="letter-spacing: -0.02em;">
               Ivan Foschiera
             </h1>
 
-            <p class="text-xl sm:text-2xl text-slate-300 mt-4 max-w-2xl">
-              Senior Manager | Operations & Engineering 
-              <span class="text-slate-400">|</span>
-              Plant and Production Leadership
-              <span class="text-slate-400">|</span>
-              Operational Excellence
+            <!-- Senna quote -->
+            <div class="senna-block mt-5 fade-up delay-2">
+              <p class="text-slate-300 text-sm sm:text-base italic leading-relaxed max-w-xl" style="font-family: 'DM Sans', sans-serif; font-style: italic; font-weight: 300;">
+                "With regard to performance, commitment, effort, dedication, there is no middle ground. Or you do something very well or not at all."
+              </p>
+              <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mt-2 flex items-center gap-2">
+                <span class="inline-block w-4 h-px bg-blue-400"></span>Ayrton Senna
+              </p>
+            </div>
+
+            <!-- Role line -->
+            <div class="fade-up delay-3 mt-5">
+              <div class="accent-line bg-blue-500 mb-3"></div>
+              <p class="text-lg sm:text-xl font-semibold text-slate-200 leading-snug">
+                Operations & Engineering Leader
+              </p>
+              <p class="text-sm text-slate-400 mt-1">
+                Plant & Production Management · Operational Excellence · Lean & CI · MES/ERP · Analytics
+              </p>
+            </div>
+
+            <!-- Bio -->
+            <p class="text-slate-300 mt-5 leading-relaxed max-w-xl text-base fade-up delay-4">
+              20+ years building operations that <span class="text-white font-medium">perform under pressure</span> — across hyperscale tech, manufacturing, and high-volume intralogistics in Europe and Brazil. I bring <span class="text-white font-medium">calm to complex environments</span>, structure to chaos, and accountability to every level of the shopfloor.
             </p>
 
-            <p class="text-slate-300 mt-6 leading-relaxed max-w-2xl">
-              I lead plants through clarity, rhythm, and accountability on the shopfloor.
-              I scale performance with Lean routines, structured problem solving, and leader coaching.
-              I connect operations with MES, ERP, dashboards, and analytics so decisions are fast and grounded.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mt-8">
+            <!-- CTAs -->
+            <div class="flex flex-wrap gap-3 mt-8 fade-up delay-5">
               <a href="#contact"
-                 class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-6 py-3 rounded-full font-semibold shadow-lg transition">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Contact</span>
+                 class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-6 py-3 rounded-full font-semibold shadow-lg transition text-sm">
+                <i class="fa-solid fa-paper-plane"></i> Get in touch
               </a>
-
               <a href="#experience"
-                 class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/10 px-6 py-3 rounded-full font-semibold transition">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>View experience</span>
+                 class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition text-sm"
+                 style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-briefcase"></i> View experience
               </a>
-
-              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 px-6 py-3 rounded-full font-semibold transition">
-                <i class="fa-brands fa-linkedin"></i>
-                <span>Open LinkedIn</span>
+              <a href="#testimonials"
+                 class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition text-sm"
+                 style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: #93c5fd;">
+                <i class="fa-solid fa-quote-left"></i> What colleagues say
               </a>
             </div>
 
-            <div class="flex flex-wrap gap-5 mt-8 text-slate-300">
-              <span class="inline-flex items-center gap-2"><i class="fa-solid fa-phone text-blue-400"></i> +31 6 8638 2315</span>
-              <span class="inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-blue-400"></i> ivan@foschiera.com</span>
+            <!-- Contact micro -->
+            <div class="flex flex-wrap gap-5 mt-6 text-slate-400 text-sm fade-up delay-6">
+              <a href="tel:+31686382315" class="inline-flex items-center gap-2 hover:text-slate-200 transition">
+                <i class="fa-solid fa-phone text-blue-400"></i>+31 6 8638 2315
+              </a>
+              <a href="mailto:ivan@foschiera.com" class="inline-flex items-center gap-2 hover:text-slate-200 transition">
+                <i class="fa-solid fa-envelope text-blue-400"></i>ivan@foschiera.com
+              </a>
             </div>
           </div>
 
-          <div class="lg:col-span-5">
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl">
-              <h2 class="text-lg font-bold">Recruiter snapshot</h2>
-              <p class="text-slate-300 mt-2 text-sm leading-relaxed">
-                Plant Manager and Senior Operations focus areas.
-              </p>
-
-              <div class="grid grid-cols-2 gap-4 mt-6">
-                <div class="bg-slate-950/40 border border-white/10 rounded-xl p-4">
-                  <p class="text-3xl font-extrabold">20+</p>
-                  <p class="text-slate-300 text-sm mt-1">Years in operations</p>
-                </div>
-                <div class="bg-slate-950/40 border border-white/10 rounded-xl p-4">
-                  <p class="text-3xl font-extrabold">500+</p>
-                  <p class="text-slate-300 text-sm mt-1">Max site headcount managed</p>
-                </div>
-                <div class="bg-slate-950/40 border border-white/10 rounded-xl p-4">
-                  <p class="text-3xl font-extrabold">70+</p>
-                  <p class="text-slate-300 text-sm mt-1">Team size led in latest role</p>
-                </div>
-                <div class="bg-slate-950/40 border border-white/10 rounded-xl p-4">
-                  <p class="text-3xl font-extrabold">99.7%</p>
-                  <p class="text-slate-300 text-sm mt-1">First Pass Yield achieved</p>
+          <!-- Right — snapshot card -->
+          <div class="lg:col-span-5 fade-up delay-3">
+            <div class="card rounded-2xl p-6 shadow-2xl">
+              <div class="flex items-center justify-between mb-5">
+                <h2 class="font-semibold text-sm text-slate-300 uppercase tracking-widest">At a glance</h2>
+                <div class="award-badge inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full text-amber-300">
+                  <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                  Leader 100 · 2022 & 2023
                 </div>
               </div>
 
-              <div class="mt-6 flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-200">SQDC mindset</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-200">Lean and CI</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-200">MES and ERP</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-200">People development</span>
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-200">Analytics</span>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.18);">
+                  <p class="text-3xl font-extrabold text-blue-300" data-target="20" data-suffix="+">20+</p>
+                  <p class="text-slate-400 text-xs mt-1 leading-snug">Years in operations leadership</p>
+                </div>
+                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.18);">
+                  <p class="text-3xl font-extrabold text-emerald-300" data-target="500" data-suffix="+">500+</p>
+                  <p class="text-slate-400 text-xs mt-1 leading-snug">Max site headcount managed</p>
+                </div>
+                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.18);">
+                  <p class="text-3xl font-extrabold text-violet-300">99.7%</p>
+                  <p class="text-slate-400 text-xs mt-1 leading-snug">First Pass Yield achieved</p>
+                </div>
+                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.18);">
+                  <p class="text-3xl font-extrabold text-amber-300">7h→2h</p>
+                  <p class="text-slate-400 text-xs mt-1 leading-snug">WIP cycle reduction</p>
+                </div>
               </div>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Lean & CI</span>
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">MES · ERP</span>
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Analytics</span>
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">People development</span>
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">SQDC</span>
+                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Gemba</span>
+              </div>
+
+              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
+                 class="mt-5 flex items-center justify-between p-3 rounded-xl transition group"
+                 style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.25);">
+                <div class="flex items-center gap-2 text-sm text-blue-300">
+                  <i class="fa-brands fa-linkedin"></i><span>View full LinkedIn profile</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-blue-400 text-xs group-hover:translate-x-1 transition-transform"></i>
+              </a>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ IMPACT ══ -->
+    <section id="impact" class="max-w-6xl mx-auto px-6 py-20 reveal">
+      <div class="text-center mb-12">
+        <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">Results that matter</p>
+        <h2 class="text-3xl font-extrabold tracking-tight">Selected impact</h2>
+        <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="card card-glow-blue impact-card blue rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d1">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs text-blue-400 uppercase tracking-wider font-semibold">Quality & Yield</span>
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(59,130,246,0.12);">
+              <i class="fa-solid fa-shield-halved text-blue-400"></i>
+            </div>
+          </div>
+          <p class="text-4xl font-extrabold text-white">70% → 99.7%</p>
+          <p class="text-blue-400 text-sm font-medium mt-1">First Pass Yield</p>
+          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Lean routines, layout redesign, and 5S discipline at WWT's high-volume integration center.</p>
+        </div>
+
+        <div class="card card-glow-emerald impact-card emerald rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d2">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs text-emerald-400 uppercase tracking-wider font-semibold">Flow & WIP</span>
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.12);">
+              <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+            </div>
+          </div>
+          <p class="text-4xl font-extrabold text-white">7h → 2h</p>
+          <p class="text-emerald-400 text-sm font-medium mt-1">WIP cycle time</p>
+          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Released significant working capital through JIT and pull-based replenishment at a 500-person hyperscale site.</p>
+        </div>
+
+        <div class="card card-glow-violet impact-card violet rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d3">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs text-violet-400 uppercase tracking-wider font-semibold">Team scaled</span>
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(139,92,246,0.12);">
+              <i class="fa-solid fa-people-group text-violet-400"></i>
+            </div>
+          </div>
+          <p class="text-4xl font-extrabold text-white">4 → 40+</p>
+          <p class="text-violet-400 text-sm font-medium mt-1">People, from scratch</p>
+          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Built from the ground up as General Manager — owning operations, P&L, quality, and talent development.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="card card-glow-blue impact-card blue rounded-2xl p-5 flex items-center gap-5 reveal reveal-d4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2);">
+            <i class="fa-solid fa-server text-blue-400 text-lg"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">MES multi-site rollout</p>
+            <p class="text-slate-400 text-xs mt-1">Improved traceability, planning accuracy, and stakeholder visibility across production sites.</p>
+          </div>
+        </div>
+        <div class="card card-glow-amber impact-card amber rounded-2xl p-5 flex items-center gap-5 reveal reveal-d5">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.2);">
+            <i class="fa-solid fa-trophy text-amber-400 text-lg"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Leader 100 Award — 2022 & 2023</p>
+            <p class="text-slate-400 text-xs mt-1">100% team acceptance. Delivery and people development — not one or the other.</p>
+          </div>
+        </div>
+        <div class="card card-glow-emerald impact-card emerald rounded-2xl p-5 flex items-center gap-5 reveal reveal-d6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2);">
+            <i class="fa-solid fa-people-group text-emerald-400 text-lg"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">COVID continuity — 500-person site</p>
+            <p class="text-slate-400 text-xs mt-1">Full SLA maintained through rapid staffing scenarios, layout changes, and daily risk control.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Impact -->
-    <section id="impact" class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-bold text-center">Selected impact</h2>
-      <p class="text-center text-slate-300 mt-3 max-w-3xl mx-auto">
-        A few measurable outcomes from recent roles.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-center justify-between">
-            <p class="font-semibold">Quality and yield</p>
-            <i class="fa-solid fa-shield-halved text-blue-400"></i>
+    <!-- ══ BILLBOARD ══ -->
+    <section class="billboard-section py-20 reveal">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-6">What those who worked with him say</p>
+        <blockquote class="text-2xl sm:text-3xl font-bold text-white leading-snug tracking-tight" style="font-family: 'Sora', sans-serif;">
+          "Great leaders teach you skills, but <span class="text-blue-400">the exceptional ones shape how you think and how you lead.</span> Ivan is one of those rare leaders."
+        </blockquote>
+        <div class="flex items-center justify-center gap-3 mt-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">ST</div>
+          <div class="text-left">
+            <p class="font-semibold text-sm text-white">Sweetsell Tatac</p>
+            <p class="text-slate-400 text-xs">Production Manager · Direct report · March 2026</p>
           </div>
-          <p class="text-4xl font-extrabold mt-4">70% → 99.7%</p>
-          <p class="text-slate-300 mt-2">
-            First Pass Yield improvement through Lean routines, layout changes, and 5S discipline.
-          </p>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-center justify-between">
-            <p class="font-semibold">Flow and WIP</p>
-            <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
-          </div>
-          <p class="text-4xl font-extrabold mt-4">7h → 2h</p>
-          <p class="text-slate-300 mt-2">
-            WIP reduction and working capital release through pull based replenishment and JIT.
-          </p>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-center justify-between">
-            <p class="font-semibold">Operating system</p>
-            <i class="fa-solid fa-chart-line text-violet-400"></i>
-          </div>
-          <p class="text-4xl font-extrabold mt-4">Tier cadence</p>
-          <p class="text-slate-300 mt-2">
-            Built a stable operating rhythm with tier meetings, daily Gemba, clear escalation, and KPI reviews.
-          </p>
         </div>
       </div>
+    </section>
 
-      <div class="mt-10 bg-slate-950/30 border border-white/10 rounded-2xl p-6">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h3 class="font-bold text-lg">Recognition</h3>
-            <p class="text-slate-300 mt-1">
-              Leader 100 Award in 2022 and 2023 for operational results and people development.
-            </p>
+    <!-- ══ CORE STRENGTHS ══ -->
+    <section id="skills" class="py-20 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-xs text-emerald-400 uppercase tracking-widest font-semibold mb-3">What I bring</p>
+          <h2 class="text-3xl font-extrabold tracking-tight">Core strengths</h2>
+          <div class="accent-line bg-emerald-500 mx-auto mt-4"></div>
+          <p class="text-slate-400 mt-4 max-w-xl mx-auto text-sm">Each strength maps directly to outcomes. Not just what I know — what I deliver.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="card card-glow-blue rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d1">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(59,130,246,0.12);">
+              <i class="fa-solid fa-industry text-blue-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Plant operations leadership</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">End-to-end accountability for safety, quality, delivery, and cost. Tier routines, Gemba walks, and structured escalation that keep execution stable at scale.</p>
+            </div>
           </div>
+
+          <div class="card card-glow-blue rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d2">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(59,130,246,0.12);">
+              <i class="fa-solid fa-recycle text-blue-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Lean & continuous improvement</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Lean Six Sigma Green Belt. Standard work, 5S, pull systems, root cause discipline. CI built into daily rhythm — not as a project, but as a way of working.</p>
+            </div>
+          </div>
+
+          <div class="card card-glow-emerald rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d3">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(16,185,129,0.12);">
+              <i class="fa-solid fa-users text-emerald-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">People development & retention</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">I coach leaders to grow, not just perform. Succession coverage, 1:1s, and a culture where people feel trusted enough to take ownership — Leader 100 Award × 2.</p>
+            </div>
+          </div>
+
+          <div class="card card-glow-violet rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(139,92,246,0.12);">
+              <i class="fa-solid fa-microchip text-violet-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Digital operations & MES/ERP</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Multi-site MES rollouts. ERP adoption and data quality. Custom dashboards for forecast, WIP, and constraints. Shopfloor connected to system so decisions are fast and grounded.</p>
+            </div>
+          </div>
+
+          <div class="card card-glow-violet rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(139,92,246,0.12);">
+              <i class="fa-solid fa-chart-bar text-violet-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Analytics & performance management</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Performance review frameworks, real-time dashboards, and data-driven decision loops that work for operators, supervisors, and senior stakeholders alike.</p>
+            </div>
+          </div>
+
+          <div class="card card-glow-emerald rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(16,185,129,0.12);">
+              <i class="fa-solid fa-diagram-project text-emerald-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Supply chain & operational resilience</p>
+              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">3PL coordination, end-to-end flow, ERP transitions, and cross-team alignment. Built for surge, designed to sustain.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-2 justify-center text-xs reveal">
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Lean & CI</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">MES</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">ERP</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Gemba walks</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">5S</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">JIT & pull systems</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Tier management</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Standard work</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">KPI dashboards</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Leader coaching</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">SQDC</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Traceability</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">3PL management</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Hyperscale · Defense · Manufacturing</span>
+          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Google Sheets · Excel</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EXPERIENCE ══ -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 py-20 reveal">
+      <div class="text-center mb-12">
+        <p class="text-xs text-violet-400 uppercase tracking-widest font-semibold mb-3">Career history</p>
+        <h2 class="text-3xl font-extrabold tracking-tight">Professional experience</h2>
+        <div class="accent-line bg-violet-500 mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+        <article class="card card-glow-blue rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d1">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Nov 2021 – Dec 2025</p>
+              </div>
+              <h3 class="text-base font-bold">World Wide Technology</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">Senior Production Manager</p>
+              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands · Team: 70+</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(59,130,246,0.12);">
+              <i class="fa-solid fa-industry text-blue-400"></i>
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs mb-3 leading-relaxed">Led end-to-end production and engineering in a high-volume integration center supporting global technology clients.</p>
+          <ul class="space-y-1.5 text-slate-300 text-xs">
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> First Pass Yield from 70% to 99.7% through Lean routines, layout changes, and 5S discipline</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Built stable tier cadence: daily Gemba, escalation protocols, KPI reviews with stakeholders</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Rolled out MES across sites — improved traceability, visibility, and planning accuracy</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Introduced dashboards for forecast, WIP, constraints, and stakeholder reviews</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Coached supervisors, strengthened succession, and improved leadership retention</li>
+          </ul>
+        </article>
+
+        <article class="card card-glow-emerald rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d2">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Nov 2019 – Oct 2021</p>
+              </div>
+              <h3 class="text-base font-bold">Material in Motion</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">Site Manager</p>
+              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands · Team: 500+</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.12);">
+              <i class="fa-solid fa-people-group text-emerald-400"></i>
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs mb-3 leading-relaxed">Managed a 500-person production site manufacturing data center hardware for a hyperscale technology client under strict SLA and audit requirements.</p>
+          <ul class="space-y-1.5 text-slate-300 text-xs">
+            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> WIP from 7h to 2h — freed significant working capital through pull-based JIT</li>
+            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Maintained full SLA during COVID through rapid staffing scenarios and daily risk control</li>
+            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Stabilized quality and delivery through standard work, tier routines, and escalation discipline</li>
+            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Aligned engineering, logistics, and client leadership across cross-functional execution</li>
+          </ul>
+        </article>
+
+        <article class="card card-glow-violet rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d3">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider">Jun 2018 – Oct 2019</p>
+              </div>
+              <h3 class="text-base font-bold">Material in Motion</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">Supply Chain Integration Manager</p>
+              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(139,92,246,0.12);">
+              <i class="fa-solid fa-diagram-project text-violet-400"></i>
+            </div>
+          </div>
+          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
+            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Streamlined end-to-end handoffs between inbound, kitting, production, and outbound</li>
+            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Supported ERP transition for a global technology client and improved adoption</li>
+            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Reduced firefighting through clear ownership rules and escalation visibility</li>
+          </ul>
+        </article>
+
+        <article class="card rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d4">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-blue-300 flex-shrink-0"></span>
+                <p class="text-xs text-blue-300 font-semibold uppercase tracking-wider">Aug 2016 – May 2018</p>
+              </div>
+              <h3 class="text-base font-bold">Material in Motion</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">Inventory Control Supervisor</p>
+              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(255,255,255,0.05);">
+              <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
+            </div>
+          </div>
+          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
+            <li class="flex gap-2"><span class="text-slate-400 mt-0.5">›</span> Implemented real-time tracking and improved inventory accuracy to world-class levels</li>
+            <li class="flex gap-2"><span class="text-slate-400 mt-0.5">›</span> Strengthened collaboration across warehouse, production, and planning</li>
+          </ul>
+        </article>
+
+        <article class="card card-glow-amber rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d5">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+                <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider">Sep 2006 – Dec 2014</p>
+              </div>
+              <h3 class="text-base font-bold">Milimetra</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">General Manager</p>
+              <p class="text-slate-500 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(245,158,11,0.12);">
+              <i class="fa-solid fa-helmet-safety text-amber-400"></i>
+            </div>
+          </div>
+          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
+            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Scaled company from 4 to 40+ people delivering complex aluminum and glass structures</li>
+            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Owned operations, planning, and financial performance end-to-end</li>
+            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Built leader routines that improved reliability, delivery, and team capability</li>
+          </ul>
+        </article>
+
+        <article class="card rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d6">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-slate-400 flex-shrink-0"></span>
+                <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Feb 2002 – Aug 2006</p>
+              </div>
+              <h3 class="text-base font-bold">Milimetra</h3>
+              <p class="text-slate-300 text-sm font-semibold mt-0.5">Production Technician</p>
+              <p class="text-slate-500 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(255,255,255,0.05);">
+              <i class="fa-solid fa-screwdriver-wrench text-slate-400"></i>
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">Hands-on technical foundation across end-to-end production: precision machinery, fabrication, quality control, and structural builds. The shopfloor experience that shaped my leadership philosophy.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══ RECOMMENDATIONS ══ -->
+    <section id="testimonials" class="py-20 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">What colleagues say</p>
+          <h2 class="text-3xl font-extrabold tracking-tight">LinkedIn recommendations</h2>
+          <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
+          <p class="text-slate-400 mt-4 text-sm">From direct reports and peers across 4+ years of leadership at WWT and Material in Motion.</p>
+        </div>
+
+        <!-- Sweetsell hero card -->
+        <div class="sweetsell-card card rounded-2xl p-8 md:p-10 mb-6 reveal">
+          <div class="quote-mark">"</div>
+          <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
+            Ivan is a <span class="text-white font-semibold">transformational leader who naturally inspires</span> the people around him to grow, challenge themselves, and strive for excellence. His leadership goes far beyond managing operations or delivering results. He creates an environment where people feel <span class="text-white font-semibold">trusted, supported, and empowered</span> to develop both professionally and personally.
+          </blockquote>
+          <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">ST</div>
+              <div>
+                <p class="font-semibold text-sm">Sweetsell Tatac</p>
+                <p class="text-slate-400 text-xs">Production Manager · Direct report · March 2026</p>
+              </div>
+            </div>
+            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
+              <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Carousel -->
+        <div class="relative" id="testimonial-container">
+          <div class="overflow-hidden rounded-2xl">
+            <div class="testimonial-track" id="testimonial-track">
+
+              <div class="testimonial-slide">
+                <div class="card rounded-2xl p-8 md:p-10">
+                  <div class="quote-mark">"</div>
+                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
+                    Ivan is the kind of leader you <span class="text-white font-medium">rarely meet</span>. Calm, strategic, and hands-on at the same time. He knows when to step in and when to give people space to grow. He doesn't give you the fish, he teaches you how to fish. Working with Ivan <span class="text-white font-medium">changed the way I lead teams today.</span>
+                  </blockquote>
+                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(59,130,246,0.2); color: #93c5fd;">KD</div>
+                      <div>
+                        <p class="font-semibold text-sm">Karol Dzienis</p>
+                        <p class="text-slate-400 text-xs">Production Supervisor · World Wide Technology · Direct report, 4+ years</p>
+                      </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
+                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-slide">
+                <div class="card rounded-2xl p-8 md:p-10">
+                  <div class="quote-mark">"</div>
+                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
+                    Ivan adapts quickly, stays focused, and <span class="text-white font-medium">helps others stay grounded.</span> What stands out most is his character. He is genuinely humble and treats people with consistent respect, even in difficult moments. He carries a clear diversity and inclusion mindset, creating a team atmosphere where people feel safe to contribute.
+                  </blockquote>
+                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(139,92,246,0.2); color: #c4b5fd;">KE</div>
+                      <div>
+                        <p class="font-semibold text-sm">Khaled El-Meligy</p>
+                        <p class="text-slate-400 text-xs">Production Supervisor · Direct report, 6 years · January 2026</p>
+                      </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
+                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-slide">
+                <div class="card rounded-2xl p-8 md:p-10">
+                  <div class="quote-mark">"</div>
+                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
+                    He created an environment where I felt <span class="text-white font-medium">empowered to contribute and grow</span>, making him a standout leader. His ability to inspire and lead with integrity will undoubtedly make him a great asset wherever he goes. I have no hesitation in recommending him.
+                  </blockquote>
+                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(245,158,11,0.2); color: #fcd34d;">SD</div>
+                      <div>
+                        <p class="font-semibold text-sm">Slawek Domagalski</p>
+                        <p class="text-slate-400 text-xs">Inventory & Quality Supervisor · CEVA eCommerce Logistics · February 2025</p>
+                      </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
+                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="testimonial-slide">
+                <div class="card rounded-2xl p-8 md:p-10">
+                  <div class="quote-mark">"</div>
+                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
+                    Ivan is a <span class="text-white font-medium">brilliant and gifted manager</span> who really understands how to get the best out of people. His ability to manage difficult tasks, his organization and problem solving skills are some of the reasons we were able to meet and exceed our weekly production goals. Even during the most intense pandemic times he <span class="text-white font-medium">kept his composure, worked extra hard and efficiently</span> to make sure our site stayed focused and motivated.
+                  </blockquote>
+                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">AB</div>
+                      <div>
+                        <p class="font-semibold text-sm">Adam J. Bialic</p>
+                        <p class="text-slate-400 text-xs">Ex-Production Manager · Direct report · April 2022</p>
+                      </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
+                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-center gap-4 mt-6">
+            <button id="prev-btn"
+                    class="w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
+                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);"
+                    aria-label="Previous">
+              <i class="fa-solid fa-chevron-left text-sm text-slate-300"></i>
+            </button>
+            <div class="flex gap-2" id="dots-container">
+              <button class="dot h-2 rounded-full transition-all duration-300" style="background: #3b82f6; width: 20px;" data-index="0"></button>
+              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="1"></button>
+              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="2"></button>
+              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="3"></button>
+            </div>
+            <button id="next-btn"
+                    class="w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
+                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);"
+                    aria-label="Next">
+              <i class="fa-solid fa-chevron-right text-sm text-slate-300"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
           <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-full font-semibold shadow-lg transition self-start md:self-auto">
+             class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
             <i class="fa-brands fa-linkedin"></i>
-            <span>See full profile</span>
+            Read all 6 recommendations on LinkedIn
+            <i class="fa-solid fa-arrow-right text-xs"></i>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Core competencies -->
-    <section id="skills" class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-center">Core strengths</h2>
-        <p class="text-center text-slate-300 mt-3 max-w-3xl mx-auto">
-          Clear and practical strengths for operations leadership.
-        </p>
+    <!-- ══ CREDENTIALS ══ -->
+    <section id="credentials" class="max-w-6xl mx-auto px-6 py-20 reveal">
+      <div class="text-center mb-12">
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-3">Qualifications</p>
+        <h2 class="text-3xl font-extrabold tracking-tight">Credentials</h2>
+        <div class="accent-line bg-amber-500 mx-auto mt-4"></div>
+      </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">Plant operations leadership</p>
-              <p class="text-slate-300 text-sm mt-1">Daily execution, escalation, tier routines, stakeholder cadence.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <div class="card rounded-2xl p-6 reveal reveal-d1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.12);">
+              <i class="fa-solid fa-certificate text-emerald-400"></i>
             </div>
+            <h3 class="font-semibold text-sm">Certifications</h3>
           </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">Lean Six Sigma Green Belt</p><p class="text-slate-500 text-xs">Process excellence & CI methodology</p></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">CompTIA IT Fundamentals+</p><p class="text-slate-500 text-xs">Digital operations foundation</p></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">TOEFL iBT — C1</p><p class="text-slate-500 text-xs">Full professional English · Issued Aug 2024</p></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">Amateur Radio Licence — Full (HAREC)</p><p class="text-slate-500 text-xs">PA9ICQ · RSGB · Issued Jan 2026</p></div>
+            </li>
+          </ul>
+        </div>
 
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">Operational excellence</p>
-              <p class="text-slate-300 text-sm mt-1">Lean routines, standard work, structured problem solving, 5S.</p>
+        <div class="card rounded-2xl p-6 reveal reveal-d2">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(59,130,246,0.12);">
+              <i class="fa-solid fa-graduation-cap text-blue-400"></i>
             </div>
+            <h3 class="font-semibold text-sm">Education</h3>
           </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">People development</p>
-              <p class="text-slate-300 text-sm mt-1">Leader coaching, retention focus, succession coverage.</p>
-            </div>
+          <div>
+            <p class="text-sm font-semibold">Amsterdam University of Applied Sciences</p>
+            <p class="text-slate-300 text-xs mt-1 font-medium">Bachelor of Business Administration</p>
+            <p class="text-slate-400 text-xs">International Business · 2024–2028</p>
           </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">Digital operations</p>
-              <p class="text-slate-300 text-sm mt-1">MES rollout, ERP adoption, traceability, planning visibility.</p>
-            </div>
-          </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">Analytics and KPI management</p>
-              <p class="text-slate-300 text-sm mt-1">Dashboards for forecast, WIP, constraints, performance reviews.</p>
-            </div>
-          </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-lg flex gap-3">
-            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
-            <div>
-              <p class="font-semibold">Supply chain integration</p>
-              <p class="text-slate-300 text-sm mt-1">3PL integration, end to end handoffs, issue resolution.</p>
+          <div class="mt-5 pt-5" style="border-top: 1px solid rgba(255,255,255,0.07);">
+            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Languages</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm">Portuguese</span>
+                <span class="text-xs text-slate-400 px-2 py-0.5 rounded-full" style="background: rgba(255,255,255,0.05);">Native</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm">English</span>
+                <span class="text-xs text-slate-400 px-2 py-0.5 rounded-full" style="background: rgba(255,255,255,0.05);">Full professional (C1)</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="mt-10 flex flex-wrap gap-2 justify-center text-sm">
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Lean and CI</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">MES</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">ERP</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Gemba</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">5S</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">JIT</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Pull systems</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Traceability</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Dashboards</span>
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Stakeholders</span>
+        <div class="card rounded-2xl p-6 reveal reveal-d3">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(245,158,11,0.12);">
+              <i class="fa-solid fa-award text-amber-400"></i>
+            </div>
+            <h3 class="font-semibold text-sm">Awards & recognition</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="award-badge rounded-xl p-3">
+              <div class="flex items-center gap-2 mb-1">
+                <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                <p class="text-xs font-semibold text-amber-300">Leader 100 Award — 2023</p>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">World Wide Technology. 100% team acceptance — the highest possible trust score awarded to a leader.</p>
+            </div>
+            <div class="award-badge rounded-xl p-3">
+              <div class="flex items-center gap-2 mb-1">
+                <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                <p class="text-xs font-semibold text-amber-300">Leader 100 Award — 2022</p>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">World Wide Technology. Back-to-back recognition for consistent team leadership and operational impact.</p>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-bold text-center">Professional experience</h2>
-      <p class="text-center text-slate-300 mt-3 max-w-3xl mx-auto">
-        Roles and scope.
-      </p>
+    <!-- ══ CONTACT ══ -->
+    <section id="contact" class="py-20 reveal">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="card rounded-2xl p-8 md:p-12 shadow-2xl text-center" style="background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(16,185,129,0.04)); border-color: rgba(59,130,246,0.2);">
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
-        <!-- WWT -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">World Wide Technology</h3>
-              <p class="text-slate-200 mt-1 font-semibold">Senior Production Manager</p>
-              <p class="text-slate-400 text-sm mt-1">Nov 2021 to Dec 2025 · The Randstad, Netherlands</p>
-            </div>
-            <div class="text-blue-400">
-              <i class="fa-solid fa-industry fa-2x"></i>
-            </div>
+          <div class="otw-badge inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full font-medium text-emerald-300 mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Available for new leadership opportunities
           </div>
 
-          <p class="text-slate-300 mt-4">
-            Led end to end production and engineering in a high volume integration center supporting global technology clients.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Led daily operations across production, engineering, and final quality. Team size 70 plus.</li>
-            <li>Improved First Pass Yield from 70 percent to 99.7 percent through Lean routines, layout changes, and 5S discipline.</li>
-            <li>Built a stable operating rhythm with tier meetings, daily Gemba, and clear escalation.</li>
-            <li>Rolled out MES across sites and improved traceability, visibility, and planning accuracy.</li>
-            <li>Introduced dashboards for forecast, WIP, constraints, and performance reviews with stakeholders.</li>
-            <li>Developed leaders and retention. Coached supervisors and strengthened succession coverage.</li>
-          </ul>
-        </article>
-
-        <!-- MiM Site Manager -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Material in Motion</h3>
-              <p class="text-slate-200 mt-1 font-semibold">Site Manager</p>
-              <p class="text-slate-400 text-sm mt-1">Nov 2019 to Oct 2021 · The Randstad, Netherlands</p>
-            </div>
-            <div class="text-emerald-300">
-              <i class="fa-solid fa-people-group fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Managed a 500 person production site manufacturing data center hardware for a hyperscale technology client.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Managed high volume operations under strict SLA and audit requirements.</li>
-            <li>Maintained business continuity during COVID through staffing scenarios, layout changes, and daily risk control.</li>
-            <li>Reduced inventory and improved space utilization through JIT and pull based replenishment.</li>
-            <li>Strengthened cross functional execution with engineering, logistics, and client leadership.</li>
-            <li>Stabilized quality and delivery through standard work, tier routines, and escalation discipline.</li>
-            <li>Built leadership routines that kept performance stable under constant change.</li>
-            <li>Reduced WIP from 7 hours to 2 hours and freed significant working capital.</li>
-          </ul>
-        </article>
-
-        <!-- MiM SCM -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Material in Motion</h3>
-              <p class="text-slate-200 mt-1 font-semibold">Supply Chain Integration Manager</p>
-              <p class="text-slate-400 text-sm mt-1">Jun 2018 to Oct 2019 · The Randstad, Netherlands</p>
-            </div>
-            <div class="text-violet-300">
-              <i class="fa-solid fa-diagram-project fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Owned cross functional integration between 3PL, production, and logistics to improve flow and responsiveness.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Streamlined end to end handoffs between inbound, kitting, production, and outbound.</li>
-            <li>Led issue resolution across suppliers, logistics partners, and internal teams.</li>
-            <li>Supported ERP transition for a global technology client and improved process adoption.</li>
-            <li>Improved visibility and reduced firefighting through clear rules and ownership.</li>
-          </ul>
-        </article>
-
-        <!-- MiM Inventory -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Material in Motion</h3>
-              <p class="text-slate-200 mt-1 font-semibold">Inventory Control Supervisor</p>
-              <p class="text-slate-400 text-sm mt-1">Aug 2016 to May 2018 · The Randstad, Netherlands</p>
-            </div>
-            <div class="text-blue-300">
-              <i class="fa-solid fa-boxes-stacked fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Led inventory control and accuracy in a high velocity environment supporting production and logistics.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Implemented real time tracking and improved inventory accuracy to world class levels.</li>
-            <li>Improved counting routines, root cause on variances, and daily controls.</li>
-            <li>Trained the team and improved reliability of stock availability for production.</li>
-            <li>Strengthened collaboration between warehouse, production, and planning.</li>
-          </ul>
-        </article>
-
-        <!-- Milimetra IT -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Milimetra</h3>
-              <p class="text-slate-200 mt-1 font-semibold">IT Support Specialist, Operations Systems</p>
-              <p class="text-slate-400 text-sm mt-1">Jan 2015 to Jun 2016 · Greater Florianópolis, Brazil</p>
-            </div>
-            <div class="text-slate-200">
-              <i class="fa-solid fa-laptop-code fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Provided remote IT support to keep operations running in Brazil.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Supported around 40 users and reduced downtime through fast troubleshooting.</li>
-            <li>Maintained endpoints and core tools used by operations and project teams.</li>
-            <li>Ensured stable access and basic security hygiene for daily work continuity.</li>
-          </ul>
-        </article>
-
-        <!-- Milimetra GM -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Milimetra</h3>
-              <p class="text-slate-200 mt-1 font-semibold">General Manager</p>
-              <p class="text-slate-400 text-sm mt-1">Sep 2006 to Dec 2014 · Greater Florianópolis, Brazil</p>
-            </div>
-            <div class="text-amber-300">
-              <i class="fa-solid fa-helmet-safety fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Led company growth from 4 to 40 plus people delivering complex aluminum and glass structures.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Owned operations, planning, and financial performance.</li>
-            <li>Led execution of high complexity builds with quality and safety focus.</li>
-            <li>Built leaders and routines that improved reliability and delivery.</li>
-            <li>Partnered with clients and engineering to solve technical constraints on site.</li>
-          </ul>
-        </article>
-
-        <!-- Milimetra Technician -->
-        <article class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg lg:col-span-2">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold">Milimetra</h3>
-              <p class="text-slate-200 mt-1 font-semibold">Production Technician</p>
-              <p class="text-slate-400 text-sm mt-1">Feb 2002 to Aug 2006 · Greater Florianópolis, Brazil</p>
-            </div>
-            <div class="text-rose-300">
-              <i class="fa-solid fa-screwdriver-wrench fa-2x"></i>
-            </div>
-          </div>
-
-          <p class="text-slate-300 mt-4">
-            Hands on technical foundation across end to end production.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Operated and maintained precision machinery, ensuring adherence to technical and quality standards.</li>
-            <li>Performed fabrication, assembly, and troubleshooting across multiple production stages.</li>
-            <li>Supported quality control inspections to verify compliance and consistency in custom builds.</li>
-            <li>Collaborated with engineers and installers to deliver large scale structural projects.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- Credentials -->
-    <section id="credentials" class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-bold text-center">Credentials</h2>
-      <p class="text-center text-slate-300 mt-3 max-w-3xl mx-auto">
-        Certifications and education, aligned with operations leadership.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <h3 class="font-bold text-lg">Certifications</h3>
-          <ul class="mt-4 space-y-2 text-slate-300 list-disc list-inside">
-            <li>Lean Six Sigma Green Belt</li>
-            <li>CompTIA IT Fundamentals+</li>
-            <li>TOEFL iBT (C1)</li>
-          </ul>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg">
-          <h3 class="font-bold text-lg">Education</h3>
-          <p class="text-slate-300 mt-4">
-            Amsterdam University of Applied Sciences
-          </p>
-          <p class="text-slate-200 font-semibold mt-1">
-            Bachelor of Business Administration, International Business
-          </p>
-          <p class="text-slate-400 text-sm mt-1">
-            2024 to 2028
-          </p>
-
-          <div class="mt-6">
-            <h4 class="font-semibold">Languages</h4>
-            <p class="text-slate-300 mt-2">Portuguese (Native) · English (Full Professional)</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="bg-slate-950/40 border border-white/10 rounded-2xl p-8 shadow-xl text-center">
-          <h2 class="text-2xl font-bold">Let’s connect</h2>
-          <p class="text-slate-300 mt-3 max-w-2xl mx-auto">
-            Plant Manager, Operations Manager, and Senior Operations opportunities.
+          <h2 class="text-3xl font-extrabold tracking-tight">Let's build something serious</h2>
+          <p class="text-slate-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            I'm drawn to <span class="text-slate-200 font-medium">complex, high-tempo operations</span> where leadership clarity is the difference between performance and chaos — manufacturing, hyperscale, defense, or any environment where execution cannot slip.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <a href="mailto:ivan@foschiera.com"
-               class="inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-7 py-3 rounded-full font-semibold shadow-lg transition">
-              <i class="fa-solid fa-envelope"></i>
-              <span>ivan@foschiera.com</span>
+               class="inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm">
+              <i class="fa-solid fa-envelope"></i> ivan@foschiera.com
             </a>
-
             <a href="tel:+31686382315"
-               class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/10 px-7 py-3 rounded-full font-semibold transition">
-              <i class="fa-solid fa-phone"></i>
-              <span>+31 6 8638 2315</span>
+               class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold transition text-sm"
+               style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);">
+              <i class="fa-solid fa-phone"></i> +31 6 8638 2315
             </a>
-
             <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 px-7 py-3 rounded-full font-semibold shadow-lg transition">
-              <i class="fa-brands fa-linkedin"></i>
-              <span>Connect on LinkedIn</span>
+               class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm"
+               style="background: #2563eb;">
+              <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
             </a>
           </div>
 
-          <div class="flex items-center justify-center gap-6 mt-8 text-blue-300">
-            <a href="mailto:ivan@foschiera.com" aria-label="Email" class="hover:text-white"><i class="fa-solid fa-envelope fa-2x"></i></a>
-            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-white"><i class="fa-brands fa-linkedin fa-2x"></i></a>
-            <a href="https://github.com/ivanfoschiera" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-white"><i class="fa-brands fa-github fa-2x"></i></a>
-            <a href="https://foschiera.com" aria-label="Website" class="hover:text-white"><i class="fa-solid fa-globe fa-2x"></i></a>
+          <div class="flex items-center justify-center gap-6 mt-8 text-slate-400">
+            <a href="mailto:ivan@foschiera.com" aria-label="Email" class="hover:text-white transition"><i class="fa-solid fa-envelope fa-lg"></i></a>
+            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-white transition"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+            <a href="https://github.com/ivanfoschiera" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-white transition"><i class="fa-brands fa-github fa-lg"></i></a>
           </div>
 
-          <p class="text-slate-500 text-sm mt-8">
-            © <span id="year"></span> Ivan Foschiera
-          </p>
+          <p class="text-slate-600 text-xs mt-8">© <span id="year"></span> Ivan Foschiera · The Randstad, Netherlands</p>
         </div>
       </div>
     </section>
+
   </main>
 
   <script>
-    // Simple footer year
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animCount(el, target, suffix, dur) {
+      const start = performance.now();
+      (function step(ts) {
+        const p = Math.min((ts - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    const cObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const t = parseInt(e.target.dataset.target);
+          const s = e.target.dataset.suffix || '';
+          if (!isNaN(t)) animCount(e.target, t, s, 1400);
+          cObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-target]').forEach(el => cObs.observe(el));
+
+    // Testimonial carousel
+    const track = document.getElementById('testimonial-track');
+    const dots = document.querySelectorAll('.dot');
+    const total = 4;
+    let current = 0;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => {
+        d.style.background = i === current ? '#3b82f6' : 'rgba(255,255,255,0.2)';
+        d.style.width = i === current ? '20px' : '8px';
+      });
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
+
+    // Auto-advance
+    setInterval(() => goTo(current + 1), 6000);
   </script>
 </body>
 </html>
