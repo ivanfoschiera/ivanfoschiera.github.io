@@ -693,7 +693,7 @@
           <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">What colleagues say</p>
           <h2 class="text-3xl font-extrabold tracking-tight">LinkedIn recommendations</h2>
           <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
-          <p class="text-slate-400 mt-4 text-sm">From direct reports and peers across 4+ years of leadership at WWT and Material in Motion.</p>
+          <p class="text-slate-400 mt-4 text-sm">From direct reports and peers across 10+ years of leadership at WWT and Material in Motion.</p>
         </div>
 
         <!-- Sweetsell hero card -->
@@ -1032,7 +1032,17 @@
     dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
 
     // Auto-advance
-    setInterval(() => goTo(current + 1), 6000);
+    let autoSlide = setInterval(() => goTo(current + 1), 15000);
+
+    const container = document.getElementById('testimonial-container');
+    
+    container.addEventListener('mouseenter', () => {
+      clearInterval(autoSlide);
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      autoSlide = setInterval(() => goTo(current + 1), 15000);
+    });
   </script>
 </body>
 </html>
