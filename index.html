@@ -172,48 +172,6 @@
     .impact-card.violet::after  { background: linear-gradient(90deg, transparent, #8b5cf6, transparent); }
     .impact-card.amber::after   { background: linear-gradient(90deg, transparent, #f59e0b, transparent); }
     .quote-card::after { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-
-    /* Language picker */
-    .lang-picker { position: relative; }
-    .lang-picker-menu {
-      position: absolute;
-      right: 0;
-      top: calc(100% + 8px);
-      min-width: 136px;
-      background: rgba(8,14,26,0.96);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      box-shadow: 0 14px 36px rgba(0,0,0,0.34);
-      backdrop-filter: blur(14px);
-      padding: 6px;
-      z-index: 60;
-      opacity: 0;
-      transform: translateY(-4px);
-      pointer-events: none;
-      transition: opacity 0.16s ease, transform 0.16s ease;
-    }
-    .lang-picker.open .lang-picker-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    .lang-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 10px;
-      color: #cbd5e1;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-decoration: none;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-    .lang-option:hover {
-      background: rgba(59,130,246,0.16);
-      color: #dbeafe;
-    }
   </style>
 
   <script type="application/ld+json">
@@ -250,22 +208,6 @@
         <a class="hover:text-white" href="#contact">Contact</a>
       </div>
       <div class="flex items-center gap-2">
-        <div class="lang-picker" id="lang-picker">
-          <button id="lang-button" type="button" aria-haspopup="true" aria-expanded="false"
-                  class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-sm text-slate-200 transition"
-                  style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
-            <span id="lang-flag" aria-hidden="true">🇬🇧</span>
-            <span id="lang-code" class="font-semibold tracking-wide">EN</span>
-            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-          </button>
-          <div class="lang-picker-menu" id="lang-menu" role="menu" aria-label="Language options">
-            <a class="lang-option" role="menuitem" href="?lang=pt"><span aria-hidden="true">🇧🇷</span><span>PT</span></a>
-            <a class="lang-option" role="menuitem" href="?lang=nl"><span aria-hidden="true">🇳🇱</span><span>NL</span></a>
-            <a class="lang-option" role="menuitem" href="?lang=de"><span aria-hidden="true">🇩🇪</span><span>DE</span></a>
-            <a class="lang-option" role="menuitem" href="?lang=fr"><span aria-hidden="true">🇫🇷</span><span>FR</span></a>
-            <a class="lang-option" role="menuitem" href="?lang=es"><span aria-hidden="true">🇪🇸</span><span>ES</span></a>
-          </div>
-        </div>
         <a href="mailto:ivan@foschiera.com" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-slate-200 transition" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
           <i class="fa-solid fa-envelope text-blue-400"></i> Email
         </a>
@@ -1100,37 +1042,6 @@
     
     container.addEventListener('mouseleave', () => {
       autoSlide = setInterval(() => goTo(current + 1), 15000);
-    });
-
-    // Language picker
-    const langMap = {
-      en: { code: 'EN', flag: '🇬🇧' },
-      pt: { code: 'PT', flag: '🇧🇷' },
-      nl: { code: 'NL', flag: '🇳🇱' },
-      de: { code: 'DE', flag: '🇩🇪' },
-      fr: { code: 'FR', flag: '🇫🇷' },
-      es: { code: 'ES', flag: '🇪🇸' }
-    };
-    const params = new URLSearchParams(window.location.search);
-    const selectedLang = (params.get('lang') || 'en').toLowerCase();
-    const activeLang = langMap[selectedLang] || langMap.en;
-
-    document.getElementById('lang-flag').textContent = activeLang.flag;
-    document.getElementById('lang-code').textContent = activeLang.code;
-
-    const langPicker = document.getElementById('lang-picker');
-    const langButton = document.getElementById('lang-button');
-
-    langButton.addEventListener('click', () => {
-      const isOpen = langPicker.classList.toggle('open');
-      langButton.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!langPicker.contains(event.target)) {
-        langPicker.classList.remove('open');
-        langButton.setAttribute('aria-expanded', 'false');
-      }
     });
   </script>
 </body>
