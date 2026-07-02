@@ -30,7 +30,7 @@ The fluid type scale (clamp-based) is defined in `tailwind.config.js`; brand col
 
 ## Conventions
 
-- One accent color (blue) + amber reserved for awards; emerald only as the availability status dot
+- Semantic accent colors, one meaning everywhere: blue = operations/quality/digital, emerald = flow/supply chain, violet = people/leadership, amber = awards/recognition (emerald dot also marks availability status)
 - Glass/backdrop-blur only on the sticky header and the hero "At a glance" card — all other cards are flat
 - Every animation is gated behind `prefers-reduced-motion`; final values are always in the markup
 - Touch targets ≥ 44 px; keyboard focus styles via `:focus-visible` in `style.css`
