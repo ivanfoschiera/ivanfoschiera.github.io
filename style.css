@@ -1,9 +1,278 @@
-/* style.css: custom styles (if any) for Ivan Foschiera's landing page */
+/* ============================================================
+   foschiera.com — custom styles
+   Utility classes are compiled separately into assets/tailwind.css
+   (npm run build). This file holds fonts, tokens, components,
+   and every accessibility/motion gate.
+   ============================================================ */
 
-/* Smooth scrolling for anchor links (for in-page navigation or CTA jumps) */
-html {
-  scroll-behavior: smooth;
+/* ── Self-hosted variable fonts (latin subset) ── */
+@font-face {
+  font-family: 'Sora';
+  src: url('assets/fonts/Sora-Variable.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('assets/fonts/DMSans-Variable.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('assets/fonts/DMSans-Italic-Variable.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
 }
 
-/* You can add more custom CSS below if needed in the future. 
-   Currently, Tailwind utility classes handle most of the design. */
+/* ── Design tokens ── */
+:root {
+  color-scheme: dark;
+  --bg: #080e1a;
+  --surface: #0b1322;
+  --border: rgba(255, 255, 255, 0.09);
+  --blue: #3b82f6;
+  --blue-bright: #60a5fa;
+  --blue-soft: #93c5fd;
+  --amber: #f59e0b;   /* awards only */
+  --emerald: #34d399; /* availability status only */
+  --header-h: 60px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, nav a, .display { font-family: 'Sora', system-ui, sans-serif; }
+h1, h2, h3 { text-wrap: balance; }
+p, li, blockquote { text-wrap: pretty; }
+
+/* Anchor jumps land clear of the sticky header */
+section[id] { scroll-margin-top: calc(var(--header-h) + 20px); }
+
+/* ── Focus visibility (WCAG 2.2 focus appearance) ── */
+:focus-visible {
+  outline: 2px solid var(--blue-soft);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Icons: inline SVG sprite (Lucide, ISC license) ── */
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: inline-block;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
+}
+/* style.css loads after tailwind.css, so restate utility overrides that must win */
+.icon.hidden { display: none; }
+
+/* ── Ambient background: glow + grid + grain ── */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 600px at 15% 5%,  rgba(59,130,246,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 500px at 85% 25%, rgba(59,130,246,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 600px 400px at 50% 85%, rgba(59,130,246,0.05) 0%, transparent 60%),
+    linear-gradient(160deg, #080e1a 0%, #0d1728 50%, #080e1a 100%);
+}
+.bg-canvas::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+main, header, footer { position: relative; z-index: 1; }
+
+/* ── Reading progress (scroll-driven; invisible where unsupported) ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60;
+  background: linear-gradient(90deg, #2563eb, var(--blue-bright));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Surfaces ──
+   Flat cards by default; glass (backdrop blur) is reserved for the
+   two signature surfaces: the sticky header and the hero snapshot card. */
+.card {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid var(--border);
+}
+.card-hover { transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+.card-hover:hover {
+  border-color: rgba(96,165,250,0.35);
+  box-shadow: 0 0 36px rgba(59,130,246,0.08);
+}
+.glass {
+  background: rgba(11,19,34,0.72);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--surface);
+  }
+}
+
+/* ── Header ── */
+#site-header { border-bottom: 1px solid rgba(255,255,255,0.07); }
+@media (prefers-reduced-motion: no-preference) {
+  #site-header { transition: transform 0.3s ease; }
+}
+#site-header.header-hidden { transform: translateY(-100%); }
+.px-safe {
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
+}
+
+/* Desktop nav underline (hover + keyboard focus) */
+.nav-link { position: relative; padding-top: 6px; padding-bottom: 6px; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: 2px; left: 0;
+  width: 0; height: 1px; background: var(--blue);
+  transition: width 0.2s ease;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after { width: 100%; }
+
+/* Mobile menu panel — near-opaque: glass translucency over content hurts readability */
+#mobile-menu {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(8,14,26,0.97);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.45);
+}
+#mobile-menu[hidden] { display: none; }
+
+/* ── Small components ── */
+.accent-line { height: 3px; width: 48px; border-radius: 9999px; }
+
+.chip {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pill {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.tint-blue { background: rgba(59,130,246,0.12); }
+.tint-blue-border { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); }
+.tint-neutral { background: rgba(255,255,255,0.05); }
+.avatar-chip { background: rgba(59,130,246,0.18); color: var(--blue-soft); }
+
+.otw-badge {
+  background: linear-gradient(90deg, rgba(52,211,153,0.14), rgba(59,130,246,0.08));
+  border: 1px solid rgba(52,211,153,0.3);
+}
+.award-badge {
+  background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+  border: 1px solid rgba(245,158,11,0.3);
+}
+
+.contact-card {
+  background: linear-gradient(135deg, rgba(59,130,246,0.07), rgba(255,255,255,0.03) 60%);
+  border: 1px solid rgba(59,130,246,0.2);
+}
+
+.senna-block {
+  border-left: 2px solid rgba(59,130,246,0.5);
+  padding-left: 16px;
+}
+
+.billboard-section {
+  background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, transparent 60%);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.quote-mark {
+  font-family: 'Sora', sans-serif; font-size: 4.5rem; line-height: 1;
+  color: rgba(59,130,246,0.25); font-weight: 800; margin-bottom: -0.75rem;
+}
+
+.stat-card { transition: border-color 0.2s ease; }
+@media (prefers-reduced-motion: no-preference) {
+  .stat-card { transition: transform 0.2s ease, border-color 0.2s ease; }
+  .stat-card:hover { transform: translateY(-3px); }
+}
+
+/* Hero snapshot card adapts to its own width, not the viewport */
+.cq { container-type: inline-size; }
+@container (max-width: 350px) {
+  .stat-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Motion: everything gated behind prefers-reduced-motion ──
+   Default (and reduced-motion) state is fully visible; the entrance
+   choreography only exists for users who haven't opted out, and the
+   scroll reveal additionally requires JS (html.js) so no-JS visitors
+   never see hidden content. */
+.fade-up, .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .delay-1 { animation-delay: 0.08s; }
+  .delay-2 { animation-delay: 0.16s; }
+  .delay-3 { animation-delay: 0.24s; }
+  .delay-4 { animation-delay: 0.32s; }
+  .delay-5 { animation-delay: 0.40s; }
+  .delay-6 { animation-delay: 0.48s; }
+
+  html.js .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  html.js .reveal.visible { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.06s; }
+  .reveal-d2 { transition-delay: 0.12s; }
+  .reveal-d3 { transition-delay: 0.18s; }
+  .reveal-d4 { transition-delay: 0.24s; }
+  .reveal-d5 { transition-delay: 0.30s; }
+  .reveal-d6 { transition-delay: 0.36s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse { animation: none !important; }
+}

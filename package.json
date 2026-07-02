@@ -1,0 +1,20 @@
+{
+  "name": "ivanfoschiera.github.io",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Personal site of Ivan Foschiera — static, CSS built with Tailwind CLI",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o assets/tailwind.css --minify",
+    "watch": "tailwindcss -i src/input.css -o assets/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanfoschiera/ivanfoschiera.github.io.git"
+  },
+  "author": "Ivan Foschiera",
+  "license": "ISC",
+  "homepage": "https://foschiera.com",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

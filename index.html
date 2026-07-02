@@ -2,177 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Ivan Foschiera | Operations & Engineering Leader</title>
 
   <meta name="description" content="Operations & Engineering Leader with 20+ years scaling high-performance plants across hyperscale, manufacturing, and intralogistics. Lean, MES, analytics, and people leadership." />
   <link rel="canonical" href="https://foschiera.com" />
   <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#080e1a" />
+
   <meta property="og:title" content="Ivan Foschiera | Operations & Engineering Leader" />
   <meta property="og:description" content="Operations & Engineering Leader with 20+ years scaling high-performance plants across hyperscale, manufacturing, and intralogistics. Lean, MES, analytics, and people leadership." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foschiera.com" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://foschiera.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ivan Foschiera — Operations & Engineering Leader" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://foschiera.com/assets/og-image.jpg" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --blue:    #3b82f6;
-      --emerald: #10b981;
-      --violet:  #8b5cf6;
-      --amber:   #f59e0b;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #080e1a;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, nav a, .display {
-      font-family: 'Sora', sans-serif;
-    }
-
-    /* Ambient glow background */
-    .bg-canvas {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 900px 600px at 15% 5%,  rgba(59,130,246,0.13) 0%, transparent 70%),
-        radial-gradient(ellipse 700px 500px at 85% 25%, rgba(16,185,129,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 600px 400px at 50% 80%, rgba(139,92,246,0.06) 0%, transparent 60%),
-        linear-gradient(160deg, #080e1a 0%, #0d1728 50%, #080e1a 100%);
-    }
-
-    /* Subtle grid overlay */
-    .bg-grid {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    main, header, footer { position: relative; z-index: 1; }
-
-    /* Card */
-    .card {
-      background: rgba(255,255,255,0.033);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-    }
-    .card-glow-blue:hover    { border-color: rgba(59,130,246,0.35);  box-shadow: 0 0 40px rgba(59,130,246,0.08); }
-    .card-glow-emerald:hover { border-color: rgba(16,185,129,0.35);  box-shadow: 0 0 40px rgba(16,185,129,0.08); }
-    .card-glow-violet:hover  { border-color: rgba(139,92,246,0.35);  box-shadow: 0 0 40px rgba(139,92,246,0.08); }
-    .card-glow-amber:hover   { border-color: rgba(245,158,11,0.35);  box-shadow: 0 0 40px rgba(245,158,11,0.08); }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
-    .delay-1 { animation-delay: 0.10s; }
-    .delay-2 { animation-delay: 0.22s; }
-    .delay-3 { animation-delay: 0.34s; }
-    .delay-4 { animation-delay: 0.46s; }
-    .delay-5 { animation-delay: 0.58s; }
-    .delay-6 { animation-delay: 0.70s; }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.08s; }
-    .reveal-d2 { transition-delay: 0.16s; }
-    .reveal-d3 { transition-delay: 0.24s; }
-    .reveal-d4 { transition-delay: 0.32s; }
-    .reveal-d5 { transition-delay: 0.40s; }
-    .reveal-d6 { transition-delay: 0.48s; }
-
-    /* Accent line */
-    .accent-line { height: 3px; width: 48px; border-radius: 9999px; }
-
-    /* Stat card hover */
-    .stat-card { transition: transform 0.2s ease, border-color 0.2s ease; }
-    .stat-card:hover { transform: translateY(-3px); }
-
-    /* Skill pill */
-    .skill-pill { transition: background 0.15s, border-color 0.15s, color 0.15s; }
-    .skill-pill:hover { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
-
-    /* Nav underline */
-    nav a { position: relative; padding-bottom: 2px; }
-    nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: #3b82f6; transition: width 0.2s ease; }
-    nav a:hover::after { width: 100%; }
-
-    /* OTW badge */
-    .otw-badge {
-      background: linear-gradient(90deg, rgba(16,185,129,0.15), rgba(59,130,246,0.10));
-      border: 1px solid rgba(16,185,129,0.3);
-    }
-
-    /* Award badge */
-    .award-badge {
-      background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
-      border: 1px solid rgba(245,158,11,0.3);
-    }
-
-    /* Senna quote block */
-    .senna-block {
-      border-left: 2px solid rgba(59,130,246,0.5);
-      padding-left: 16px;
-    }
-
-    /* Billboard */
-    .billboard-section {
-      background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, transparent 50%, rgba(16,185,129,0.04) 100%);
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    /* Sweetsell featured */
-    .sweetsell-card {
-      border-left: 3px solid var(--blue) !important;
-      position: relative; overflow: hidden;
-    }
-    .sweetsell-card::before {
-      content: '"'; position: absolute; top: -10px; left: 18px;
-      font-family: 'Sora', sans-serif; font-size: 7rem; font-weight: 800;
-      color: rgba(59,130,246,0.08); line-height: 1; pointer-events: none;
-    }
-
-    /* Testimonial carousel */
-    .testimonial-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-    .testimonial-slide { min-width: 100%; padding: 0 2px; }
-    .quote-mark {
-      font-family: 'Sora', serif; font-size: 5rem; line-height: 1;
-      color: rgba(59,130,246,0.25); font-weight: 800; margin-bottom: -1rem;
-    }
-
-    /* Quote card impact card bottom bar */
-    .impact-card, .quote-card { position: relative; overflow: hidden; }
-    .impact-card::after, .quote-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      opacity: 0; transition: opacity 0.25s;
-    }
-    .impact-card:hover::after, .quote-card:hover::after { opacity: 1; }
-    .impact-card.blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-    .impact-card.emerald::after { background: linear-gradient(90deg, transparent, #10b981, transparent); }
-    .impact-card.violet::after  { background: linear-gradient(90deg, transparent, #8b5cf6, transparent); }
-    .impact-card.amber::after   { background: linear-gradient(90deg, transparent, #f59e0b, transparent); }
-    .quote-card::after { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-  </style>
+  <link rel="preload" href="assets/fonts/Sora-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -184,71 +41,101 @@
     "email": "mailto:ivan@foschiera.com",
     "telephone": "+31686382315",
     "url": "https://foschiera.com",
+    "image": "https://foschiera.com/assets/og-image.jpg",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Amsterdam University of Applied Sciences" },
+    "knowsAbout": ["Lean manufacturing", "Continuous improvement", "MES", "ERP", "Plant operations", "Supply chain", "People development", "Analytics"],
     "sameAs": ["https://www.linkedin.com/in/ivanfoschiera", "https://github.com/ivanfoschiera"]
   }
   </script>
 </head>
 
-<body class="text-white">
+<body class="text-white text-base">
+  <!-- Icon sprite: Lucide (lucide.dev), ISC license -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-arrow-right" viewBox="0 0 24 24"><svg class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-award" viewBox="0 0 24 24"><svg class="lucide lucide-award" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" /> <circle cx="12" cy="8" r="6" /></symbol><symbol id="i-badge-check" viewBox="0 0 24 24"><svg class="lucide lucide-badge-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-boxes" viewBox="0 0 24 24"><svg class="lucide lucide-boxes" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" /> <path d="m7 16.5-4.74-2.85" /> <path d="m7 16.5 5-3" /> <path d="M7 16.5v5.17" /> <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" /> <path d="m17 16.5-5-3" /> <path d="m17 16.5 4.74-2.85" /> <path d="M17 16.5v5.17" /> <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" /> <path d="M12 8 7.26 5.15" /> <path d="m12 8 4.74-2.85" /> <path d="M12 13.5V8" /></symbol><symbol id="i-chart-column" viewBox="0 0 24 24"><svg class="lucide lucide-chart-column" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /></symbol><symbol id="i-cpu" viewBox="0 0 24 24"><svg class="lucide lucide-cpu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 20v2" /> <path d="M12 2v2" /> <path d="M17 20v2" /> <path d="M17 2v2" /> <path d="M2 12h2" /> <path d="M2 17h2" /> <path d="M2 7h2" /> <path d="M20 12h2" /> <path d="M20 17h2" /> <path d="M20 7h2" /> <path d="M7 20v2" /> <path d="M7 2v2" /> <rect x="4" y="4" width="16" height="16" rx="2" /> <rect x="8" y="8" width="8" height="8" rx="1" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><svg class="lucide lucide-download" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-factory" viewBox="0 0 24 24"><svg class="lucide lucide-factory" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 16h.01" /> <path d="M16 16h.01" /> <path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" /> <path d="M8 16h.01" /></symbol><symbol id="i-github" viewBox="0 0 24 24"><svg class="lucide lucide-github" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /> <path d="M9 18c-4.51 2-5-2-7-2" /></symbol><symbol id="i-graduation-cap" viewBox="0 0 24 24"><svg class="lucide lucide-graduation-cap" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol><symbol id="i-hard-hat" viewBox="0 0 24 24"><svg class="lucide lucide-hard-hat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" /> <path d="M14 6a6 6 0 0 1 6 6v3" /> <path d="M4 15v-3a6 6 0 0 1 6-6" /> <rect x="2" y="15" width="20" height="4" rx="1" /></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><svg class="lucide lucide-linkedin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /> <rect width="4" height="12" x="2" y="9" /> <circle cx="4" cy="4" r="2" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><svg class="lucide lucide-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><svg class="lucide lucide-map-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><svg class="lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 12h16" /> <path d="M4 18h16" /> <path d="M4 6h16" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><svg class="lucide lucide-phone" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></symbol><symbol id="i-recycle" viewBox="0 0 24 24"><svg class="lucide lucide-recycle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" /> <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" /> <path d="m14 16-3 3 3 3" /> <path d="M8.293 13.596 7.196 9.5 3.1 10.598" /> <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" /> <path d="m13.378 9.633 4.096 1.098 1.097-4.096" /></symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24"><svg class="lucide lucide-refresh-cw" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></symbol><symbol id="i-send" viewBox="0 0 24 24"><svg class="lucide lucide-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /> <path d="m21.854 2.147-10.94 10.939" /></symbol><symbol id="i-server" viewBox="0 0 24 24"><svg class="lucide lucide-server" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="20" height="8" x="2" y="2" rx="2" ry="2" /> <rect width="20" height="8" x="2" y="14" rx="2" ry="2" /> <line x1="6" x2="6.01" y1="6" y2="6" /> <line x1="6" x2="6.01" y1="18" y2="18" /></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><svg class="lucide lucide-shield-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><svg class="lucide lucide-trophy" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978" /> <path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978" /> <path d="M18 9h1.5a1 1 0 0 0 0-5H18" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6 9H4.5a1 1 0 0 1 0-5H6" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><svg class="lucide lucide-users" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-workflow" viewBox="0 0 24 24"><svg class="lucide lucide-workflow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="8" height="8" x="3" y="3" rx="2" /> <path d="M7 11v4a2 2 0 0 0 2 2h4" /> <rect width="8" height="8" x="13" y="13" rx="2" /></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><svg class="lucide lucide-wrench" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><svg class="lucide lucide-x" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol></svg>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
   <div class="bg-canvas"></div>
   <div class="bg-grid"></div>
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 bg-white text-black px-4 py-2 rounded-lg">Skip to content</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] bg-white text-black px-4 py-2 rounded-lg">Skip to content</a>
 
   <!-- ── Header ── -->
-  <header class="sticky top-0 z-40 backdrop-blur-md" style="background: rgba(8,14,26,0.75); border-bottom: 1px solid rgba(255,255,255,0.07);">
-    <nav class="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
-      <a href="#top" class="font-bold tracking-tight text-base" style="font-family: 'Sora', sans-serif;">Ivan Foschiera</a>
+  <header id="site-header" class="sticky top-0 z-40 glass">
+    <nav class="max-w-6xl mx-auto px-safe px-6 py-2.5 flex items-center justify-between" aria-label="Main">
+      <a href="#top" class="font-bold tracking-tight text-base py-2">Ivan Foschiera</a>
+
       <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a class="hover:text-white" href="#impact">Impact</a>
-        <a class="hover:text-white" href="#skills">Strengths</a>
-        <a class="hover:text-white" href="#experience">Experience</a>
-        <a class="hover:text-white" href="#testimonials">Recommendations</a>
-        <a class="hover:text-white" href="#credentials">Credentials</a>
-        <a class="hover:text-white" href="#contact">Contact</a>
+        <a class="nav-link hover:text-white" href="#impact">Impact</a>
+        <a class="nav-link hover:text-white" href="#skills">Strengths</a>
+        <a class="nav-link hover:text-white" href="#experience">Experience</a>
+        <a class="nav-link hover:text-white" href="#testimonials">Recommendations</a>
+        <a class="nav-link hover:text-white" href="#credentials">Credentials</a>
+        <a class="nav-link hover:text-white" href="#contact">Contact</a>
       </div>
+
       <div class="flex items-center gap-2">
-        <a href="mailto:ivan@foschiera.com" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-slate-200 transition" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
-          <i class="fa-solid fa-envelope text-blue-400"></i> Email
+        <a href="mailto:ivan@foschiera.com" aria-label="Email Ivan"
+           class="inline-flex items-center justify-center gap-2 chip rounded-full text-sm text-slate-200 transition hover:bg-white/10 w-11 h-11 sm:w-auto sm:h-auto sm:px-4 sm:py-2">
+          <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-mail"/></svg><span class="hidden sm:inline">Email</span>
         </a>
-        <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold shadow-lg transition" style="background: #2563eb;">
-          <i class="fa-brands fa-linkedin"></i><span class="hidden sm:inline">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn profile"
+           class="inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold shadow-lg bg-blue-600 hover:bg-blue-500 transition w-11 h-11 sm:w-auto sm:h-auto sm:px-4 sm:py-2">
+          <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span class="hidden sm:inline">LinkedIn</span>
         </a>
+        <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"
+                class="md:hidden inline-flex items-center justify-center w-11 h-11 chip rounded-full text-slate-200 transition hover:bg-white/10">
+          <svg id="icon-menu" class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg id="icon-close" class="icon hidden" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="glass md:hidden" hidden>
+      <nav class="px-safe px-6 py-2 text-slate-200" aria-label="Sections">
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#impact">Impact <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#skills">Strengths <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#experience">Experience <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#testimonials">Recommendations <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#credentials">Credentials <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#contact">Contact <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center gap-2 py-3.5 font-semibold text-blue-300" href="assets/Ivan-Foschiera-CV.pdf" download>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Download CV (PDF)
+        </a>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
 
     <!-- ══ HERO ══ -->
-    <section id="top" class="min-h-screen flex items-center pt-6 pb-20">
+    <section id="top" class="flex items-center pt-10 pb-16 lg:py-16 lg:min-h-[calc(100svh-60px)]">
       <div class="max-w-6xl mx-auto px-6 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           <!-- Left -->
           <div class="lg:col-span-7">
 
-            <!-- OTW badge -->
+            <!-- Status badges -->
             <div class="flex flex-wrap items-center gap-3 fade-up">
               <span class="otw-badge inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full font-medium text-emerald-300">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Available for new leadership opportunities
               </span>
-              <span class="inline-flex items-center gap-2 text-xs text-slate-400 px-3 py-1.5 rounded-full" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
-                <i class="fa-solid fa-location-dot text-blue-400"></i>
+              <span class="chip inline-flex items-center gap-2 text-xs text-slate-400 px-3 py-1.5 rounded-full">
+                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-map-pin"/></svg>
                 The Randstad · On-site · Hybrid · Remote
               </span>
             </div>
 
             <!-- Name -->
-            <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mt-6 leading-none fade-up delay-1" style="letter-spacing: -0.02em;">
+            <h1 class="text-6xl font-extrabold tracking-tight mt-6 fade-up delay-1" style="letter-spacing: -0.02em;">
               Ivan Foschiera
             </h1>
 
             <!-- Senna quote -->
             <div class="senna-block mt-5 fade-up delay-2">
-              <p class="text-slate-300 text-xs sm:text-sm italic leading-relaxed max-w-lg" style="font-family: 'DM Sans', sans-serif; font-style: italic; font-weight: 300;">
+              <p class="text-slate-300 text-sm italic leading-relaxed max-w-lg font-light">
                 "With regard to performance, commitment, effort, dedication, there is no middle ground. Or you do something very well or not at all."
               </p>
               <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mt-2 flex items-center gap-2">
@@ -259,7 +146,7 @@
             <!-- Role line -->
             <div class="fade-up delay-3 mt-5">
               <div class="accent-line bg-blue-500 mb-3"></div>
-              <p class="text-lg sm:text-xl font-semibold text-slate-200 leading-snug">
+              <p class="text-xl font-semibold text-slate-200 leading-snug display">
                 Operations & Engineering Leader
               </p>
               <p class="text-sm text-slate-400 mt-1">
@@ -273,80 +160,77 @@
             </p>
 
             <!-- CTAs -->
-            <div class="flex flex-wrap gap-3 mt-8 fade-up delay-5">
-              <a href="#contact"
-                 class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-6 py-3 rounded-full font-semibold shadow-lg transition text-sm">
-                <i class="fa-solid fa-paper-plane"></i> Get in touch
+            <div class="flex flex-wrap items-center gap-3 mt-8 fade-up delay-5">
+              <a href="assets/Ivan-Foschiera-CV.pdf" download
+                 class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-blue-950/40 transition text-sm">
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Download CV
               </a>
-              <a href="#experience"
-                 class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition text-sm"
-                 style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);">
-                <i class="fa-solid fa-briefcase"></i> View experience
+              <a href="#contact"
+                 class="inline-flex items-center gap-2 pill hover:bg-white/10 px-6 py-3 rounded-full font-semibold transition text-sm">
+                <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg> Get in touch
               </a>
               <a href="#testimonials"
-                 class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition text-sm"
-                 style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: #93c5fd;">
-                <i class="fa-solid fa-quote-left"></i> What colleagues say
+                 class="inline-flex items-center gap-2 px-2 py-3 font-semibold text-blue-300 hover:text-blue-200 transition text-sm">
+                What colleagues say <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
               </a>
             </div>
 
             <!-- Contact micro -->
-            <div class="flex flex-wrap gap-5 mt-6 text-slate-400 text-sm fade-up delay-6">
-              <a href="tel:+31686382315" class="inline-flex items-center gap-2 hover:text-slate-200 transition">
-                <i class="fa-solid fa-phone text-blue-400"></i>+31 6 8638 2315
+            <div class="flex flex-wrap gap-5 mt-5 text-slate-400 text-sm fade-up delay-6">
+              <a href="tel:+31686382315" class="inline-flex items-center gap-2 py-2 hover:text-slate-200 transition">
+                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-phone"/></svg>+31 6 8638 2315
               </a>
-              <a href="mailto:ivan@foschiera.com" class="inline-flex items-center gap-2 hover:text-slate-200 transition">
-                <i class="fa-solid fa-envelope text-blue-400"></i>ivan@foschiera.com
+              <a href="mailto:ivan@foschiera.com" class="inline-flex items-center gap-2 py-2 hover:text-slate-200 transition">
+                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-mail"/></svg>ivan@foschiera.com
               </a>
             </div>
           </div>
 
-          <!-- Right — snapshot card -->
-          <div class="lg:col-span-5 fade-up delay-3">
-            <div class="card rounded-2xl p-6 shadow-2xl">
-              <div class="flex items-center justify-between mb-5">
-                <h2 class="font-semibold text-sm text-slate-300 uppercase tracking-widest">At a glance</h2>
+          <!-- Right — snapshot card (signature glass surface) -->
+          <div class="lg:col-span-5 fade-up delay-3 cq">
+            <div class="glass border border-white/10 rounded-2xl p-6 shadow-2xl">
+              <div class="flex items-center justify-between gap-3 mb-5">
+                <p class="display font-semibold text-xs text-slate-300 uppercase tracking-widest">At a glance</p>
                 <div class="award-badge inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full text-amber-300">
-                  <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                  <svg class="icon text-amber-400" aria-hidden="true"><use href="#i-trophy"/></svg>
                   Leader 100 · 2022 & 2023
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-3">
-                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.18);">
-                  <p class="text-3xl font-extrabold text-blue-300" data-target="20" data-suffix="+">20+</p>
+              <div class="stat-grid grid grid-cols-2 gap-3">
+                <div class="stat-card chip rounded-xl p-4">
+                  <p class="display text-3xl font-extrabold text-white" data-target="20" data-suffix="+">20+</p>
                   <p class="text-slate-400 text-xs mt-1 leading-snug">Years in operations leadership</p>
                 </div>
-                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.18);">
-                  <p class="text-3xl font-extrabold text-emerald-300" data-target="500" data-suffix="+">500+</p>
+                <div class="stat-card chip rounded-xl p-4">
+                  <p class="display text-3xl font-extrabold text-white" data-target="500" data-suffix="+">500+</p>
                   <p class="text-slate-400 text-xs mt-1 leading-snug">Max site headcount managed</p>
                 </div>
-                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.18);">
-                  <p class="text-3xl font-extrabold text-violet-300">99.7%</p>
+                <div class="stat-card chip rounded-xl p-4">
+                  <p class="display text-3xl font-extrabold text-white">99.7%</p>
                   <p class="text-slate-400 text-xs mt-1 leading-snug">First Pass Yield achieved</p>
                 </div>
-                <div class="stat-card rounded-xl p-4 cursor-default" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.18);">
-                  <p class="text-3xl font-extrabold text-amber-300">7h→2h</p>
+                <div class="stat-card chip rounded-xl p-4">
+                  <p class="display text-3xl font-extrabold text-white">7h→2h</p>
                   <p class="text-slate-400 text-xs mt-1 leading-snug">WIP cycle reduction</p>
                 </div>
               </div>
 
               <div class="mt-5 flex flex-wrap gap-2">
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Lean & CI</span>
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">MES · ERP</span>
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Analytics</span>
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">People development</span>
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">SQDC</span>
-                <span class="skill-pill text-xs px-2.5 py-1 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Gemba</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Lean & CI</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">MES · ERP</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Analytics</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">People development</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">SQDC</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Gemba</span>
               </div>
 
               <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-                 class="mt-5 flex items-center justify-between p-3 rounded-xl transition group"
-                 style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.25);">
-                <div class="flex items-center gap-2 text-sm text-blue-300">
-                  <i class="fa-brands fa-linkedin"></i><span>View full LinkedIn profile</span>
-                </div>
-                <i class="fa-solid fa-arrow-right text-blue-400 text-xs group-hover:translate-x-1 transition-transform"></i>
+                 class="tint-blue-border mt-5 flex items-center justify-between p-3 min-h-[44px] rounded-xl transition group hover:bg-blue-500/20">
+                <span class="flex items-center gap-2 text-sm text-blue-300">
+                  <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span>View full LinkedIn profile</span>
+                </span>
+                <svg class="icon text-blue-400 group-hover:translate-x-1 transition-transform" aria-hidden="true"><use href="#i-arrow-right"/></svg>
               </a>
             </div>
           </div>
@@ -364,65 +248,65 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card card-glow-blue impact-card blue rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d1">
+        <div class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d1">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs text-blue-400 uppercase tracking-wider font-semibold">Quality & Yield</span>
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(59,130,246,0.12);">
-              <i class="fa-solid fa-shield-halved text-blue-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-shield-check"/></svg>
             </div>
           </div>
-          <p class="text-4xl font-extrabold text-white">70% → 99.7%</p>
+          <p class="display text-4xl font-extrabold text-white">70% → 99.7%</p>
           <p class="text-blue-400 text-sm font-medium mt-1">First Pass Yield</p>
-          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Lean routines, layout redesign, and 5S discipline at WWT's high-volume integration center.</p>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Lean routines, layout redesign, and 5S discipline at WWT's high-volume integration center.</p>
         </div>
 
-        <div class="card card-glow-emerald impact-card emerald rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d2">
+        <div class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d2">
           <div class="flex items-center justify-between mb-4">
-            <span class="text-xs text-emerald-400 uppercase tracking-wider font-semibold">Flow & WIP</span>
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.12);">
-              <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+            <span class="text-xs text-blue-400 uppercase tracking-wider font-semibold">Flow & WIP</span>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-refresh-cw"/></svg>
             </div>
           </div>
-          <p class="text-4xl font-extrabold text-white">7h → 2h</p>
-          <p class="text-emerald-400 text-sm font-medium mt-1">WIP cycle time</p>
-          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Released significant working capital through JIT and pull-based replenishment at a 500-person hyperscale site.</p>
+          <p class="display text-4xl font-extrabold text-white">7h → 2h</p>
+          <p class="text-blue-400 text-sm font-medium mt-1">WIP cycle time</p>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Released significant working capital through JIT and pull-based replenishment at a 500-person hyperscale site.</p>
         </div>
 
-        <div class="card card-glow-violet impact-card violet rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d3">
+        <div class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d3">
           <div class="flex items-center justify-between mb-4">
-            <span class="text-xs text-violet-400 uppercase tracking-wider font-semibold">Team scaled</span>
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(139,92,246,0.12);">
-              <i class="fa-solid fa-people-group text-violet-400"></i>
+            <span class="text-xs text-blue-400 uppercase tracking-wider font-semibold">Team scaled</span>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-users"/></svg>
             </div>
           </div>
-          <p class="text-4xl font-extrabold text-white">4 → 40+</p>
-          <p class="text-violet-400 text-sm font-medium mt-1">People, from scratch</p>
-          <p class="text-slate-400 text-sm mt-3 leading-relaxed">Built from the ground up as General Manager — owning operations, P&L, quality, and talent development.</p>
+          <p class="display text-4xl font-extrabold text-white">4 → 40+</p>
+          <p class="text-blue-400 text-sm font-medium mt-1">People, from scratch</p>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Built from the ground up as General Manager — owning operations, P&L, quality, and talent development.</p>
         </div>
       </div>
 
       <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card card-glow-blue impact-card blue rounded-2xl p-5 flex items-center gap-5 reveal reveal-d4">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2);">
-            <i class="fa-solid fa-server text-blue-400 text-lg"></i>
+        <div class="card card-hover rounded-2xl p-5 flex items-center gap-5 reveal reveal-d4">
+          <div class="tint-blue-border w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="icon text-blue-400 text-lg" aria-hidden="true"><use href="#i-server"/></svg>
           </div>
           <div>
             <p class="font-semibold text-sm">MES multi-site rollout</p>
             <p class="text-slate-400 text-xs mt-1">Improved traceability, planning accuracy, and stakeholder visibility across production sites.</p>
           </div>
         </div>
-        <div class="card card-glow-amber impact-card amber rounded-2xl p-5 flex items-center gap-5 reveal reveal-d5">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.2);">
-            <i class="fa-solid fa-trophy text-amber-400 text-lg"></i>
+        <div class="card card-hover rounded-2xl p-5 flex items-center gap-5 reveal reveal-d5">
+          <div class="award-badge w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="icon text-amber-400 text-lg" aria-hidden="true"><use href="#i-trophy"/></svg>
           </div>
           <div>
             <p class="font-semibold text-sm">Leader 100 Award — 2022 & 2023</p>
             <p class="text-slate-400 text-xs mt-1">100% team acceptance. Delivery and people development — not one or the other.</p>
           </div>
         </div>
-        <div class="card card-glow-emerald impact-card emerald rounded-2xl p-5 flex items-center gap-5 reveal reveal-d6">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2);">
-            <i class="fa-solid fa-people-group text-emerald-400 text-lg"></i>
+        <div class="card card-hover rounded-2xl p-5 flex items-center gap-5 reveal reveal-d6">
+          <div class="tint-blue-border w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="icon text-blue-400 text-lg" aria-hidden="true"><use href="#i-users"/></svg>
           </div>
           <div>
             <p class="font-semibold text-sm">COVID continuity — 500-person site</p>
@@ -436,11 +320,11 @@
     <section class="billboard-section py-20 reveal">
       <div class="max-w-3xl mx-auto px-6 text-center">
         <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-6">What those who worked with him say</p>
-        <blockquote class="text-2xl sm:text-3xl font-bold text-white leading-snug tracking-tight" style="font-family: 'Sora', sans-serif;">
+        <blockquote class="display text-3xl font-bold text-white leading-snug tracking-tight">
           "Great leaders teach you skills, but <span class="text-blue-400">the exceptional ones shape how you think and how you lead.</span> Ivan is one of those rare leaders."
         </blockquote>
         <div class="flex items-center justify-center gap-3 mt-8">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">ST</div>
+          <div class="avatar-chip w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">ST</div>
           <div class="text-left">
             <p class="font-semibold text-sm text-white">Sweetsell Tatac</p>
             <p class="text-slate-400 text-xs">Production Manager · Direct report · March 2026</p>
@@ -453,90 +337,90 @@
     <section id="skills" class="py-20 reveal">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-12">
-          <p class="text-xs text-emerald-400 uppercase tracking-widest font-semibold mb-3">How I operate</p>
+          <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">How I operate</p>
           <h2 class="text-3xl font-extrabold tracking-tight">Core strengths</h2>
-          <div class="accent-line bg-emerald-500 mx-auto mt-4"></div>
-          <p class="text-slate-400 mt-4 max-w-xl mx-auto text-sm">Each strength maps directly to outcomes. Not just what I know — what I deliver.</p>
+          <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
+          <p class="text-slate-300 mt-4 max-w-xl mx-auto text-sm">Each strength maps directly to outcomes. Not just what I know — what I deliver.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="card card-glow-blue rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d1">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(59,130,246,0.12);">
-              <i class="fa-solid fa-industry text-blue-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d1">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-factory"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">Plant operations leadership</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">End-to-end accountability for safety, quality, delivery, and cost. Tier routines, Gemba walks, and structured escalation that keep execution stable at scale.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">End-to-end accountability for safety, quality, delivery, and cost. Tier routines, Gemba walks, and structured escalation that keep execution stable at scale.</p>
             </div>
           </div>
 
-          <div class="card card-glow-blue rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d2">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(59,130,246,0.12);">
-              <i class="fa-solid fa-recycle text-blue-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d2">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-recycle"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">Lean & continuous improvement</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Lean Six Sigma Green Belt. Standard work, 5S, pull systems, root cause discipline. CI built into daily rhythm — not as a project, but as a way of working.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">Lean Six Sigma Green Belt. Standard work, 5S, pull systems, root cause discipline. CI built into daily rhythm — not as a project, but as a way of working.</p>
             </div>
           </div>
 
-          <div class="card card-glow-emerald rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d3">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(16,185,129,0.12);">
-              <i class="fa-solid fa-users text-emerald-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d3">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-users"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">People development & retention</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">I coach leaders to grow, not just perform. Succession coverage, 1:1s, and a culture where people feel trusted enough to take ownership — Leader 100 Award × 2.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">I coach leaders to grow, not just perform. Succession coverage, 1:1s, and a culture where people feel trusted enough to take ownership — Leader 100 Award × 2.</p>
             </div>
           </div>
 
-          <div class="card card-glow-violet rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(139,92,246,0.12);">
-              <i class="fa-solid fa-microchip text-violet-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d4">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-cpu"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">Digital operations & MES/ERP</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Multi-site MES rollouts. ERP adoption and data quality. Custom dashboards for forecast, WIP, and constraints. Shopfloor connected to system so decisions are fast and grounded.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">Multi-site MES rollouts. ERP adoption and data quality. Custom dashboards for forecast, WIP, and constraints. Shopfloor connected to system so decisions are fast and grounded.</p>
             </div>
           </div>
 
-          <div class="card card-glow-violet rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(139,92,246,0.12);">
-              <i class="fa-solid fa-chart-bar text-violet-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d5">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-chart-column"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">Analytics & performance management</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Performance review frameworks, real-time dashboards, and data-driven decision loops that work for operators, supervisors, and senior stakeholders alike.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">Performance review frameworks, real-time dashboards, and data-driven decision loops that work for operators, supervisors, and senior stakeholders alike.</p>
             </div>
           </div>
 
-          <div class="card card-glow-emerald rounded-2xl p-5 transition-all duration-300 flex gap-4 reveal reveal-d6">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(16,185,129,0.12);">
-              <i class="fa-solid fa-diagram-project text-emerald-400"></i>
+          <div class="card card-hover rounded-2xl p-5 flex gap-4 reveal reveal-d6">
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-workflow"/></svg>
             </div>
             <div>
               <p class="font-semibold text-sm">Supply chain & operational resilience</p>
-              <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">3PL coordination, end-to-end flow, ERP transitions, and cross-team alignment. Built for surge, designed to sustain.</p>
+              <p class="text-slate-300 text-sm mt-1.5 leading-relaxed">3PL coordination, end-to-end flow, ERP transitions, and cross-team alignment. Built for surge, designed to sustain.</p>
             </div>
           </div>
         </div>
 
         <div class="mt-10 flex flex-wrap gap-2 justify-center text-xs reveal">
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Lean & CI</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">MES</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">ERP</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Gemba walks</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">5S</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">JIT & pull systems</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Tier management</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Standard work</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">KPI dashboards</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Leader coaching</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">SQDC</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Traceability</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">3PL management</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Hyperscale · Defense · Manufacturing</span>
-          <span class="skill-pill px-3 py-1.5 rounded-full text-slate-300 cursor-default" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Google Sheets · Excel</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Lean & CI</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">MES</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">ERP</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Gemba walks</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">5S</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">JIT & pull systems</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Tier management</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Standard work</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">KPI dashboards</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Leader coaching</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">SQDC</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Traceability</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">3PL management</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Hyperscale · Defense · Manufacturing</span>
+          <span class="pill px-3 py-1.5 rounded-full text-slate-300">Google Sheets · Excel</span>
         </div>
       </div>
     </section>
@@ -544,14 +428,14 @@
     <!-- ══ EXPERIENCE ══ -->
     <section id="experience" class="max-w-6xl mx-auto px-6 py-20 reveal">
       <div class="text-center mb-12">
-        <p class="text-xs text-violet-400 uppercase tracking-widest font-semibold mb-3">Career history</p>
+        <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">Career history</p>
         <h2 class="text-3xl font-extrabold tracking-tight">Professional experience</h2>
-        <div class="accent-line bg-violet-500 mx-auto mt-4"></div>
+        <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
-        <article class="card card-glow-blue rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d1">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d1">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
@@ -560,127 +444,127 @@
               </div>
               <h3 class="text-base font-bold">World Wide Technology</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">Senior Production Manager</p>
-              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands · Team: 70+</p>
+              <p class="text-slate-400 text-xs mt-0.5">The Randstad, Netherlands · Team: 70+</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(59,130,246,0.12);">
-              <i class="fa-solid fa-industry text-blue-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-factory"/></svg>
             </div>
           </div>
-          <p class="text-slate-400 text-xs mb-3 leading-relaxed">Led end-to-end production and engineering in a high-volume integration center with full accountability for <span class="text-slate-200 font-medium">safety, quality, delivery, cost, and execution stability</span>.</p>
-          <ul class="space-y-1.5 text-slate-300 text-xs">
+          <p class="text-slate-300 text-sm mb-3 leading-relaxed">Led end-to-end production and engineering in a high-volume integration center with full accountability for <span class="text-white font-medium">safety, quality, delivery, cost, and execution stability</span>.</p>
+          <ul class="space-y-1.5 text-slate-300 text-sm">
             <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> First Pass Yield from 70% to 99.7% through Lean routines, layout changes, and 5S discipline</li>
             <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Built stable tier cadence: daily Gemba, escalation protocols, KPI reviews with stakeholders</li>
             <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Rolled out MES across sites — improved traceability, visibility, and planning accuracy</li>
-            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Introduced dashboards for forecast, WIP, constraints, and stakeholder reviews, enabling <span class="text-slate-200 font-medium">faster decisions and better cost control</span></li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Introduced dashboards for forecast, WIP, constraints, and stakeholder reviews, enabling <span class="text-white font-medium">faster decisions and better cost control</span></li>
             <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Coached supervisors, strengthened succession, and improved leadership retention</li>
           </ul>
         </article>
 
-        <article class="card card-glow-emerald rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d2">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d2">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Nov 2019 – Oct 2021</p>
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Nov 2019 – Oct 2021</p>
               </div>
               <h3 class="text-base font-bold">Material in Motion</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">Site Manager</p>
-              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands · Team: 500+</p>
+              <p class="text-slate-400 text-xs mt-0.5">The Randstad, Netherlands · Team: 500+</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.12);">
-              <i class="fa-solid fa-people-group text-emerald-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-users"/></svg>
             </div>
           </div>
-          <p class="text-slate-400 text-xs mb-3 leading-relaxed">Led a 500-person production site delivering data center hardware for a hyperscale technology client under strict <span class="text-slate-200 font-medium">SLA, audit, and security requirements</span>.</p>
-          <ul class="space-y-1.5 text-slate-300 text-xs">
-            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> WIP from 7h to 2h — freed significant working capital through pull-based JIT</li>
-            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Maintained full SLA during COVID through rapid staffing scenarios and daily risk control</li>
-            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Stabilized quality and delivery through standard work, tier routines, and escalation discipline</li>
-            <li class="flex gap-2"><span class="text-emerald-400 mt-0.5">›</span> Aligned engineering, logistics, and client leadership across cross-functional execution</li>
+          <p class="text-slate-300 text-sm mb-3 leading-relaxed">Led a 500-person production site delivering data center hardware for a hyperscale technology client under strict <span class="text-white font-medium">SLA, audit, and security requirements</span>.</p>
+          <ul class="space-y-1.5 text-slate-300 text-sm">
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> WIP from 7h to 2h — freed significant working capital through pull-based JIT</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Maintained full SLA during COVID through rapid staffing scenarios and daily risk control</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Stabilized quality and delivery through standard work, tier routines, and escalation discipline</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Aligned engineering, logistics, and client leadership across cross-functional execution</li>
           </ul>
         </article>
 
-        <article class="card card-glow-violet rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d3">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d3">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
-                <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider">Jun 2018 – Oct 2019</p>
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Jun 2018 – Oct 2019</p>
               </div>
               <h3 class="text-base font-bold">Material in Motion</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">Supply Chain Integration Manager</p>
-              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands</p>
+              <p class="text-slate-400 text-xs mt-0.5">The Randstad, Netherlands</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(139,92,246,0.12);">
-              <i class="fa-solid fa-diagram-project text-violet-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-workflow"/></svg>
             </div>
           </div>
-          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
-            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Streamlined end-to-end handoffs between inbound, kitting, production, and outbound</li>
-            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Supported ERP transition for a global technology client and improved adoption</li>
-            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Reduced firefighting through clear ownership rules and escalation visibility</li>
+          <ul class="space-y-1.5 text-slate-300 text-sm mt-3">
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Streamlined end-to-end handoffs between inbound, kitting, production, and outbound</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Supported ERP transition for a global technology client and improved adoption</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Reduced firefighting through clear ownership rules and escalation visibility</li>
           </ul>
         </article>
 
-        <article class="card rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d4">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d4">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-blue-300 flex-shrink-0"></span>
-                <p class="text-xs text-blue-300 font-semibold uppercase tracking-wider">Aug 2016 – May 2018</p>
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Aug 2016 – May 2018</p>
               </div>
               <h3 class="text-base font-bold">Material in Motion</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">Inventory Control Supervisor</p>
-              <p class="text-slate-500 text-xs mt-0.5">The Randstad, Netherlands</p>
+              <p class="text-slate-400 text-xs mt-0.5">The Randstad, Netherlands</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(255,255,255,0.05);">
-              <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
+            <div class="tint-neutral w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-slate-300" aria-hidden="true"><use href="#i-boxes"/></svg>
             </div>
           </div>
-          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
-            <li class="flex gap-2"><span class="text-slate-400 mt-0.5">›</span> Implemented real-time tracking and improved inventory accuracy to world-class levels</li>
-            <li class="flex gap-2"><span class="text-slate-400 mt-0.5">›</span> Strengthened collaboration across warehouse, production, and planning</li>
+          <ul class="space-y-1.5 text-slate-300 text-sm mt-3">
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Implemented real-time tracking and improved inventory accuracy to world-class levels</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Strengthened collaboration across warehouse, production, and planning</li>
           </ul>
         </article>
 
-        <article class="card card-glow-amber rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d5">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d5">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
-                <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider">Sep 2006 – Dec 2014</p>
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Sep 2006 – Dec 2014</p>
               </div>
               <h3 class="text-base font-bold">Milimetra</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">General Manager</p>
-              <p class="text-slate-500 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
+              <p class="text-slate-400 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(245,158,11,0.12);">
-              <i class="fa-solid fa-helmet-safety text-amber-400"></i>
+            <div class="tint-neutral w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-slate-300" aria-hidden="true"><use href="#i-hard-hat"/></svg>
             </div>
           </div>
-          <ul class="space-y-1.5 text-slate-300 text-xs mt-3">
-            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Scaled company from 4 to 40+ people delivering complex aluminum and glass structures</li>
-            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Owned operations, planning, and financial performance end-to-end</li>
-            <li class="flex gap-2"><span class="text-amber-400 mt-0.5">›</span> Built leader routines that improved reliability, delivery, and team capability</li>
+          <ul class="space-y-1.5 text-slate-300 text-sm mt-3">
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Scaled company from 4 to 40+ people delivering complex aluminum and glass structures</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Owned operations, planning, and financial performance end-to-end</li>
+            <li class="flex gap-2"><span class="text-blue-400 mt-0.5">›</span> Built leader routines that improved reliability, delivery, and team capability</li>
           </ul>
         </article>
 
-        <article class="card rounded-2xl p-6 shadow-lg transition-all duration-300 reveal reveal-d6">
+        <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d6">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-slate-400 flex-shrink-0"></span>
-                <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Feb 2002 – Aug 2006</p>
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Feb 2002 – Aug 2006</p>
               </div>
               <h3 class="text-base font-bold">Milimetra</h3>
               <p class="text-slate-300 text-sm font-semibold mt-0.5">Production Technician</p>
-              <p class="text-slate-500 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
+              <p class="text-slate-400 text-xs mt-0.5">Greater Florianópolis, Brazil</p>
             </div>
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(255,255,255,0.05);">
-              <i class="fa-solid fa-screwdriver-wrench text-slate-400"></i>
+            <div class="tint-neutral w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="icon text-slate-300" aria-hidden="true"><use href="#i-wrench"/></svg>
             </div>
           </div>
-          <p class="text-slate-400 text-xs leading-relaxed">Hands-on technical foundation across end-to-end production: precision machinery, fabrication, quality control, and structural builds. The shopfloor experience that shaped my leadership philosophy.</p>
+          <p class="text-slate-300 text-sm leading-relaxed">Hands-on technical foundation across end-to-end production: precision machinery, fabrication, quality control, and structural builds. The shopfloor experience that shaped my leadership philosophy.</p>
         </article>
 
       </div>
@@ -693,151 +577,99 @@
           <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">What colleagues say</p>
           <h2 class="text-3xl font-extrabold tracking-tight">LinkedIn recommendations</h2>
           <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
-          <p class="text-slate-400 mt-4 text-sm">From direct reports and peers across 10+ years of leadership at WWT and Material in Motion.</p>
+          <p class="text-slate-300 mt-4 text-sm">From direct reports and peers across 10+ years of leadership at WWT and Material in Motion.</p>
         </div>
 
-        <!-- Sweetsell hero card -->
-        <div class="sweetsell-card card rounded-2xl p-8 md:p-10 mb-6 reveal">
-          <div class="quote-mark">"</div>
-          <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
-            Ivan is a <span class="text-white font-semibold">transformational leader who naturally inspires</span> the people around him to grow, challenge themselves, and strive for excellence. His leadership goes far beyond managing operations or delivering results. He creates an environment where people feel <span class="text-white font-semibold">trusted, supported, and empowered</span> to develop both professionally and personally.
-          </blockquote>
-          <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">ST</div>
-              <div>
-                <p class="font-semibold text-sm">Sweetsell Tatac</p>
-                <p class="text-slate-400 text-xs">Production Manager · Direct report · March 2026</p>
-              </div>
-            </div>
-            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
-              <i class="fa-brands fa-linkedin"></i> View on LinkedIn
-            </a>
-          </div>
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <!-- Carousel -->
-        <div class="relative" id="testimonial-container">
-          <div class="overflow-hidden rounded-2xl">
-            <div class="testimonial-track" id="testimonial-track">
-
-              <div class="testimonial-slide">
-                <div class="card rounded-2xl p-8 md:p-10">
-                  <div class="quote-mark">"</div>
-                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
-                    Ivan is the kind of leader you <span class="text-white font-medium">rarely meet</span>. Calm, strategic, and hands-on at the same time. He knows when to step in and when to give people space to grow. He doesn't give you the fish, he teaches you how to fish. Working with Ivan <span class="text-white font-medium">changed the way I lead teams today.</span>
-                  </blockquote>
-                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(59,130,246,0.2); color: #93c5fd;">KD</div>
-                      <div>
-                        <p class="font-semibold text-sm">Karol Dzienis</p>
-                        <p class="text-slate-400 text-xs">Production Supervisor · World Wide Technology · Direct report, 4+ years</p>
-                      </div>
-                    </div>
-                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
-                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
-                    </a>
-                  </div>
+          <figure class="card card-hover rounded-2xl p-7 flex flex-col reveal reveal-d1">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="text-slate-200 text-base leading-relaxed grow">
+              Ivan is the kind of leader you <span class="text-white font-medium">rarely meet</span>. Calm, strategic, and hands-on at the same time. He knows when to step in and when to give people space to grow. He doesn't give you the fish, he teaches you how to fish. Working with Ivan <span class="text-white font-medium">changed the way I lead teams today.</span>
+            </blockquote>
+            <figcaption class="mt-6 flex items-center justify-between flex-wrap gap-4">
+              <div class="flex items-center gap-3">
+                <div class="avatar-chip w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">KD</div>
+                <div>
+                  <p class="font-semibold text-sm">Karol Dzienis</p>
+                  <p class="text-slate-400 text-xs">Production Supervisor · World Wide Technology · Direct report, 4+ years</p>
                 </div>
               </div>
+              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="Karol Dzienis's recommendation on LinkedIn"
+                 class="inline-flex items-center gap-1.5 py-2 text-xs text-blue-400 hover:text-blue-300 transition">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> View on LinkedIn
+              </a>
+            </figcaption>
+          </figure>
 
-              <div class="testimonial-slide">
-                <div class="card rounded-2xl p-8 md:p-10">
-                  <div class="quote-mark">"</div>
-                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
-                    Ivan adapts quickly, stays focused, and <span class="text-white font-medium">helps others stay grounded.</span> What stands out most is his character. He is genuinely humble and treats people with consistent respect, even in difficult moments. He carries a clear diversity and inclusion mindset, creating a team atmosphere where people feel safe to contribute.
-                  </blockquote>
-                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(139,92,246,0.2); color: #c4b5fd;">KE</div>
-                      <div>
-                        <p class="font-semibold text-sm">Khaled El-Meligy</p>
-                        <p class="text-slate-400 text-xs">Production Supervisor · Direct report, 6 years · January 2026</p>
-                      </div>
-                    </div>
-                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
-                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
-                    </a>
-                  </div>
+          <figure class="card card-hover rounded-2xl p-7 flex flex-col reveal reveal-d2">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="text-slate-200 text-base leading-relaxed grow">
+              Ivan adapts quickly, stays focused, and <span class="text-white font-medium">helps others stay grounded.</span> What stands out most is his character. He is genuinely humble and treats people with consistent respect, even in difficult moments. He carries a clear diversity and inclusion mindset, creating a team atmosphere where people feel safe to contribute.
+            </blockquote>
+            <figcaption class="mt-6 flex items-center justify-between flex-wrap gap-4">
+              <div class="flex items-center gap-3">
+                <div class="avatar-chip w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">KE</div>
+                <div>
+                  <p class="font-semibold text-sm">Khaled El-Meligy</p>
+                  <p class="text-slate-400 text-xs">Production Supervisor · Direct report, 6 years · January 2026</p>
                 </div>
               </div>
+              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="Khaled El-Meligy's recommendation on LinkedIn"
+                 class="inline-flex items-center gap-1.5 py-2 text-xs text-blue-400 hover:text-blue-300 transition">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> View on LinkedIn
+              </a>
+            </figcaption>
+          </figure>
 
-              <div class="testimonial-slide">
-                <div class="card rounded-2xl p-8 md:p-10">
-                  <div class="quote-mark">"</div>
-                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
-                    He created an environment where I felt <span class="text-white font-medium">empowered to contribute and grow</span>, making him a standout leader. His ability to inspire and lead with integrity will undoubtedly make him a great asset wherever he goes. I have no hesitation in recommending him.
-                  </blockquote>
-                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(245,158,11,0.2); color: #fcd34d;">SD</div>
-                      <div>
-                        <p class="font-semibold text-sm">Slawek Domagalski</p>
-                        <p class="text-slate-400 text-xs">Inventory & Quality Supervisor · CEVA eCommerce Logistics · February 2025</p>
-                      </div>
-                    </div>
-                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
-                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
-                    </a>
-                  </div>
+          <figure class="card card-hover rounded-2xl p-7 flex flex-col reveal reveal-d3">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="text-slate-200 text-base leading-relaxed grow">
+              He created an environment where I felt <span class="text-white font-medium">empowered to contribute and grow</span>, making him a standout leader. His ability to inspire and lead with integrity will undoubtedly make him a great asset wherever he goes. I have no hesitation in recommending him.
+            </blockquote>
+            <figcaption class="mt-6 flex items-center justify-between flex-wrap gap-4">
+              <div class="flex items-center gap-3">
+                <div class="avatar-chip w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">SD</div>
+                <div>
+                  <p class="font-semibold text-sm">Slawek Domagalski</p>
+                  <p class="text-slate-400 text-xs">Inventory & Quality Supervisor · CEVA eCommerce Logistics · February 2025</p>
                 </div>
               </div>
+              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="Slawek Domagalski's recommendation on LinkedIn"
+                 class="inline-flex items-center gap-1.5 py-2 text-xs text-blue-400 hover:text-blue-300 transition">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> View on LinkedIn
+              </a>
+            </figcaption>
+          </figure>
 
-              <div class="testimonial-slide">
-                <div class="card rounded-2xl p-8 md:p-10">
-                  <div class="quote-mark">"</div>
-                  <blockquote class="text-slate-200 text-base md:text-lg leading-relaxed mt-2 max-w-3xl">
-                    Ivan is a <span class="text-white font-medium">brilliant and gifted manager</span> who really understands how to get the best out of people. His ability to manage difficult tasks, his organization and problem solving skills are some of the reasons we were able to meet and exceed our weekly production goals. Even during the most intense pandemic times he <span class="text-white font-medium">kept his composure, worked extra hard and efficiently</span> to make sure our site stayed focused and motivated.
-                  </blockquote>
-                  <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">AB</div>
-                      <div>
-                        <p class="font-semibold text-sm">Adam J. Bialic</p>
-                        <p class="text-slate-400 text-xs">Ex-Production Manager · Direct report · April 2022</p>
-                      </div>
-                    </div>
-                    <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition">
-                      <i class="fa-brands fa-linkedin"></i> View on LinkedIn
-                    </a>
-                  </div>
+          <figure class="card card-hover rounded-2xl p-7 flex flex-col reveal reveal-d4">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="text-slate-200 text-base leading-relaxed grow">
+              Ivan is a <span class="text-white font-medium">brilliant and gifted manager</span> who really understands how to get the best out of people. His ability to manage difficult tasks, his organization and problem solving skills are some of the reasons we were able to meet and exceed our weekly production goals. Even during the most intense pandemic times he <span class="text-white font-medium">kept his composure, worked extra hard and efficiently</span> to make sure our site stayed focused and motivated.
+            </blockquote>
+            <figcaption class="mt-6 flex items-center justify-between flex-wrap gap-4">
+              <div class="flex items-center gap-3">
+                <div class="avatar-chip w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">AB</div>
+                <div>
+                  <p class="font-semibold text-sm">Adam J. Bialic</p>
+                  <p class="text-slate-400 text-xs">Ex-Production Manager · Direct report · April 2022</p>
                 </div>
               </div>
+              <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="Adam J. Bialic's recommendation on LinkedIn"
+                 class="inline-flex items-center gap-1.5 py-2 text-xs text-blue-400 hover:text-blue-300 transition">
+                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> View on LinkedIn
+              </a>
+            </figcaption>
+          </figure>
 
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <div class="flex items-center justify-center gap-4 mt-6">
-            <button id="prev-btn"
-                    class="w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
-                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);"
-                    aria-label="Previous">
-              <i class="fa-solid fa-chevron-left text-sm text-slate-300"></i>
-            </button>
-            <div class="flex gap-2" id="dots-container">
-              <button class="dot h-2 rounded-full transition-all duration-300" style="background: #3b82f6; width: 20px;" data-index="0"></button>
-              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="1"></button>
-              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="2"></button>
-              <button class="dot w-2 h-2 rounded-full transition-all duration-300" style="background: rgba(255,255,255,0.2);" data-index="3"></button>
-            </div>
-            <button id="next-btn"
-                    class="w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
-                    style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);"
-                    aria-label="Next">
-              <i class="fa-solid fa-chevron-right text-sm text-slate-300"></i>
-            </button>
-          </div>
         </div>
 
         <div class="mt-8 text-center">
           <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
-            <i class="fa-brands fa-linkedin"></i>
+             class="inline-flex items-center gap-2 py-2 text-sm text-blue-400 hover:text-blue-300 transition">
+            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
             Read all 6 recommendations on LinkedIn
-            <i class="fa-solid fa-arrow-right text-xs"></i>
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
         </div>
       </div>
@@ -846,44 +678,44 @@
     <!-- ══ CREDENTIALS ══ -->
     <section id="credentials" class="max-w-6xl mx-auto px-6 py-20 reveal">
       <div class="text-center mb-12">
-        <p class="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-3">Qualifications</p>
+        <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">Qualifications</p>
         <h2 class="text-3xl font-extrabold tracking-tight">Credentials</h2>
-        <div class="accent-line bg-amber-500 mx-auto mt-4"></div>
+        <div class="accent-line bg-blue-500 mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <div class="card rounded-2xl p-6 reveal reveal-d1">
+        <div class="card card-hover rounded-2xl p-6 reveal reveal-d1">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.12);">
-              <i class="fa-solid fa-certificate text-emerald-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-badge-check"/></svg>
             </div>
             <h3 class="font-semibold text-sm">Certifications</h3>
           </div>
           <ul class="space-y-3">
             <li class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></span>
-              <div><p class="text-sm font-medium">Lean Six Sigma Green Belt</p><p class="text-slate-500 text-xs">Process excellence & CI methodology</p></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">Lean Six Sigma Green Belt</p><p class="text-slate-400 text-xs">Process excellence & CI methodology</p></div>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span>
-              <div><p class="text-sm font-medium">CompTIA IT Fundamentals+</p><p class="text-slate-500 text-xs">Digital operations foundation</p></div>
+              <div><p class="text-sm font-medium">CompTIA IT Fundamentals+</p><p class="text-slate-400 text-xs">Digital operations foundation</p></div>
             </li>
             <li class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
-              <div><p class="text-sm font-medium">TOEFL iBT — C1</p><p class="text-slate-500 text-xs">Full professional English · Issued Aug 2024</p></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">TOEFL iBT — C1</p><p class="text-slate-400 text-xs">Full professional English · Issued Aug 2024</p></div>
             </li>
             <li class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0"></span>
-              <div><p class="text-sm font-medium">Amateur Radio Licence — Full (HAREC)</p><p class="text-slate-500 text-xs">PA9ICQ · RSGB · Issued Jan 2026</p></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span>
+              <div><p class="text-sm font-medium">Amateur Radio Licence — Full (HAREC)</p><p class="text-slate-400 text-xs">PA9ICQ · RSGB · Issued Jan 2026</p></div>
             </li>
           </ul>
         </div>
 
-        <div class="card rounded-2xl p-6 reveal reveal-d2">
+        <div class="card card-hover rounded-2xl p-6 reveal reveal-d2">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(59,130,246,0.12);">
-              <i class="fa-solid fa-graduation-cap text-blue-400"></i>
+            <div class="tint-blue w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-graduation-cap"/></svg>
             </div>
             <h3 class="font-semibold text-sm">Education</h3>
           </div>
@@ -892,42 +724,42 @@
             <p class="text-slate-300 text-xs mt-1 font-medium">Bachelor of Business Administration</p>
             <p class="text-slate-400 text-xs">International Business · 2024–2028</p>
           </div>
-          <div class="mt-5 pt-5" style="border-top: 1px solid rgba(255,255,255,0.07);">
+          <div class="mt-5 pt-5 border-t border-white/10">
             <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Languages</h4>
             <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-sm">Portuguese</span>
-                <span class="text-xs text-slate-400 px-2 py-0.5 rounded-full" style="background: rgba(255,255,255,0.05);">Native</span>
+                <span class="tint-neutral text-xs text-slate-300 px-2 py-0.5 rounded-full">Native</span>
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-sm">English</span>
-                <span class="text-xs text-slate-400 px-2 py-0.5 rounded-full" style="background: rgba(255,255,255,0.05);">Full professional (C1)</span>
+                <span class="tint-neutral text-xs text-slate-300 px-2 py-0.5 rounded-full">Full professional (C1)</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="card rounded-2xl p-6 reveal reveal-d3">
+        <div class="card card-hover rounded-2xl p-6 reveal reveal-d3">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(245,158,11,0.12);">
-              <i class="fa-solid fa-award text-amber-400"></i>
+            <div class="award-badge w-10 h-10 rounded-xl flex items-center justify-center">
+              <svg class="icon text-amber-400" aria-hidden="true"><use href="#i-award"/></svg>
             </div>
             <h3 class="font-semibold text-sm">Awards & recognition</h3>
           </div>
           <div class="space-y-4">
             <div class="award-badge rounded-xl p-3">
               <div class="flex items-center gap-2 mb-1">
-                <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                <svg class="icon text-amber-400" aria-hidden="true"><use href="#i-trophy"/></svg>
                 <p class="text-xs font-semibold text-amber-300">Leader 100 Award — 2023</p>
               </div>
-              <p class="text-slate-400 text-xs leading-relaxed">World Wide Technology. 100% team acceptance — the highest possible trust score awarded to a leader.</p>
+              <p class="text-slate-300 text-xs leading-relaxed">World Wide Technology. 100% team acceptance — the highest possible trust score awarded to a leader.</p>
             </div>
             <div class="award-badge rounded-xl p-3">
               <div class="flex items-center gap-2 mb-1">
-                <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+                <svg class="icon text-amber-400" aria-hidden="true"><use href="#i-trophy"/></svg>
                 <p class="text-xs font-semibold text-amber-300">Leader 100 Award — 2022</p>
               </div>
-              <p class="text-slate-400 text-xs leading-relaxed">World Wide Technology. Back-to-back recognition for consistent team leadership and operational impact.</p>
+              <p class="text-slate-300 text-xs leading-relaxed">World Wide Technology. Back-to-back recognition for consistent team leadership and operational impact.</p>
             </div>
           </div>
         </div>
@@ -938,7 +770,7 @@
     <!-- ══ CONTACT ══ -->
     <section id="contact" class="py-20 reveal">
       <div class="max-w-4xl mx-auto px-6">
-        <div class="card rounded-2xl p-8 md:p-12 shadow-2xl text-center" style="background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(16,185,129,0.04)); border-color: rgba(59,130,246,0.2);">
+        <div class="contact-card rounded-2xl p-8 md:p-12 shadow-2xl text-center">
 
           <div class="otw-badge inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full font-medium text-emerald-300 mb-6">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -946,103 +778,40 @@
           </div>
 
           <h2 class="text-3xl font-extrabold tracking-tight">Let's build something serious</h2>
-          <p class="text-slate-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
-            I'm drawn to <span class="text-slate-200 font-medium">complex, high-tempo operations</span> where leadership clarity is the difference between performance and chaos — manufacturing, hyperscale, defense, or any environment where execution cannot slip.
+          <p class="text-slate-300 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            I'm drawn to <span class="text-white font-medium">complex, high-tempo operations</span> where leadership clarity is the difference between performance and chaos — manufacturing, hyperscale, defense, or any environment where execution cannot slip.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <a href="mailto:ivan@foschiera.com"
                class="inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm">
-              <i class="fa-solid fa-envelope"></i> ivan@foschiera.com
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> ivan@foschiera.com
             </a>
             <a href="tel:+31686382315"
-               class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold transition text-sm"
-               style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);">
-              <i class="fa-solid fa-phone"></i> +31 6 8638 2315
+               class="pill inline-flex items-center justify-center gap-2 hover:bg-white/10 px-7 py-3.5 rounded-full font-semibold transition text-sm">
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> +31 6 8638 2315
             </a>
             <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm"
-               style="background: #2563eb;">
-              <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+               class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm">
+              <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> Connect on LinkedIn
             </a>
           </div>
 
-          <div class="flex items-center justify-center gap-6 mt-8 text-slate-400">
-            <a href="mailto:ivan@foschiera.com" aria-label="Email" class="hover:text-white transition"><i class="fa-solid fa-envelope fa-lg"></i></a>
-            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-white transition"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-            <a href="https://github.com/ivanfoschiera" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-white transition"><i class="fa-brands fa-github fa-lg"></i></a>
+          <div class="flex items-center justify-center gap-3 mt-7 text-slate-400">
+            <a href="assets/Ivan-Foschiera-CV.pdf" download aria-label="Download CV as PDF" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+            <a href="mailto:ivan@foschiera.com" aria-label="Email" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a>
+            <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a href="https://github.com/ivanfoschiera" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
           </div>
 
-          <p class="text-slate-600 text-xs mt-8">© <span id="year"></span> Ivan Foschiera · The Randstad, Netherlands</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Counter animation
-    function animCount(el, target, suffix, dur) {
-      const start = performance.now();
-      (function step(ts) {
-        const p = Math.min((ts - start) / dur, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(ease * target) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      })(performance.now());
-    }
-    const cObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const t = parseInt(e.target.dataset.target);
-          const s = e.target.dataset.suffix || '';
-          if (!isNaN(t)) animCount(e.target, t, s, 1400);
-          cObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('[data-target]').forEach(el => cObs.observe(el));
-
-    // Testimonial carousel
-    const track = document.getElementById('testimonial-track');
-    const dots = document.querySelectorAll('.dot');
-    const total = 4;
-    let current = 0;
-
-    function goTo(idx) {
-      current = (idx + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((d, i) => {
-        d.style.background = i === current ? '#3b82f6' : 'rgba(255,255,255,0.2)';
-        d.style.width = i === current ? '20px' : '8px';
-      });
-    }
-
-    document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
-    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
-
-    // Auto-advance
-    let autoSlide = setInterval(() => goTo(current + 1), 15000);
-
-    const container = document.getElementById('testimonial-container');
-    
-    container.addEventListener('mouseenter', () => {
-      clearInterval(autoSlide);
-    });
-    
-    container.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => goTo(current + 1), 15000);
-    });
-  </script>
+  <footer class="py-8">
+    <p class="text-slate-400 text-xs text-center">© <span id="year"></span> Ivan Foschiera · The Randstad, Netherlands</p>
+  </footer>
 </body>
 </html>
