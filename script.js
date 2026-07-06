@@ -21,6 +21,35 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
     });
   }, { threshold: 0.08 });
   revealEls.forEach(el => revealObs.observe(el));
+
+  // Safety net: IntersectionObserver delivery can stall (throttled/restored
+  // tabs, energy saver). Content must never stay hidden, so a scroll-driven
+  // sweep reveals anything already in view; it retires once everything shown.
+  let pending = Array.from(revealEls);
+  let queued = false;
+  const sweep = () => {
+    queued = false;
+    pending = pending.filter(el => {
+      if (el.classList.contains('visible')) return false;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 40 && r.bottom > 0) {
+        el.classList.add('visible');
+        revealObs.unobserve(el);
+        return false;
+      }
+      return true;
+    });
+    if (!pending.length) {
+      window.removeEventListener('scroll', onSweepScroll);
+      window.removeEventListener('resize', onSweepScroll);
+    }
+  };
+  const onSweepScroll = () => {
+    if (!queued) { queued = true; setTimeout(sweep, 120); }
+  };
+  window.addEventListener('scroll', onSweepScroll, { passive: true });
+  window.addEventListener('resize', onSweepScroll, { passive: true });
+  setTimeout(sweep, 900);
 }
 
 // Stat count-up (skipped under reduced motion — real values are already in the markup)
