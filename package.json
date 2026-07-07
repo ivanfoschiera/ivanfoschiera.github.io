@@ -5,7 +5,8 @@
   "description": "Personal site of Ivan Foschiera — static, CSS built with Tailwind CLI",
   "scripts": {
     "build": "tailwindcss -i src/input.css -o assets/tailwind.css --minify",
-    "watch": "tailwindcss -i src/input.css -o assets/tailwind.css --watch"
+    "watch": "tailwindcss -i src/input.css -o assets/tailwind.css --watch",
+    "build:cv": "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=assets/Ivan-Foschiera-CV.pdf \"file://$PWD/src/cv.html\""
   },
   "repository": {
     "type": "git",
