@@ -265,6 +265,129 @@ main, header, footer { position: relative; z-index: 1; }
   .stat-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Hero portrait composition ── */
+.hero-visual {
+  position: relative;
+  isolation: isolate;
+  min-height: 760px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+}
+
+.hero-portrait-shell {
+  position: absolute;
+  z-index: -1;
+  top: -3.5rem;
+  right: -8rem;
+  bottom: 2rem;
+  left: -2.75rem;
+  overflow: hidden;
+  border-radius: 3rem;
+  clip-path: inset(0 10% 0 0 round 3rem);
+  background: #0b1322;
+  box-shadow: 0 32px 90px rgba(0,0,0,0.34);
+}
+
+.hero-portrait-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #080e1a 0%, rgba(8,14,26,0.86) 8%, rgba(8,14,26,0.1) 38%, transparent 58%),
+    linear-gradient(0deg, #080e1a 0%, rgba(8,14,26,0.76) 10%, transparent 42%),
+    linear-gradient(180deg, rgba(8,14,26,0.28) 0%, transparent 24%);
+}
+
+.hero-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 42% 36%;
+  filter: saturate(0.82) contrast(1.04) brightness(0.92);
+  transform: scale(1.015);
+}
+
+@media (min-width: 1024px) {
+  .hero-portrait {
+    position: absolute;
+    top: 0;
+    right: -2%;
+    width: 115%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 76%, rgba(0,0,0,0.92) 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 76%, rgba(0,0,0,0.92) 84%, transparent 100%);
+  }
+}
+
+.hero-snapshot {
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 1.25rem);
+  margin-left: -3.75rem;
+  transform: translateY(9.5rem);
+  background: rgba(9,17,31,0.30);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.42), 0 0 0 1px rgba(96,165,250,0.04);
+}
+
+@media (max-width: 1023px) {
+  .hero-visual {
+    min-height: 590px;
+    padding: 0;
+  }
+  .hero-portrait-shell {
+    z-index: -1;
+    top: 0;
+    right: -1.5rem;
+    bottom: 8rem;
+    left: -1.5rem;
+    border-radius: 2rem;
+    clip-path: none;
+  }
+  .hero-portrait-shell::after {
+    background:
+      linear-gradient(90deg, rgba(8,14,26,0.88) 0%, rgba(8,14,26,0.12) 38%, transparent 64%),
+      linear-gradient(0deg, #080e1a 0%, rgba(8,14,26,0.76) 12%, transparent 46%);
+  }
+  .hero-snapshot {
+    width: min(34rem, calc(100% - 1.5rem));
+    margin: auto auto 0;
+    transform: translateY(2.5rem);
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-visual {
+    min-height: 0;
+    display: block;
+    margin-top: 3rem;
+  }
+  .hero-portrait-shell {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 1.5rem;
+  }
+  .hero-portrait {
+    object-position: center;
+    transform: none;
+  }
+  .hero-snapshot {
+    width: calc(100% - 1rem);
+    margin: -2rem auto 0;
+    padding: 1.1rem;
+    transform: none;
+  }
+}
+
 /* ── Motion: everything gated behind prefers-reduced-motion ──
    Default (and reduced-motion) state is fully visible; the entrance
    choreography only exists for users who haven't opted out, and the

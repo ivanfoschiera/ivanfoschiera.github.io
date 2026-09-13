@@ -27,6 +27,7 @@
 
   <link rel="preload" href="assets/fonts/Sora-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/ivan-foschiera-portrait.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/tailwind.css" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
@@ -41,7 +42,7 @@
     "email": "mailto:ivan@foschiera.com",
     "telephone": "+31686382315",
     "url": "https://foschiera.com",
-    "image": "https://foschiera.com/assets/og-image.jpg",
+    "image": "https://foschiera.com/assets/ivan-foschiera-portrait.jpg",
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Amsterdam University of Applied Sciences" },
     "knowsAbout": ["Lean manufacturing", "Continuous improvement", "MES", "ERP", "Contract manufacturing", "Supply chain", "Data center hardware", "Analytics", "Supplier & 3PL management", "Client governance"],
     "sameAs": ["https://www.linkedin.com/in/ivanfoschiera", "https://github.com/ivanfoschiera"]
@@ -200,9 +201,21 @@
             </div>
           </div>
 
-          <!-- Right — snapshot card (signature glass surface) -->
-          <div class="lg:col-span-5 fade-up delay-3 cq">
-            <div class="glass border border-white/10 rounded-2xl p-6 shadow-2xl">
+          <!-- Right — portrait and snapshot card -->
+          <div class="lg:col-span-5 fade-up delay-3 cq hero-visual">
+            <figure class="hero-portrait-shell">
+              <img
+                src="assets/ivan-foschiera-portrait.jpg"
+                alt="Ivan Foschiera, manufacturing and operations leader"
+                width="1100"
+                height="825"
+                fetchpriority="high"
+                decoding="async"
+                class="hero-portrait"
+              />
+            </figure>
+
+            <div class="hero-snapshot glass border border-white/10 rounded-2xl p-6 shadow-2xl">
               <div class="flex items-center justify-between gap-3 mb-5">
                 <p class="display font-semibold text-xs text-slate-300 uppercase tracking-widest">At a glance</p>
                 <div class="award-badge inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full text-amber-300">
