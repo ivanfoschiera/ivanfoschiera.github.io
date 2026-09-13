@@ -367,7 +367,7 @@ main, header, footer { position: relative; z-index: 1; }
   .hero-visual {
     min-height: 0;
     display: block;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   .hero-portrait-shell {
     position: relative;
@@ -376,13 +376,16 @@ main, header, footer { position: relative; z-index: 1; }
     aspect-ratio: 4 / 3;
     border-radius: 1.5rem;
   }
+  .hero-portrait-shell::after {
+    display: none;
+  }
   .hero-portrait {
     object-position: center;
     transform: none;
   }
   .hero-snapshot {
     width: calc(100% - 1rem);
-    margin: -2rem auto 0;
+    margin: 1.25rem auto 0;
     padding: 1.1rem;
     transform: none;
   }
