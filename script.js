@@ -54,20 +54,31 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
 
 // Stat count-up (skipped under reduced motion — real values are already in the markup)
 if (!reducedMotion.matches) {
-  const animCount = (el, target, suffix, dur) => {
+  const animCount = (el, target, prefix, suffix, decimals, dur) => {
     const start = performance.now();
     (function step(ts) {
       const p = Math.min((ts - start) / dur, 1);
       const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target) + suffix;
+      const value = decimals > 0
+        ? (ease * target).toFixed(decimals)
+        : Math.round(ease * target);
+      el.textContent = prefix + value + suffix;
       if (p < 1) requestAnimationFrame(step);
     })(performance.now());
   };
   const countObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const t = parseInt(e.target.dataset.target, 10);
-        if (!isNaN(t)) animCount(e.target, t, e.target.dataset.suffix || '', 1200);
+        const t = parseFloat(e.target.dataset.target);
+        const decimals = parseInt(e.target.dataset.decimals || '0', 10);
+        if (!isNaN(t)) animCount(
+          e.target,
+          t,
+          e.target.dataset.prefix || '',
+          e.target.dataset.suffix || '',
+          decimals,
+          1200
+        );
         countObs.unobserve(e.target);
       }
     });
@@ -97,7 +108,7 @@ document.addEventListener('keydown', e => {
     menuToggle.focus();
   }
 });
-window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
   if (e.matches) setMenu(false);
 });
 

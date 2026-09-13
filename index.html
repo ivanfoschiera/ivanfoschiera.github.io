@@ -30,7 +30,7 @@
   <link rel="preload" href="assets/ivan-foschiera-portrait.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/tailwind.css" />
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <script src="script.js?v=3" defer></script>
 
   <script type="application/ld+json">
   {
@@ -83,8 +83,9 @@
     <nav class="max-w-6xl mx-auto px-safe px-6 py-2.5 flex items-center justify-between" aria-label="Main">
       <a href="#top" class="font-bold tracking-tight text-base py-2">Ivan Foschiera</a>
 
-      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+      <div class="hidden lg:flex items-center gap-6 text-sm text-slate-300">
         <a class="nav-link hover:text-white" href="#impact">Impact</a>
+        <a class="nav-link hover:text-white" href="#work">Work</a>
         <a class="nav-link hover:text-white" href="#skills">Strengths</a>
         <a class="nav-link hover:text-white" href="#experience">Experience</a>
         <a class="nav-link hover:text-white" href="#testimonials">Recommendations</a>
@@ -102,7 +103,7 @@
           <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span class="hidden sm:inline">LinkedIn</span>
         </a>
         <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"
-                class="md:hidden inline-flex items-center justify-center w-11 h-11 chip rounded-full text-slate-200 transition hover:bg-white/10">
+                class="lg:hidden inline-flex items-center justify-center w-11 h-11 chip rounded-full text-slate-200 transition hover:bg-white/10">
           <svg id="icon-menu" class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
           <svg id="icon-close" class="icon hidden" aria-hidden="true"><use href="#i-x"/></svg>
         </button>
@@ -110,9 +111,10 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="glass md:hidden" hidden>
+    <div id="mobile-menu" class="glass lg:hidden" hidden>
       <nav class="px-safe px-6 py-2 text-slate-200" aria-label="Sections">
         <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#impact">Impact <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#work">Selected work <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#skills">Strengths <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#experience">Experience <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <a class="flex items-center justify-between py-3.5 border-b border-white/5" href="#testimonials">Recommendations <svg class="icon text-slate-500" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
@@ -340,6 +342,104 @@
             <p class="text-slate-400 text-xs mt-1">Full SLA maintained through rapid staffing scenarios, layout changes, and daily risk control.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ══ SELECTED WORK ══ -->
+    <section id="work" class="py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10 reveal">
+          <div>
+            <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">Selected work · Operational transformation</p>
+            <h2 class="text-3xl font-extrabold tracking-tight">A result, and the system behind it</h2>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md md:text-right">A practical case in quality, flow, operating discipline and frontline leadership.</p>
+        </div>
+
+        <article class="case-study-card rounded-3xl overflow-hidden shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="case-copy lg:col-span-7 p-7 sm:p-10 lg:p-12">
+              <div class="flex flex-wrap items-center gap-2 mb-7 reveal reveal-d1">
+                <span class="case-number display">01</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">World Wide Technology</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Hyperscale hardware integration</span>
+              </div>
+
+              <div class="reveal reveal-d2">
+                <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold">Quality at the source</p>
+                <h3 class="display text-2xl sm:text-3xl font-extrabold leading-tight mt-3 max-w-2xl">How a full-rack integration operation moved from approximately 70% First Pass Yield to 99.7%—and sustained it.</h3>
+              </div>
+
+              <div class="case-narrative mt-7 space-y-4 text-slate-300 leading-relaxed">
+                <p class="reveal reveal-d1">When I joined World Wide Technology in November 2021, approximately three in every ten fully integrated racks failed the independent Quality inspection on their first pass.</p>
+                <p class="reveal reveal-d2">The failures rarely came from one complex technical problem. They accumulated through inconsistent workstations, unnecessary movement, missed steps, labelling errors and deviations from standard documentation.</p>
+                <p class="reveal reveal-d3">I led a redesign of the operating system: rebalancing the production layout based on cycle-time analysis, co-designing 32 modular cabling stations, introducing quality gates at major production milestones, strengthening standard work and implementing live dashboards, tiered accountability and clearer cross-functional escalation.</p>
+                <p class="reveal reveal-d4">Official Quality data recorded a full-year First Pass Yield of 99.7% in 2022. The operating system was embedded into daily work so that performance would not depend on any one leader.</p>
+              </div>
+            </div>
+
+            <aside class="case-evidence lg:col-span-5 p-7 sm:p-10 lg:p-12" aria-label="Case study evidence">
+              <div class="case-metric-card rounded-2xl p-6 reveal reveal-d2">
+                <div class="flex items-center justify-between gap-4">
+                  <p class="text-xs text-blue-300 uppercase tracking-widest font-semibold">First Pass Yield</p>
+                  <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-shield-check"/></svg>
+                </div>
+                <div class="case-metric-grid mt-5" aria-label="First Pass Yield improved from approximately 70 percent to 99.7 percent">
+                  <div>
+                    <p class="display text-4xl font-extrabold text-slate-300" data-target="70" data-prefix="≈" data-suffix="%">≈70%</p>
+                    <p class="text-xs text-slate-500 mt-1">2021 YTD baseline</p>
+                  </div>
+                  <svg class="icon case-metric-arrow text-blue-400" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                  <div>
+                    <p class="display text-4xl font-extrabold text-blue-300" data-target="99.7" data-decimals="1" data-suffix="%">99.7%</p>
+                    <p class="text-xs text-slate-400 mt-1">Full-year 2022</p>
+                  </div>
+                </div>
+                <div class="case-sustain mt-6 pt-5">
+                  <span class="case-sustain-dot" aria-hidden="true"></span>
+                  <div>
+                    <p class="text-sm font-semibold text-white">99.7% became the operating standard</p>
+                    <p class="text-xs text-slate-400 mt-1">Embedded through standard work, live controls and Quality governance</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold reveal reveal-d3">Quality built into each milestone</p>
+                <div class="case-flow mt-5">
+                  <div class="case-flow-step reveal reveal-d1">
+                    <span class="case-flow-index">01</span>
+                    <div><p>Inbound</p><span>Material receipt check</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d2">
+                    <span class="case-flow-index">02</span>
+                    <div><p>Rack &amp; stack</p><span>Quality gate</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d3">
+                    <span class="case-flow-index">03</span>
+                    <div><p>Cabling</p><span>Quality gate</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d4">
+                    <span class="case-flow-index">04</span>
+                    <div><p>Link light testing</p><span>Connectivity check</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d5">
+                    <span class="case-flow-index">05</span>
+                    <div><p>Lab integration</p><span>Quality gate</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d6">
+                    <span class="case-flow-index">06</span>
+                    <div><p>Final QA</p><span>Production quality check</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d7">
+                    <span class="case-flow-index">07</span>
+                    <div><p>QA check</p><span>Independent Quality inspection</span></div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
       </div>
     </section>
 
