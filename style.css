@@ -339,27 +339,32 @@ main, header, footer { position: relative; z-index: 1; }
 
 @media (max-width: 1023px) {
   .hero-visual {
-    min-height: 590px;
+    min-height: 0;
+    display: block;
+    margin-top: 3rem;
     padding: 0;
   }
   .hero-portrait-shell {
-    z-index: -1;
-    top: 0;
-    right: -1.5rem;
-    bottom: 8rem;
-    left: -1.5rem;
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: min(52rem, 100%);
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
     border-radius: 2rem;
     clip-path: none;
   }
   .hero-portrait-shell::after {
-    background:
-      linear-gradient(90deg, rgba(8,14,26,0.88) 0%, rgba(8,14,26,0.12) 38%, transparent 64%),
-      linear-gradient(0deg, #080e1a 0%, rgba(8,14,26,0.76) 12%, transparent 46%);
+    display: none;
+  }
+  .hero-portrait {
+    object-position: center;
+    transform: none;
   }
   .hero-snapshot {
-    width: min(34rem, calc(100% - 1.5rem));
-    margin: auto auto 0;
-    transform: translateY(2.5rem);
+    width: min(38rem, calc(100% - 1rem));
+    margin: 1.5rem auto 0;
+    transform: none;
   }
 }
 
@@ -370,18 +375,9 @@ main, header, footer { position: relative; z-index: 1; }
     margin-top: 2rem;
   }
   .hero-portrait-shell {
-    position: relative;
-    inset: auto;
-    z-index: 0;
+    width: 100%;
     aspect-ratio: 4 / 3;
     border-radius: 1.5rem;
-  }
-  .hero-portrait-shell::after {
-    display: none;
-  }
-  .hero-portrait {
-    object-position: center;
-    transform: none;
   }
   .hero-snapshot {
     width: calc(100% - 1rem);
