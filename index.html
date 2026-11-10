@@ -29,8 +29,8 @@
   <link rel="preload" href="assets/fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/ivan-foschiera-portrait.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/tailwind.css" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js?v=3" defer></script>
+  <link rel="stylesheet" href="style.css?v=4" />
+  <script src="script.js?v=4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -241,7 +241,7 @@
                 </div>
                 <div class="stat-card tile-emerald rounded-xl p-4">
                   <p class="display text-3xl font-extrabold text-emerald-300">7h→2h</p>
-                  <p class="text-slate-400 text-xs mt-1 leading-snug">WIP cycle reduction</p>
+                  <p class="text-slate-400 text-xs mt-1 leading-snug">Line-side inventory coverage</p>
                 </div>
               </div>
 
@@ -291,14 +291,14 @@
 
         <div class="card card-hover glow-emerald rounded-2xl p-6 shadow-lg reveal reveal-d2">
           <div class="flex items-center justify-between mb-4">
-            <span class="text-xs text-emerald-400 uppercase tracking-wider font-semibold">Flow & WIP</span>
+            <span class="text-xs text-emerald-400 uppercase tracking-wider font-semibold">Flow & inventory</span>
             <div class="tint-emerald w-10 h-10 rounded-xl flex items-center justify-center">
               <svg class="icon text-emerald-400" aria-hidden="true"><use href="#i-refresh-cw"/></svg>
             </div>
           </div>
           <p class="display text-4xl font-extrabold text-white">7h → 2h</p>
-          <p class="text-emerald-400 text-sm font-medium mt-1">WIP cycle time</p>
-          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Released significant working capital through JIT and pull-based replenishment at a 500-person hyperscale site.</p>
+          <p class="text-emerald-400 text-sm font-medium mt-1">Line-side inventory coverage</p>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Reduced line-side stock, making materials easier to find and inventory easier to count at a 500-person hyperscale site.</p>
         </div>
 
         <div class="card card-hover glow-violet rounded-2xl p-6 shadow-lg reveal reveal-d3">
@@ -351,12 +351,27 @@
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10 reveal">
           <div>
             <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold mb-3">Selected work · Operational transformation</p>
-            <h2 class="text-3xl font-extrabold tracking-tight">A result, and the system behind it</h2>
+            <h2 class="text-3xl font-extrabold tracking-tight">Results, and the systems behind them</h2>
           </div>
-          <p class="text-slate-400 text-sm max-w-md md:text-right">A practical case in quality, flow, operating discipline and frontline leadership.</p>
+          <p class="text-slate-400 text-sm max-w-md md:text-right">Three practical cases in quality, material flow and leading teams under pressure.</p>
         </div>
 
-        <article class="case-study-card rounded-3xl overflow-hidden shadow-2xl">
+        <div class="case-selector" aria-label="Selected work" data-case-selector>
+          <a id="case-tab-wwt" class="case-tab" href="#case-wwt">
+            <span class="case-tab-label"><span class="case-tab-number">01</span> WWT</span>
+            <span class="case-tab-summary">Quality at the source</span>
+          </a>
+          <a id="case-tab-mim" class="case-tab case-theme-emerald" href="#case-mim">
+            <span class="case-tab-label"><span class="case-tab-number">02</span> MiM</span>
+            <span class="case-tab-summary">Trusted replenishment</span>
+          </a>
+          <a id="case-tab-leaseweb" class="case-tab case-theme-violet" href="#case-leaseweb">
+            <span class="case-tab-label"><span class="case-tab-number">03</span> Leaseweb</span>
+            <span class="case-tab-summary">Leading recovery</span>
+          </a>
+        </div>
+
+        <article id="case-wwt" class="case-panel case-study-card rounded-3xl overflow-hidden shadow-2xl" aria-labelledby="case-heading-wwt">
           <div class="grid grid-cols-1 lg:grid-cols-12">
             <div class="case-copy lg:col-span-7 p-7 sm:p-10 lg:p-12">
               <div class="flex flex-wrap items-center gap-2 mb-7 reveal reveal-d1">
@@ -367,7 +382,7 @@
 
               <div class="reveal reveal-d2">
                 <p class="text-xs text-blue-400 uppercase tracking-widest font-semibold">Quality at the source</p>
-                <h3 class="display text-2xl sm:text-3xl font-extrabold leading-tight mt-3 max-w-2xl">How a full-rack integration operation moved from approximately 70% First Pass Yield to 99.7%—and sustained it.</h3>
+                <h3 id="case-heading-wwt" class="display text-2xl sm:text-3xl font-extrabold leading-tight mt-3 max-w-2xl">How a full-rack integration operation moved from approximately 70% First Pass Yield to 99.7%—and sustained it.</h3>
               </div>
 
               <div class="case-narrative mt-7 space-y-4 text-slate-300 leading-relaxed">
@@ -434,6 +449,137 @@
                   <div class="case-flow-step reveal reveal-d7">
                     <span class="case-flow-index">07</span>
                     <div><p>QA check</p><span>Independent Quality inspection</span></div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
+
+        <article id="case-mim" class="case-panel case-study-card case-theme-emerald rounded-3xl overflow-hidden shadow-2xl" aria-labelledby="case-heading-mim">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="case-copy lg:col-span-7 p-7 sm:p-10 lg:p-12">
+              <div class="flex flex-wrap items-center gap-2 mb-7 reveal reveal-d1">
+                <span class="case-number display">02</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Material in Motion</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Supply chain &amp; production</span>
+              </div>
+              <div class="reveal reveal-d2">
+                <p class="case-accent text-xs uppercase tracking-widest font-semibold">Trusted replenishment</p>
+                <h3 id="case-heading-mim" class="display text-2xl sm:text-3xl font-extrabold leading-tight mt-3 max-w-2xl">From seven hours of line-side stock to two, by making complete orders the shared standard.</h3>
+              </div>
+              <div class="case-narrative mt-7 space-y-4 text-slate-300 leading-relaxed">
+                <p class="reveal reveal-d1">Production held around seven hours of material beside the line. Inventory discrepancies and incomplete orders had eroded trust in replenishment, so extra stock became the buffer. It also made material searches, cycle counts and year-end inventory checks harder.</p>
+                <p class="reveal reveal-d2">I began by addressing inventory accuracy as Supply Chain Integration Manager. As Site Manager, I brought production, the hyperscale client's logistics team and the 3PL together to agree what reliable delivery needed to mean for a production line.</p>
+                <p class="reveal reveal-d3">A 99.6% component-level delivery rate could still leave one missing item that stopped a build. We aligned around a complete-order requirement: all materials in an order delivered within one hour of its creation.</p>
+                <p class="reveal reveal-d4">The system reviewed inventory and consumption every 20 minutes. With a shared service expectation and growing confidence in replenishment, we gradually reduced line-side coverage from seven hours to two, retaining a buffer.</p>
+                <p class="reveal reveal-d5">Less stock beside the line meant less material to search through and count. The change depended on production, the client and the logistics partner trusting the same measure of delivery.</p>
+              </div>
+            </div>
+            <aside class="case-evidence lg:col-span-5 p-7 sm:p-10 lg:p-12" aria-label="Material in Motion case study evidence">
+              <div class="case-metric-card rounded-2xl p-6 reveal reveal-d2">
+                <div class="flex items-center justify-between gap-4">
+                  <p class="case-accent text-xs uppercase tracking-widest font-semibold">Line-side inventory coverage</p>
+                  <svg class="icon case-accent" aria-hidden="true"><use href="#i-boxes"/></svg>
+                </div>
+                <div class="case-metric-grid mt-5" aria-label="Line-side inventory coverage reduced from approximately seven hours to two hours">
+                  <div>
+                    <p class="display text-4xl font-extrabold text-slate-300">≈7h</p>
+                    <p class="text-xs text-slate-400 mt-1">Initial coverage</p>
+                  </div>
+                  <svg class="icon case-metric-arrow case-accent" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                  <div>
+                    <p class="display text-4xl font-extrabold case-accent">2h</p>
+                    <p class="text-xs text-slate-400 mt-1">New coverage</p>
+                  </div>
+                </div>
+                <div class="case-sustain mt-6 pt-5">
+                  <span class="case-sustain-dot" aria-hidden="true"></span>
+                  <div>
+                    <p class="text-sm font-semibold text-white">Complete orders within 1 hour</p>
+                    <p class="text-xs text-slate-400 mt-1">Agreed requirement, measured from order creation</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8">
+                <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold reveal reveal-d3">The system behind the reduction</p>
+                <div class="case-flow mt-5">
+                  <div class="case-flow-step reveal reveal-d1">
+                    <span class="case-flow-index">01</span>
+                    <div><p>Build inventory trust</p><span>Address discrepancies and incomplete orders</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d2">
+                    <span class="case-flow-index">02</span>
+                    <div><p>Align the delivery measure</p><span>Production, client logistics and 3PL</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d3">
+                    <span class="case-flow-index">03</span>
+                    <div><p>Review every 20 minutes</p><span>Inventory and consumption checks</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d4">
+                    <span class="case-flow-index">04</span>
+                    <div><p>Reduce coverage gradually</p><span>From 7h to 2h, retaining a buffer</span></div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
+
+        <article id="case-leaseweb" class="case-panel case-study-card case-theme-violet rounded-3xl overflow-hidden shadow-2xl" aria-labelledby="case-heading-leaseweb">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="case-copy lg:col-span-7 p-7 sm:p-10 lg:p-12">
+              <div class="flex flex-wrap items-center gap-2 mb-7 reveal reveal-d1">
+                <span class="case-number display">03</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Leaseweb</span>
+                <span class="pill text-xs px-2.5 py-1 rounded-full text-slate-300">Infrastructure operations</span>
+              </div>
+              <div class="reveal reveal-d2">
+                <p class="case-accent text-xs uppercase tracking-widest font-semibold">Leading infrastructure recovery</p>
+                <h3 id="case-heading-leaseweb" class="display text-2xl sm:text-3xl font-extrabold leading-tight mt-3 max-w-2xl">Coordinating the recovery of hundreds of servers across multiple racks in approximately one month.</h3>
+              </div>
+              <div class="case-narrative mt-7 space-y-4 text-slate-300 leading-relaxed">
+                <p class="reveal reveal-d1">An exceptional month at Leaseweb called for a coordinated recovery effort across hundreds of servers and multiple racks. The team needed a clear picture of progress, and leadership needed the same view.</p>
+                <p class="reveal reveal-d2">I coordinated the recovery and built a shared spreadsheet as the single source of truth. It brought the work into one place, with milestones and a progress percentage for each server, updated as the recovery advanced.</p>
+                <p class="reveal reveal-d3">The tracker worked as a practical project-management tool: teams and senior leadership could follow the same milestones and see how each server was progressing. It gave the recovery effort a common reference throughout the month.</p>
+                <p class="reveal reveal-d4">Keeping people confident and motivated was part of the work. I used that shared visibility to communicate progress and help the team keep moving through a period far outside its normal operating rhythm.</p>
+                <p class="reveal reveal-d5">The recovery was a team achievement. My contribution was coordination, a tool that made progress visible, and steady leadership under pressure.</p>
+              </div>
+            </div>
+            <aside class="case-evidence lg:col-span-5 p-7 sm:p-10 lg:p-12" aria-label="Leaseweb case study evidence">
+              <div class="case-metric-card rounded-2xl p-6 reveal reveal-d2">
+                <div class="flex items-center justify-between gap-4">
+                  <p class="case-accent text-xs uppercase tracking-widest font-semibold">Recovery effort</p>
+                  <svg class="icon case-accent" aria-hidden="true"><use href="#i-server"/></svg>
+                </div>
+                <p class="case-scale display font-extrabold case-accent mt-5">Hundreds</p>
+                <p class="text-sm text-slate-300 mt-1">of servers across multiple racks</p>
+                <div class="case-sustain mt-6 pt-5">
+                  <span class="case-sustain-dot" aria-hidden="true"></span>
+                  <div>
+                    <p class="text-sm font-semibold text-white">Approximately one month</p>
+                    <p class="text-xs text-slate-400 mt-1">A coordinated team effort under exceptional pressure</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8">
+                <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold reveal reveal-d3">A shared view of the work</p>
+                <div class="case-flow mt-5">
+                  <div class="case-flow-step reveal reveal-d1">
+                    <span class="case-flow-index">01</span>
+                    <div><p>One source of truth</p><span>A shared recovery spreadsheet</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d2">
+                    <span class="case-flow-index">02</span>
+                    <div><p>Milestones for each server</p><span>Progress tracked as work advanced</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d3">
+                    <span class="case-flow-index">03</span>
+                    <div><p>Percentage progress</p><span>Visibility for teams and senior leadership</span></div>
+                  </div>
+                  <div class="case-flow-step reveal reveal-d4">
+                    <span class="case-flow-index">04</span>
+                    <div><p>Confidence through clarity</p><span>Keep people informed and motivated</span></div>
                   </div>
                 </div>
               </div>
@@ -604,7 +750,7 @@
           </div>
           <p class="text-slate-300 text-sm mb-3 leading-relaxed">Led a 500-person production site delivering data center hardware for a hyperscale technology client under strict <span class="text-white font-medium">SLA, audit, and security requirements</span>.</p>
           <ul class="space-y-1.5 text-slate-300 text-sm">
-            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> WIP from 7h to 2h — freed significant working capital through pull-based JIT</li>
+            <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Reduced line-side inventory coverage from 7h to 2h by aligning production, the client and the 3PL around complete material orders</li>
             <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Maintained full SLA during COVID through rapid staffing scenarios and daily risk control</li>
             <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Stabilized quality and delivery through standard work, tier routines, and escalation discipline</li>
             <li class="flex gap-2"><span class="text-violet-400 mt-0.5">›</span> Aligned engineering, logistics, and client stakeholders across cross-functional execution</li>

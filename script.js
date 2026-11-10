@@ -53,7 +53,7 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
 }
 
 // Stat count-up (skipped under reduced motion — real values are already in the markup)
-if (!reducedMotion.matches) {
+if (!reducedMotion.matches && ('IntersectionObserver' in window)) {
   const animCount = (el, target, prefix, suffix, decimals, dur) => {
     const start = performance.now();
     (function step(ts) {
@@ -127,3 +127,55 @@ window.addEventListener('scroll', () => {
   else if (y < lastY - 8 || y <= 120) header.classList.remove('header-hidden');
   lastY = y;
 }, { passive: true });
+
+// Selected work: progressive enhancement of real anchors into accessible tabs.
+// No JS = three readable articles. No autoplay or dependency on animations.
+const caseSelector = document.querySelector('[data-case-selector]');
+if (caseSelector) {
+  const tabs = Array.from(caseSelector.querySelectorAll('a'));
+  const panels = tabs.map(tab => document.getElementById(tab.hash.slice(1)));
+
+  const selectCase = (index, { focus = false, updateHash = false, reveal = true } = {}) => {
+    tabs.forEach((tab, i) => {
+      const selected = i === index;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      panels[i].hidden = !selected;
+    });
+    // A panel may have been hidden when the reveal observer first ran.
+    if (reveal) panels[index].querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    if (focus) tabs[index].focus();
+    if (updateHash) history.replaceState(null, '', tabs[index].hash);
+  };
+
+  caseSelector.setAttribute('role', 'tablist');
+  tabs.forEach((tab, index) => {
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-controls', panels[index].id);
+    panels[index].setAttribute('role', 'tabpanel');
+    panels[index].setAttribute('aria-labelledby', tab.id);
+    panels[index].tabIndex = 0;
+    tab.addEventListener('click', event => {
+      // Preserve opening a case link in another tab with modifier keys.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      selectCase(index, { updateHash: true });
+    });
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next === undefined) return;
+      event.preventDefault();
+      selectCase(next, { focus: true, updateHash: true });
+    });
+  });
+  const caseFromHash = () => tabs.findIndex(tab => tab.hash === location.hash);
+  selectCase(Math.max(0, caseFromHash()), { reveal: false });
+  window.addEventListener('hashchange', () => {
+    const index = caseFromHash();
+    if (index !== -1) selectCase(index);
+  });
+}

@@ -568,3 +568,75 @@ main, header, footer { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse { animation: none !important; }
 }
+
+/* Case selection enhances anchor links; every case remains readable without JS. */
+.case-selector {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.case-tab {
+  --case-rgb: 96, 165, 250;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 76px;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.025);
+  color: #cbd5e1;
+}
+.case-tab:hover,
+.case-tab[aria-selected="true"] {
+  background: rgba(var(--case-rgb),0.09);
+  border-color: rgba(var(--case-rgb),0.5);
+}
+.case-tab[aria-selected="true"] { color: white; }
+.case-tab-label {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.case-tab-number { color: rgb(var(--case-rgb)); margin-right: 0.4rem; }
+.case-tab-summary { font-size: 0.75rem; color: #94a3b8; }
+.case-panel { scroll-margin-top: calc(var(--header-h) + 20px); }
+.case-panel + .case-panel { margin-top: 2rem; }
+.case-panel[hidden] { display: none; }
+.case-panel[role="tabpanel"] { margin-top: 0; }
+.case-theme-emerald { --case-rgb: 52, 211, 153; }
+.case-theme-violet { --case-rgb: 167, 139, 250; }
+.case-panel[class*="case-theme-"] { border-color: rgba(var(--case-rgb),0.22); }
+.case-panel[class*="case-theme-"]::before {
+  background: linear-gradient(90deg, transparent, rgba(var(--case-rgb),0.7), transparent);
+}
+.case-accent { color: rgb(var(--case-rgb)); }
+.case-panel[class*="case-theme-"] .case-number {
+  color: rgb(var(--case-rgb));
+  background: rgba(var(--case-rgb),0.13);
+  border-color: rgba(var(--case-rgb),0.26);
+}
+.case-panel[class*="case-theme-"] .case-evidence {
+  background: linear-gradient(180deg, rgba(var(--case-rgb),0.07), rgba(var(--case-rgb),0.015)), rgba(3,8,17,0.42);
+}
+.case-panel[class*="case-theme-"] .case-metric-card { border-color: rgba(var(--case-rgb),0.2); }
+.case-panel[class*="case-theme-"] .case-sustain-dot {
+  background: rgb(var(--case-rgb));
+  box-shadow: 0 0 0 5px rgba(var(--case-rgb),0.12), 0 0 22px rgba(var(--case-rgb),0.3);
+}
+.case-scale { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.2; }
+@media (max-width: 479px) {
+  .case-selector { gap: 0.4rem; }
+  .case-tab { min-height: 60px; padding: 0.65rem 0.5rem; }
+  .case-tab-label { font-size: 0.75rem; }
+  .case-tab-number { display: block; margin: 0 0 0.2rem; font-size: 0.65rem; }
+  .case-tab-summary { display: none; }
+}
+@media print {
+  .case-selector { display: none; }
+  .case-panel[hidden] { display: block; }
+  .case-panel[role="tabpanel"] + .case-panel { margin-top: 2rem; }
+  html.js .reveal { opacity: 1; transform: none; }
+}
