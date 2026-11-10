@@ -176,6 +176,11 @@ if (caseSelector) {
   selectCase(Math.max(0, caseFromHash()), { reveal: false });
   window.addEventListener('hashchange', () => {
     const index = caseFromHash();
-    if (index !== -1) selectCase(index);
+    if (index !== -1) {
+      selectCase(index);
+      // Career-card anchors can target a panel that was hidden on click.
+      // Reveal it first, then bring the selected case below the sticky header.
+      panels[index].scrollIntoView();
+    }
   });
 }
