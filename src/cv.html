@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Ivan Foschiera — CV</title>
+<title>Ivan Foschiera - CV</title>
 <!--
-  Source for assets/Ivan-Foschiera-CV.pdf — design mirrors Ivan_Foschiera_CV_2p.docx.
+  Source for assets/Ivan-Foschiera-CV.pdf. Public CV with a dedicated professional alias and no private contact details.
   Regenerate with: npm run build:cv
 -->
 <style>
-  @page { size: A4; margin: 12.7mm 15.9mm; }
+  @page {
+    size: A4; margin: 12.7mm 15.9mm 15mm;
+    @bottom-left { content: "Ivan Foschiera"; font: 8pt Arial, sans-serif; color: #64748B; }
+    @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Arial, sans-serif; color: #64748B; }
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 9pt;
+    font-size: 9.5pt;
     color: #1E293B;
-    line-height: 1.3;
+    line-height: 1.32;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -22,10 +26,10 @@
 
   /* ── Header ── */
   .header { display: flex; align-items: center; }
-  .header-left { width: 67.3%; padding-right: 3.5mm; }
-  .header-right { width: 32.7%; text-align: right; }
+  .header-left { width: 63%; padding-right: 3.5mm; }
+  .header-right { width: 37%; text-align: right; }
   .name { font-size: 28pt; font-weight: bold; margin-bottom: 2pt; }
-  .subtitle { font-size: 12pt; color: #2563EB; margin-bottom: 2.5pt; }
+  .subtitle { font-size: 12pt; font-weight: bold; color: #2563EB; margin-bottom: 2.5pt; }
   .tagline { font-size: 8pt; color: #64748B; }
   .contact-line { font-size: 8.5pt; margin-bottom: 1.3pt; }
   .contact-line.link { color: #2563EB; }
@@ -34,12 +38,12 @@
 
   /* ── Sections ── */
   .section-title {
-    font-size: 9pt; font-weight: bold; color: #2563EB;
+    font-size: 10pt; font-weight: bold; color: #2563EB; letter-spacing: 1.1pt;
     border-bottom: 0.75pt solid #2563EB;
     margin-top: 8pt; margin-bottom: 3.5pt; padding-bottom: 1pt;
     break-after: avoid;
   }
-  .profile { font-size: 8.5pt; margin-top: 3pt; margin-bottom: 6.5pt; }
+  .profile { color: #64748B; font-size: 9.5pt; margin-top: 3pt; margin-bottom: 6.5pt; }
 
   /* ── Impact cards ── */
   .impact-row { display: flex; gap: 1.8mm; margin-top: 2.75pt; margin-bottom: 6.5pt; }
@@ -59,16 +63,16 @@
 
   /* ── Experience ── */
   .job-header { break-inside: avoid; break-after: avoid; }
-  .job-title { font-size: 10pt; margin-top: 4pt; margin-bottom: 0.9pt; }
+  .job-title { font-size: 10pt; margin-top: 6pt; margin-bottom: 0.9pt; }
   .job-title .role { font-weight: bold; }
   .job-title .sep { color: #94A3B8; font-size: 9pt; font-weight: normal; }
-  .job-title .company { color: #2563EB; }
-  .job-meta { font-size: 8pt; color: #64748B; margin-bottom: 2.25pt; }
+  .job-title .company { color: #2563EB; font-weight: bold; }
+  .job-meta { font-size: 8.5pt; color: #64748B; margin-bottom: 2.25pt; }
   .job-meta .dates { font-style: italic; }
   .job-meta .sep { color: #94A3B8; font-style: normal; }
   ul { list-style: none; }
-  li { font-size: 8.5pt; padding-left: 18pt; position: relative; margin-bottom: 0.8pt; }
-  li::before { content: "•"; position: absolute; left: 8pt; }
+  li { color: #64748B; font-size: 9.5pt; padding-left: 18pt; position: relative; margin-bottom: 0.8pt; }
+  li::before { color: #2563EB; content: "•"; position: absolute; left: 8pt; }
 
   /* ── Recommendation ── */
   .quote-card {
@@ -77,21 +81,27 @@
     margin-top: 2.75pt; margin-bottom: 6.5pt;
     break-inside: avoid;
   }
-  .quote-text { font-size: 8.5pt; font-style: italic; margin-bottom: 2pt; }
+  .quote-text { color: #64748B; font-size: 9pt; font-style: italic; margin-bottom: 2pt; }
   .quote-attr { font-size: 8pt; color: #64748B; }
-  .quote-attr .who { font-weight: bold; color: #2563EB; }
+  .quote-attr .who { font-weight: bold; color: #1E293B; }
 
   /* ── Credentials ── */
   .cred-row { display: flex; gap: 3.5mm; margin-top: 2.75pt; }
   .cred-col { width: 50%; }
   .cred-heading { font-size: 9pt; font-weight: bold; margin-bottom: 1.4pt; }
-  .cred-item { font-size: 8.5pt; }
-  .cred-sub { font-size: 8pt; color: #64748B; }
+  .cred-item { font-size: 9pt; }
+  .cred-sub { font-size: 8.5pt; color: #64748B; }
   .cred-gap { margin-bottom: 3.5pt; }
-  .award-title { font-size: 8.5pt; font-weight: bold; color: #B45309; margin-bottom: 0.5pt; }
+  .award-title { font-size: 8.5pt; font-weight: bold; color: #1E293B; margin-bottom: 0.5pt; }
   .cred-block { margin-top: 3.5pt; }
 
-  /* ── Footer ── */
+  .page-break { break-before: page; margin-top: 0; }
+  .job-block { break-inside: avoid; }
+  li strong { color: #1E293B; }
+  .cred-col ul li { font-size: 8.5pt; }
+  @media screen { body { max-width: 800px; margin: 24px auto; padding: 24px; } }
+
+  /* Footer */
   .footer-rule { border-bottom: 0.5pt solid #E2E8F0; margin-top: 0; margin-bottom: 1pt; }
   .footer-line { font-size: 7.5pt; color: #94A3B8; text-align: center; }
 </style>
@@ -101,12 +111,11 @@
 <div class="header">
   <div class="header-left">
     <div class="name">Ivan Foschiera</div>
-    <div class="subtitle">Manufacturing &amp; Operations — Hyperscale Hardware &amp; Data Center Infrastructure</div>
-    <div class="tagline">Contract Manufacturing Operations&nbsp;&nbsp;·&nbsp;&nbsp;Data Center Hardware Integration&nbsp;&nbsp;·&nbsp;&nbsp;Supplier &amp; 3PL Management&nbsp;&nbsp;·&nbsp;&nbsp;Data-Driven Decisions&nbsp;&nbsp;·&nbsp;&nbsp;Lean &amp; CI</div>
+    <div class="subtitle">Manufacturing &amp; Operations Leadership<br>Hyperscale Hardware &amp; Data Center Infrastructure</div>
+    <div class="tagline">Contract Manufacturing&nbsp;&nbsp;·&nbsp;&nbsp;Operational Excellence&nbsp;&nbsp;·&nbsp;&nbsp;People Leadership</div>
   </div>
   <div class="header-right">
-    <div class="contact-line"><a href="tel:+31686382315">+31 6 8638 2315</a></div>
-    <div class="contact-line link"><a href="mailto:ivan@foschiera.com">ivan@foschiera.com</a></div>
+    <div class="contact-line link"><a href="mailto:contact@foschiera.com">contact@foschiera.com</a></div>
     <div class="contact-line link"><a href="https://linkedin.com/in/ivanfoschiera">linkedin.com/in/ivanfoschiera</a></div>
     <div class="contact-line link"><a href="https://github.com/ivanfoschiera">github.com/ivanfoschiera</a></div>
     <div class="contact-line link"><a href="https://foschiera.com">foschiera.com</a></div>
@@ -116,7 +125,7 @@
 <div class="header-rule"></div>
 
 <div class="section-title">PROFILE</div>
-<p class="profile">Manufacturing and operations leader with 20+ years building operations that perform under pressure across hyperscale technology, manufacturing, and high-volume intralogistics in Europe and Brazil — the last eight running contract manufacturing operations for global hyperscale technology clients: server, storage, and networking hardware. Designs the systems, routines, and structures that make operations predictable, financially efficient, and stable at scale — from 70 to 500+ people. Full SQDC accountability: shopfloor execution, cost control, quality systems, and senior stakeholder reporting. Deploys MES, ERP, and custom analytics dashboards to close the gap between data and decisions — and applies AI tooling to operational analytics for faster root cause, better forecast accuracy, and lower operational overhead. Drawn to complex, high-tempo environments — manufacturing, hyperscale, defense — where operational clarity is the difference between performance and chaos.</p>
+<p class="profile">Manufacturing and operations leader with <strong>20+ years</strong> across hyperscale hardware, data center infrastructure, manufacturing, and intralogistics in Europe and Brazil. Led <strong>teams of 70 to 500+ people</strong> with accountability for safety, quality, delivery, cost, and engineering execution. Builds operating routines, leadership teams, and data systems that improve quality and flow. Experience spans contract manufacturing, infrastructure recovery, MES and ERP implementation, supplier and 3PL management, and full P&amp;L ownership.</p>
 
 <div class="section-title">SELECTED IMPACT</div>
 <div class="impact-row">
@@ -133,88 +142,112 @@
   <div class="impact-card amber">
     <div class="impact-number">4 → 40+</div>
     <div class="impact-label">Fabrication Business</div>
-    <div class="impact-desc">Built from scratch as founder — full P&amp;L across operations, quality &amp; client delivery</div>
+    <div class="impact-desc">Built from scratch as founder - full P&amp;L across operations, quality &amp; client delivery</div>
   </div>
 </div>
 
 <div class="section-title">PROFESSIONAL EXPERIENCE</div>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">Senior Production Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">World Wide Technology</span></div>
-  <div class="job-meta"><span class="dates">Nov 2021 – Dec 2025</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands<span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Team: 70+</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Manager, Rack Production</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Supermicro</span></div>
+    <div class="job-meta"><span class="dates">Nov 2026 - Present</span></div>
+  </div>
 </div>
-<ul>
-  <li>Ran end-to-end production and engineering in a high-volume integration center building server, storage, and networking hardware for global hyperscale technology clients — full operational and financial accountability across safety, quality, delivery, cost, and engineering execution</li>
-  <li>Designed and implemented a Lean operating system from the ground up: line redesign, 5S discipline, standardized operator routines, and structured root cause methodology — driving First Pass Yield from 70% to 99.7% and eliminating systemic rework cost</li>
-  <li>Built and owned a multi-tier management system — daily Gemba walks, shift handover protocols, structured escalation ladders, and weekly KPI governance with senior client engineering and supply chain stakeholders — establishing execution predictability and supporting margin stability across all shifts</li>
-  <li>Architected and delivered an MES rollout across multiple production sites — standardized traceability end-to-end, reduced planning errors, and gave engineering and operations leadership real-time cross-site visibility</li>
-  <li>Developed a custom analytics layer — real-time dashboards covering forecast accuracy, WIP flow, constraint bottlenecks, and leadership performance — used daily at supervisor, manager, and director level to drive fact-based decisions, reduce escalation lag, and improve cost control</li>
-  <li>Built the leadership pipeline: structured 1:1 coaching, individual development plans, and succession mapping across 70+ people — improved retention, accelerated internal promotions, and reduced operational dependency on senior intervention</li>
-  <li>Leader 100 Award 2022 &amp; 2023 — 100% team acceptance score, highest trust rating awarded to a leader at WWT</li>
-</ul>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">Site Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
-  <div class="job-meta"><span class="dates">Nov 2019 – Oct 2021</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands<span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Team: 500+</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Team Manager, DC Operations - Infrastructure</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Leaseweb</span></div>
+    <div class="job-meta"><span class="dates">Sep 2026 - Oct 2026</span></div>
+  </div>
+  <ul>
+    <li>Coordinated the <strong>recovery of hundreds of servers across multiple racks</strong> in approximately one month.</li>
+    <li>Built a <strong>shared recovery plan and management dashboard</strong> with milestones and per-server progress, giving teams and senior leadership one view of the work.</li>
+  </ul>
 </div>
-<ul>
-  <li>Accountable for a 500-person production site assembling and configuring data center hardware for a hyperscale technology client — operating under strict SLA, security clearance, and continuous quality audit requirements</li>
-  <li>Reduced line-side inventory coverage from 7 hours to 2 hours by aligning production, client logistics and the 3PL around complete orders within one hour; built on inventory accuracy work begun as Supply Chain Integration Manager</li>
-  <li>Maintained 100% SLA continuity throughout COVID-19 by executing rapid workforce restructuring, daily risk reviews, and production layout reconfiguration — zero client penalty and no revenue impact during a period of sustained operational pressure</li>
-  <li>Owned cross-functional performance governance — structured weekly reviews with engineering, logistics, planning, and client leadership built shared accountability and eliminated inter-team ambiguity on delivery commitments</li>
-  <li>Institutionalized quality and delivery control through standard work documentation, shift-level tier meeting routines, and escalation discipline — embedded across all patterns and sustained under constant volume change</li>
-  <li>Developed a frontline leadership layer with sufficient depth to run operations independently across all shifts — reduced reliance on senior management intervention and improved response speed to production variances</li>
-</ul>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">Supply Chain Integration Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
-  <div class="job-meta"><span class="dates">Jun 2018 – Oct 2019</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Senior Production Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">World Wide Technology</span></div>
+    <div class="job-meta"><span class="dates">Nov 2021 - Dec 2025</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands&nbsp;&nbsp;·&nbsp;&nbsp;Team: 70+</div>
+  </div>
+  <ul>
+    <li>Ran production and engineering for server, storage, and networking hardware serving global hyperscale clients, with full operational and financial accountability.</li>
+    <li>Raised <strong>First Pass Yield from 70% to 99.7%</strong> through line redesign, 5S, standard work, and structured root cause analysis.</li>
+    <li>Built <strong>daily Gemba, shift handover, escalation, and KPI routines</strong> with senior client engineering and supply chain stakeholders.</li>
+    <li>Delivered a <strong>multi-site MES rollout</strong> for end-to-end traceability and real-time visibility; built dashboards for forecast accuracy, WIP, bottlenecks, and leadership performance.</li>
+    <li>Developed leaders through coaching, development plans, and succession mapping. Received the <strong>Leader 100 Award in 2022 and 2023</strong> with a 100% team acceptance score.</li>
+  </ul>
 </div>
-<ul>
-  <li>Owned end-to-end supply chain integration across 3PL partners, production operations, and outbound logistics — accountable for flow continuity, working capital efficiency, and on-time client SLA delivery</li>
-  <li>Redesigned material handoff protocols between inbound, kitting, production, and outbound — eliminated transfer delays, reduced inter-stage queuing, and improved throughput predictability across the value stream</li>
-  <li>Led operational integration through a full client ERP transition — mapped new workflows, trained cross-functional teams, and monitored adoption to protect continuity, data integrity, and cost control during the changeover</li>
-  <li>Resolved escalations across suppliers, logistics partners, and internal planning — reduced unplanned stoppages by establishing clear ownership rules, visual daily controls, and structured issue resolution at the point of impact</li>
-</ul>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">Inventory Control Supervisor</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
-  <div class="job-meta"><span class="dates">Aug 2016 – May 2018</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Site Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
+    <div class="job-meta"><span class="dates">Nov 2019 - Oct 2021</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands&nbsp;&nbsp;·&nbsp;&nbsp;Team: 500+</div>
+  </div>
+  <ul>
+    <li>Led a <strong>500-person site</strong> assembling and configuring hyperscale data center hardware under strict SLAs, security clearance, and continuous quality audits.</li>
+    <li>Reduced <strong>line-side inventory coverage from 7 hours to 2 hours</strong> by aligning production, client logistics, and the 3PL around complete orders within one hour.</li>
+    <li>Maintained <strong>100% SLA continuity through COVID-19</strong> with workforce restructuring, daily risk reviews, and layout changes, with no client penalties or revenue impact.</li>
+    <li>Established cross-functional governance, standard work, tier meetings, and a frontline leadership team able to run all shifts independently.</li>
+  </ul>
 </div>
-<ul>
-  <li>Led inventory accuracy and stock control in a high-velocity production and logistics environment — full accountability for material availability, count reliability, and variance management across multiple product categories</li>
-  <li>Designed and deployed a real-time inventory tracking system that brought accuracy to world-class levels — directly eliminated production stoppages caused by stock unavailability and reduced emergency procurement cost</li>
-  <li>Rebuilt cycle count routines and introduced structured root cause analysis for all variances — reduced recurring discrepancies, improved planning forecast reliability, and gave production teams dependable material flow</li>
-  <li>Established daily coordination routines between warehouse, production, and planning — created shared stock visibility that cut last-minute escalations, reduced excess safety stock, and improved working capital control</li>
-</ul>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">IT Support Specialist, Operations Systems</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
-  <div class="job-meta"><span class="dates">Jan 2015 – Jun 2016</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Remote<span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Contract</div>
-</div>
-<ul>
-  <li>Provided remote IT support for around 40 users during my relocation to the Netherlands, maintaining access, endpoints and essential operational tools for the team in Brazil.</li>
-</ul>
+<div class="section-title page-break">PROFESSIONAL EXPERIENCE CONTINUED</div>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">General Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
-  <div class="job-meta"><span class="dates">Sep 2006 – Dec 2014</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Greater Florianópolis, Brazil</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Supply Chain Integration Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
+    <div class="job-meta"><span class="dates">Jun 2018 - Oct 2019</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands</div>
+  </div>
+  <ul>
+    <li>Led integration across <strong>3PL partners, production, and outbound logistics</strong>, with accountability for flow continuity, working capital efficiency, and on-time SLA delivery.</li>
+    <li>Redesigned material handoffs and resolved supplier and planning escalations through clear ownership and daily controls.</li>
+    <li>Led operational integration through a <strong>client ERP transition</strong>, mapping workflows and training teams to protect continuity and data integrity.</li>
+  </ul>
 </div>
-<ul>
-  <li>Founded and scaled a business from 4 to 40+ people delivering high-complexity aluminum and glass structural installations — full P&amp;L ownership alongside accountability for operations, quality, and client delivery</li>
-  <li>Managed concurrent projects end-to-end across planning, fabrication, site installation, and final inspection — maintained delivery reliability and margin control as project volume and team complexity scaled</li>
-  <li>Designed the full operational infrastructure from scratch: performance standards, management routines, and leadership accountability structures — built the foundation that enabled sustained commercial growth and improving cost efficiency</li>
-  <li>Partnered with engineering and client teams to resolve technical constraints on live sites — reduced rework rates, tightened specification adherence, and built long-term client relationships based on consistent execution</li>
-</ul>
 
-<div class="job-header">
-  <div class="job-title"><span class="role">Production Technician</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
-  <div class="job-meta"><span class="dates">Feb 2002 – Aug 2006</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Greater Florianópolis, Brazil</div>
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Inventory Control Supervisor</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Material in Motion</span></div>
+    <div class="job-meta"><span class="dates">Aug 2016 - May 2018</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Amsterdam, Netherlands</div>
+  </div>
+  <ul>
+    <li>Led <strong>inventory accuracy, material availability, cycle counts, and variance management</strong> in a high-velocity production and logistics environment.</li>
+    <li>Deployed real-time inventory tracking, root cause analysis, and daily warehouse-production-planning routines to reduce stock-driven stoppages, discrepancies, and excess safety stock.</li>
+  </ul>
 </div>
-<ul>
-  <li>Operated precision fabrication machinery across assembly, quality inspection, and structural build stages — developed technical fluency in production constraints, tolerance management, and end-to-end process dependencies</li>
-  <li>Worked directly alongside engineers and site installers on large-scale structural projects — built the shopfloor instincts for reading flow, identifying waste, and anticipating failure that underpin every leadership role since</li>
-</ul>
+
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">IT Support Specialist, Operations Systems</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
+    <div class="job-meta"><span class="dates">Jan 2015 - Jun 2016</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Remote&nbsp;&nbsp;·&nbsp;&nbsp;Contract</div>
+  </div>
+  <ul>
+    <li>Provided <strong>remote IT support for around 40 users</strong> during relocation to the Netherlands, maintaining access, endpoints, and essential operational tools for the team in Brazil.</li>
+  </ul>
+</div>
+
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">General Manager</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
+    <div class="job-meta"><span class="dates">Sep 2006 - Dec 2014</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Greater Florianópolis, Brazil</div>
+  </div>
+  <ul>
+    <li>Founded and scaled an aluminum and glass structural installation business from <strong>4 to 40+ people, with full P&amp;L ownership</strong> across operations, quality, and client delivery.</li>
+    <li>Managed planning, fabrication, installation, and inspection across concurrent projects; established performance standards and management routines, and resolved technical constraints with engineers and clients.</li>
+  </ul>
+</div>
+
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-title"><span class="role">Production Technician</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Milimetra</span></div>
+    <div class="job-meta"><span class="dates">Feb 2002 - Aug 2006</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span>Greater Florianópolis, Brazil</div>
+  </div>
+  <ul>
+    <li>Operated precision fabrication machinery across assembly, quality inspection, and structural builds, working alongside engineers and site installers on large-scale projects.</li>
+  </ul>
+</div>
 
 <div class="section-title">RECOMMENDATION</div>
 <div class="quote-card">
@@ -226,33 +259,33 @@
 <div class="cred-row">
   <div class="cred-col">
     <div class="cred-heading">Education</div>
-    <div class="cred-item">BBA International Business — Amsterdam UAS (AMSIB)</div>
-    <div class="cred-sub cred-gap">2024 – 2027</div>
+    <div class="cred-item">BBA International Business - Amsterdam UAS (AMSIB)</div>
+    <div class="cred-sub cred-gap">2024 - In progress</div>
     <div class="cred-heading">Certifications</div>
     <ul>
       <li>Lean Six Sigma Green Belt</li>
       <li>CompTIA IT Fundamentals+</li>
-      <li>TOEFL iBT — C1 English (Aug 2024)</li>
-      <li>Amateur Radio Licence HAREC — PA9ICQ (Jan 2026)</li>
+      <li>TOEFL iBT - C1 English (Aug 2024)</li>
+      <li>Amateur Radio Licence HAREC - PA9ICQ (Jan 2026)</li>
     </ul>
     <div class="cred-heading cred-block">Languages</div>
-    <div class="cred-item">Portuguese — Native&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;English — Full professional (C1)</div>
+    <div class="cred-item">Portuguese - Native&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;English - Full professional (C1)</div>
   </div>
   <div class="cred-col">
     <div class="cred-heading">Awards</div>
-    <div class="award-title">Leader 100 Award — World Wide Technology</div>
-    <div class="cred-sub">2022 &amp; 2023 — 100% team acceptance as a leader</div>
+    <div class="award-title">Leader 100 Award - World Wide Technology</div>
+    <div class="cred-sub">2022 &amp; 2023 - 100% team acceptance as a leader</div>
     <div class="cred-sub cred-gap">Highest possible trust score awarded by WWT to a leader.</div>
     <div class="cred-heading">Core Skills</div>
     <div class="cred-sub cred-gap">Lean &amp; CI · MES · ERP · Gemba · 5S · JIT &amp; Pull Systems · Standard Work · Tier Management · KPI Dashboards · Client Governance · SQDC · Traceability · 3PL Management · Leader Coaching · Analytics · AI-assisted Operations</div>
     <div class="cred-heading">Volunteering</div>
-    <div class="cred-item">Independent Research Lead — Sosarian</div>
-    <div class="cred-sub">Jan 2026 – Present · AI, assistive technology &amp; human behavior research</div>
+    <div class="cred-item">Independent Research Lead - Sosarian</div>
+    <div class="cred-sub">Jan 2026 - Present · AI, assistive technology &amp; human behavior research</div>
   </div>
 </div>
 
 <div class="footer-rule"></div>
-<div class="footer-line">ivan@foschiera.com&nbsp;&nbsp;·&nbsp;&nbsp;+31 6 8638 2315&nbsp;&nbsp;·&nbsp;&nbsp;linkedin.com/in/ivanfoschiera&nbsp;&nbsp;·&nbsp;&nbsp;github.com/ivanfoschiera&nbsp;&nbsp;·&nbsp;&nbsp;foschiera.com&nbsp;&nbsp;·&nbsp;&nbsp;Amsterdam, Netherlands</div>
+<div class="footer-line"><a href="https://foschiera.com">foschiera.com</a>&nbsp;&nbsp;·&nbsp;&nbsp;Amsterdam, Netherlands</div>
 
 </body>
 </html>

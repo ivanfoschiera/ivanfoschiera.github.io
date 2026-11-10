@@ -34,3 +34,9 @@ The fluid type scale (clamp-based) is defined in `tailwind.config.js`; brand col
 - Glass/backdrop-blur only on the sticky header and the hero "At a glance" card — all other cards are flat
 - Every animation is gated behind `prefers-reduced-motion`; final values are always in the markup
 - Touch targets ≥ 44 px; keyboard focus styles via `:focus-visible` in `style.css`
+
+## Professional contact and CV privacy
+
+The public site uses the dedicated professional address `contact@foschiera.com` and LinkedIn. No contact form or third-party form backend is required. Personal telephone and the original private email are excluded from page markup, structured data, and the public CV.
+
+`src/cv.html` is the public CV source. Keep the complete private CV outside this repository and outside the public web root. Rebuild and visually review both PDF pages when changing CV content. Existing Git history is retained; removing details from the current site does not erase older commits, downloads, or search caches.

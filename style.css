@@ -640,3 +640,7 @@ main, header, footer { position: relative; z-index: 1; }
   .case-panel[role="tabpanel"] + .case-panel { margin-top: 2rem; }
   html.js .reveal { opacity: 1; transform: none; }
 }
+
+/* Professional contact links inherit the established portfolio palette. */
+.contact-link { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; color: #bfdbfe; font-weight: 600; font-size: .86rem; width: fit-content; }
+.contact-link:hover { color: #fff; }

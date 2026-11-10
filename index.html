@@ -29,8 +29,8 @@
   <link rel="preload" href="assets/fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/ivan-foschiera-portrait.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/tailwind.css" />
-  <link rel="stylesheet" href="style.css?v=4" />
-  <script src="script.js?v=4" defer></script>
+  <link rel="stylesheet" href="style.css?v=5" />
+  <script src="script.js?v=5" defer></script>
 
   <script type="application/ld+json">
   {
@@ -39,8 +39,6 @@
     "name": "Ivan Foschiera",
     "jobTitle": "Manufacturing & Operations — Hyperscale Hardware",
     "address": { "@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "Netherlands" },
-    "email": "mailto:ivan@foschiera.com",
-    "telephone": "+31686382315",
     "url": "https://foschiera.com",
     "image": "https://foschiera.com/assets/ivan-foschiera-portrait.jpg",
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Amsterdam University of Applied Sciences" },
@@ -94,10 +92,6 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <a href="mailto:ivan@foschiera.com" aria-label="Email Ivan"
-           class="inline-flex items-center justify-center gap-2 chip rounded-full text-sm text-slate-200 transition hover:bg-white/10 w-11 h-11 sm:w-auto sm:h-auto sm:px-4 sm:py-2">
-          <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-mail"/></svg><span class="hidden sm:inline">Email</span>
-        </a>
         <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn profile"
            class="inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold shadow-lg bg-blue-600 hover:bg-blue-500 transition w-11 h-11 sm:w-auto sm:h-auto sm:px-4 sm:py-2">
           <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span class="hidden sm:inline">LinkedIn</span>
@@ -192,14 +186,11 @@
               </a>
             </div>
 
-            <!-- Contact micro -->
+            <!-- Contact details stay private; enquiries go through the contact section. -->
             <div class="flex flex-wrap gap-5 mt-5 text-slate-400 text-sm fade-up delay-6">
-              <a href="tel:+31686382315" class="inline-flex items-center gap-2 py-2 hover:text-slate-200 transition">
-                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-phone"/></svg>+31 6 8638 2315
-              </a>
-              <a href="mailto:ivan@foschiera.com" class="inline-flex items-center gap-2 py-2 hover:text-slate-200 transition">
-                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-mail"/></svg>ivan@foschiera.com
-              </a>
+              <span class="inline-flex items-center gap-2 py-2">
+                <svg class="icon text-blue-400" aria-hidden="true"><use href="#i-map-pin"/></svg>Amsterdam, Netherlands
+              </span>
             </div>
           </div>
 
@@ -708,6 +699,21 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
+        <article class="card card-hover glow-blue rounded-2xl p-6 shadow-lg reveal">
+          <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Nov 2026 – Present</p>
+          <h3 class="text-base font-bold mt-3">Supermicro</h3>
+          <p class="text-slate-300 text-sm font-semibold mt-0.5">Manager, Rack Production</p>
+          <p class="text-slate-400 text-xs mt-3">Current role</p>
+        </article>
+
+        <article class="card card-hover glow-violet rounded-2xl p-6 shadow-lg reveal">
+          <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider">Sep 2026 – Oct 2026</p>
+          <h3 class="text-base font-bold mt-3">Leaseweb</h3>
+          <p class="text-slate-300 text-sm font-semibold mt-0.5">Team Manager, DC Operations – Infrastructure</p>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Coordinated the recovery of hundreds of servers across multiple racks in approximately one month, with an action plan and a management dashboard to keep progress visible.</p>
+          <a class="contact-link text-sm mt-3" href="#case-leaseweb">Read the case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </article>
+
         <article class="card card-hover rounded-2xl p-6 shadow-lg reveal reveal-d1">
           <div class="flex items-start justify-between gap-4 mb-4">
             <div>
@@ -1053,7 +1059,7 @@
           <div>
             <p class="text-sm font-semibold">Amsterdam University of Applied Sciences</p>
             <p class="text-slate-300 text-xs mt-1 font-medium">Bachelor of Business Administration</p>
-            <p class="text-slate-400 text-xs">International Business · 2024–2027</p>
+            <p class="text-slate-400 text-xs">International Business · 2024–Present · In progress</p>
           </div>
           <div class="mt-5 pt-5 border-t border-white/10">
             <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Languages</h4>
@@ -1131,33 +1137,28 @@
     </section>
 
     <!-- ══ CONTACT ══ -->
-    <section id="contact" class="py-20 reveal">
+    <section id="contact" class="py-20 reveal" aria-labelledby="contact-heading">
       <div class="max-w-4xl mx-auto px-6">
         <div class="contact-card rounded-2xl p-8 md:p-12 shadow-2xl text-center">
 
-          <h2 class="text-3xl font-extrabold tracking-tight">Let's build something serious</h2>
+          <h2 id="contact-heading" class="text-3xl font-extrabold tracking-tight">Let's build something serious</h2>
           <p class="text-slate-300 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             I'm drawn to <span class="text-white font-medium">complex, high-tempo operations</span> where operational clarity is the difference between performance and chaos — manufacturing, hyperscale, defense, or any environment where execution cannot slip.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
-            <a href="mailto:ivan@foschiera.com"
+            <a href="mailto:contact@foschiera.com"
                class="inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm">
-              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> ivan@foschiera.com
-            </a>
-            <a href="tel:+31686382315"
-               class="pill inline-flex items-center justify-center gap-2 hover:bg-white/10 px-7 py-3.5 rounded-full font-semibold transition text-sm">
-              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> +31 6 8638 2315
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> contact@foschiera.com
             </a>
             <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener"
                class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 px-7 py-3.5 rounded-full font-semibold shadow-lg transition text-sm">
-              <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> Connect on LinkedIn
+              <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> Contact me on LinkedIn
             </a>
           </div>
 
-          <div class="flex items-center justify-center gap-3 mt-7 text-slate-400">
-            <a href="assets/Ivan-Foschiera-CV.pdf" download aria-label="Download CV as PDF" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
-            <a href="mailto:ivan@foschiera.com" aria-label="Email" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a>
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-7 text-slate-400">
+            <a href="assets/Ivan-Foschiera-CV.pdf" download class="inline-flex items-center gap-2 px-3 py-2 rounded-full hover:text-white hover:bg-white/5 transition text-sm"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Download public CV</a>
             <a href="https://www.linkedin.com/in/ivanfoschiera" target="_blank" rel="noopener" aria-label="LinkedIn" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
             <a href="https://github.com/ivanfoschiera" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center justify-center w-11 h-11 rounded-full hover:text-white hover:bg-white/5 transition"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
           </div>
