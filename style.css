@@ -644,3 +644,24 @@ main, header, footer { position: relative; z-index: 1; }
 /* Professional contact links inherit the established portfolio palette. */
 .contact-link { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; color: #bfdbfe; font-weight: 600; font-size: .86rem; width: fit-content; }
 .contact-link:hover { color: #fff; }
+
+/* Consistent career-card headers with discreet, locally hosted employer marks. */
+.experience-header { margin-bottom: 1rem; }
+.experience-dates { display: flex; align-items: center; gap: .5rem; margin-bottom: .5rem; }
+.experience-dates .company-dot { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; }
+.experience-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.experience-heading-copy { min-width: 0; }
+.company-logo { width: 40px; height: 40px; flex: 0 0 auto; border-radius: 8px; }
+.company-logo { object-fit: contain; padding: 5px; background: #fff; }
+@media (min-width: 1024px) { .experience-header { min-height: 108px; } }
+
+/* One distinct accent per employer, shared by every role at that company. */
+.company-card[data-company="supermicro"] { --company-rgb: 34,211,238; }
+.company-card[data-company="leaseweb"] { --company-rgb: 251,191,36; }
+.company-card[data-company="wwt"] { --company-rgb: 96,165,250; }
+.company-card[data-company="mim"] { --company-rgb: 52,211,153; }
+.company-card[data-company="milimetra"] { --company-rgb: 167,139,250; }
+.company-accent { color: rgb(var(--company-rgb)); }
+.company-dot { background: rgb(var(--company-rgb)); }
+.company-icon { background: rgba(var(--company-rgb),.12); }
+.company-card.card-hover:hover { border-color: rgba(var(--company-rgb),.35); box-shadow: 0 0 36px rgba(var(--company-rgb),.08); }

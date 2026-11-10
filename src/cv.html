@@ -9,16 +9,16 @@
 -->
 <style>
   @page {
-    size: A4; margin: 12.7mm 15.9mm 15mm;
+    size: A4; margin: 12.7mm 15.9mm 10mm;
     @bottom-left { content: "Ivan Foschiera"; font: 8pt Arial, sans-serif; color: #64748B; }
     @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Arial, sans-serif; color: #64748B; }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 9.5pt;
+    font-size: 9pt;
     color: #1E293B;
-    line-height: 1.32;
+    line-height: 1.25;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -43,7 +43,7 @@
     margin-top: 8pt; margin-bottom: 3.5pt; padding-bottom: 1pt;
     break-after: avoid;
   }
-  .profile { color: #64748B; font-size: 9.5pt; margin-top: 3pt; margin-bottom: 6.5pt; }
+  .profile { color: #64748B; font-size: 9pt; margin-top: 3pt; margin-bottom: 6.5pt; }
 
   /* ── Impact cards ── */
   .impact-row { display: flex; gap: 1.8mm; margin-top: 2.75pt; margin-bottom: 6.5pt; }
@@ -70,8 +70,9 @@
   .job-meta { font-size: 8.5pt; color: #64748B; margin-bottom: 2.25pt; }
   .job-meta .dates { font-style: italic; }
   .job-meta .sep { color: #94A3B8; font-style: normal; }
+  .job-summary { color: #64748B; margin-bottom: 2.25pt; }
   ul { list-style: none; }
-  li { color: #64748B; font-size: 9.5pt; padding-left: 18pt; position: relative; margin-bottom: 0.8pt; }
+  li { color: #64748B; font-size: 9pt; padding-left: 18pt; position: relative; margin-bottom: 0.8pt; }
   li::before { color: #2563EB; content: "•"; position: absolute; left: 8pt; }
 
   /* ── Recommendation ── */
@@ -102,7 +103,7 @@
   @media screen { body { max-width: 800px; margin: 24px auto; padding: 24px; } }
 
   /* Footer */
-  .footer-rule { border-bottom: 0.5pt solid #E2E8F0; margin-top: 0; margin-bottom: 1pt; }
+  .footer-rule { border-bottom: 0.5pt solid #E2E8F0; margin-top: 0; margin-bottom: 0; }
   .footer-line { font-size: 7.5pt; color: #94A3B8; text-align: center; }
 </style>
 </head>
@@ -153,6 +154,12 @@
     <div class="job-title"><span class="role">Manager, Rack Production</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Supermicro</span></div>
     <div class="job-meta"><span class="dates">Nov 2026 - Present</span></div>
   </div>
+  <p class="job-summary">Focused on developing European rack-integration capability for data center and AI infrastructure, working with global engineering and operations teams.</p>
+  <ul>
+    <li>Developing the team through recruitment, onboarding and technical training across inventory, technician and engineering functions.</li>
+    <li>Aligning processes and knowledge transfer with global rack-integration teams.</li>
+    <li>Coordinating with engineering and service teams to connect factory integration with customer-site deployment support.</li>
+  </ul>
 </div>
 
 <div class="job-block">
@@ -160,9 +167,12 @@
     <div class="job-title"><span class="role">Team Manager, DC Operations - Infrastructure</span><span class="sep">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span class="company">Leaseweb</span></div>
     <div class="job-meta"><span class="dates">Sep 2026 - Oct 2026</span></div>
   </div>
+  <p class="job-summary">Led the infrastructure team within data center operations, combining technical delivery, people development and cross-functional coordination.</p>
   <ul>
     <li>Coordinated the <strong>recovery of hundreds of servers across multiple racks</strong> in approximately one month.</li>
-    <li>Built a <strong>shared recovery plan and management dashboard</strong> with milestones and per-server progress, giving teams and senior leadership one view of the work.</li>
+    <li>Built a <strong>shared recovery tracker</strong> with milestones and per-server progress, giving engineers and senior leadership a consistent view of the work.</li>
+    <li>Established weekly one-to-ones and regular feedback focused on development, engagement and clear ownership.</li>
+    <li>Identified and recommended improvements in onboarding, cross-training, standard work and visual management.</li>
   </ul>
 </div>
 
