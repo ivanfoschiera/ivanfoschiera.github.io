@@ -184,3 +184,133 @@ if (caseSelector) {
     }
   });
 }
+
+// Glass skin: a glint follows the pointer across each pane (see glass.css).
+// Purely decorative; skipped on touch devices and in the classic skin.
+if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hover: hover)').matches) {
+  const panes = '.card, .contact-card, .case-study-card, .hero-snapshot';
+  document.addEventListener('pointermove', e => {
+    const pane = e.target instanceof Element ? e.target.closest(panes) : null;
+    if (!pane) return;
+    const r = pane.getBoundingClientRect();
+    pane.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    pane.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+}
+
+// Glass skin: liquid-glass edge refraction. Each slab gets its own SVG
+// displacement map (a rounded-rect "lens" matching its size and radius), so
+// the page behind is bent inward around the perimeter while the centre stays
+// flat. Only Chromium can use an SVG filter as a backdrop-filter; other
+// browsers keep the CSS frost + bevel from glass.css.
+(function () {
+  const root = document.documentElement;
+  if (root.dataset.skin !== 'glass') return;
+  if (!(navigator.userAgentData || window.chrome) || !('ResizeObserver' in window)) return;
+  if (!window.matchMedia('(hover: hover) and (min-width: 768px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-transparency: reduce)').matches) return;
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('width', '0');
+  svg.setAttribute('height', '0');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.style.position = 'absolute';
+  const defs = svg.appendChild(document.createElementNS(NS, 'defs'));
+  document.body.appendChild(svg);
+
+  // [selector, frost in px once refraction is on, saturation]. Frost is kept
+  // light here: a clear slab is what lets the bent edge show.
+  const groups = [
+    ['.card, .contact-card, .case-study-card, .senna-block', 3, 1.8],
+    ['.hero-snapshot', 8, 1.8],
+    ['#site-header > nav', 8, 1.85],
+    ['#mobile-menu', 16, 1.85],
+    ['.billboard-section', 4, 1.8],
+    ['#top .btn-primary, #top a.pill, #top .chip, .eyebrow, footer p', 2, 1.8],
+    ['.case-tab', 3, 1.8]
+  ];
+  const slabs = '.card, .contact-card, .case-study-card, .hero-snapshot, .billboard-section, #site-header > nav';
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  let seq = 0;
+
+  // Lens map: R/G hold the x/y offset (128 = none). Inside the rim band the
+  // sample point is pushed toward the slab's interior, strongest at the edge.
+  function lensMap(w, h, r, band, depth) {
+    const q = Math.min(1, 520 / Math.max(w, h), 0.5 * Math.max(1, 60 / Math.min(w, h)));
+    const cw = Math.max(2, Math.round(w * q)), ch = Math.max(2, Math.round(h * q));
+    canvas.width = cw; canvas.height = ch;
+    const img = ctx.createImageData(cw, ch);
+    const d = img.data, hx = w / 2, hy = h / 2;
+    for (let j = 0; j < ch; j++) {
+      const py = (j + 0.5) / q - hy, ay = Math.abs(py) - (hy - r);
+      for (let i = 0; i < cw; i++) {
+        const px = (i + 0.5) / q - hx, ax = Math.abs(px) - (hx - r);
+        let nx = 0, ny = 0, dist;
+        if (ax > 0 && ay > 0) {
+          const len = Math.hypot(ax, ay) || 1;
+          dist = r - len; nx = ax / len; ny = ay / len;
+        } else if (ax > ay) { dist = r - ax; nx = 1; }
+        else { dist = r - ay; ny = 1; }
+        let m = 0;
+        if (dist >= 0 && dist < band) { const t = 1 - dist / band; m = t * t; }
+        const k = (j * cw + i) * 4;
+        d[k]     = 128 - Math.round(127 * m * nx * Math.sign(px));
+        d[k + 1] = 128 - Math.round(127 * m * ny * Math.sign(py));
+        d[k + 2] = 128; d[k + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    return { url: canvas.toDataURL(), scale: 2 * depth };
+  }
+
+  function apply(el, blur, sat) {
+    const w = el.offsetWidth, h = el.offsetHeight;
+    if (w < 8 || h < 8) return;
+    const half = Math.min(w, h) / 2;
+    const r = Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0, half);
+    let band = Math.max(8, Math.min(24, half * 0.36));
+    if (r > 0) band = Math.min(band, Math.max(8, r * 1.3));
+    const map = lensMap(w, h, r, band, band * 0.9);
+
+    let f = el._lens;
+    if (!f) {
+      f = el._lens = document.createElementNS(NS, 'filter');
+      f.id = 'lens-' + (++seq);
+      f.setAttribute('color-interpolation-filters', 'sRGB');
+      f.setAttribute('filterUnits', 'userSpaceOnUse');
+      f.setAttribute('x', '0'); f.setAttribute('y', '0');
+      const im = f.appendChild(document.createElementNS(NS, 'feImage'));
+      im.setAttribute('x', '0'); im.setAttribute('y', '0');
+      im.setAttribute('preserveAspectRatio', 'none');
+      im.setAttribute('result', 'lens');
+      const dm = f.appendChild(document.createElementNS(NS, 'feDisplacementMap'));
+      dm.setAttribute('in', 'SourceGraphic'); dm.setAttribute('in2', 'lens');
+      dm.setAttribute('xChannelSelector', 'R'); dm.setAttribute('yChannelSelector', 'G');
+      defs.appendChild(f);
+    }
+    const im = f.firstChild, dm = f.lastChild;
+    f.setAttribute('width', w); f.setAttribute('height', h);
+    im.setAttribute('width', w); im.setAttribute('height', h);
+    im.setAttribute('href', map.url);
+    dm.setAttribute('scale', map.scale);
+    el.style.backdropFilter = 'url(#' + f.id + ') blur(' + blur + 'px) saturate(' + sat + ') brightness(1.06)';
+  }
+
+  const pending = new Map();
+  let timer = 0;
+  const flush = () => { timer = 0; pending.forEach((cfg, el) => apply(el, cfg[0], cfg[1])); pending.clear(); };
+  const ro = new ResizeObserver(entries => {
+    entries.forEach(e => { if (e.target._cfg) pending.set(e.target, e.target._cfg); });
+    if (!timer) timer = setTimeout(flush, 60);
+  });
+  groups.forEach(([sel, blur, sat]) => {
+    document.querySelectorAll(sel).forEach(el => {
+      // Glass nested inside a slab has no page behind it to bend
+      if (el.parentElement && el.parentElement.closest(slabs)) return;
+      el._cfg = [blur, sat];
+      ro.observe(el);
+    });
+  });
+})();

@@ -1,0 +1,520 @@
+/* ============================================================
+   foschiera.com — "Glass" skin
+   A pure skin layered on top of style.css. Every rule is scoped
+   to <html data-skin="glass">, so layout, content and the classic
+   look are untouched:
+
+     · classic look  → remove data-skin="glass" from <html>
+                       (or preview with ?skin=classic)
+     · full rollback → git tag classic-design-pre-glass
+
+   Anatomy of a pane: translucent fill + diagonal sheen, backdrop
+   blur/saturation (the "frost"), a gradient specular rim, an inner
+   top highlight, a soft drop shadow, and a pointer-following glint.
+   Nested glass (pills, wells, tiles inside a pane) never re-blurs:
+   a pane is its own backdrop root, so inner pieces are lit with
+   gradients and highlights only.
+   ============================================================ */
+
+[data-skin="glass"] {
+  --header-h: 74px;
+  --g-blur: 22px;
+  --g-frost: blur(var(--g-blur)) saturate(175%) brightness(1.06);
+  --g-fill: rgba(13, 22, 41, 0.40);
+  --g-sheen: linear-gradient(135deg,
+      rgba(255,255,255,0.13) 0%,
+      rgba(255,255,255,0.035) 30%,
+      rgba(255,255,255,0.012) 62%,
+      rgba(255,255,255,0.065) 100%);
+  --g-rim: linear-gradient(135deg,
+      rgba(255,255,255,0.62) 0%,
+      rgba(255,255,255,0.10) 28%,
+      rgba(255,255,255,0.03) 58%,
+      rgba(255,255,255,0.34) 100%);
+  /* The slab's 3D perimeter: a hard specular line where light enters
+     (top-left) and exits (bottom-right), a soft inner glow just inside
+     it, and a shaded lower lip that gives the edge its thickness.
+     Inset shadows follow the border radius exactly. */
+  --g-spec:
+      inset 0 0 0 1px rgba(255,255,255,0.08),
+      inset 1.5px 1.5px 1px -0.5px rgba(255,255,255,0.72),
+      inset -1.5px -1.5px 1px -0.5px rgba(255,255,255,0.40),
+      inset 6px 6px 12px -6px rgba(255,255,255,0.30),
+      inset -6px -6px 12px -6px rgba(255,255,255,0.13),
+      inset 0 -16px 24px -18px rgba(0,0,0,0.60),
+      inset 0 0 28px rgba(255,255,255,0.04);
+  --g-spec-sm:
+      inset 1px 1px 0.5px -0.25px rgba(255,255,255,0.66),
+      inset -1px -1px 0.5px -0.25px rgba(255,255,255,0.32),
+      inset 3px 3px 6px -3px rgba(255,255,255,0.30),
+      inset 0 -6px 9px -7px rgba(0,0,0,0.55);
+  --g-shadow:
+      0 26px 60px -22px rgba(0,0,0,0.65),
+      0 2px 8px rgba(0,0,0,0.22);
+  --tint: 96, 165, 250; /* per-pane accent, r,g,b */
+}
+
+/* ── The world behind the glass ──
+   Glass only reads as glass when there is light and shape behind it.
+   Fixed colour orbs (the four semantic accents) drift slowly, so panes
+   frost different light as the page scrolls over them. */
+[data-skin="glass"] .bg-canvas {
+  background:
+    radial-gradient(ellipse 70% 55% at 10% 0%,  rgba(37,99,235,0.26) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 96% 14%, rgba(124,58,237,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 72% 100%, rgba(16,185,129,0.11) 0%, transparent 70%),
+    linear-gradient(160deg, #080e1a 0%, #0c1629 50%, #080e1a 100%);
+}
+[data-skin="glass"] .bg-canvas::before,
+[data-skin="glass"] .bg-grid::before {
+  content: ''; position: absolute; inset: -18%;
+  pointer-events: none;
+}
+[data-skin="glass"] .bg-canvas::before {
+  background:
+    radial-gradient(circle 21vmax at 24% 34%, rgba(59,130,246,0.42) 0%, rgba(59,130,246,0.12) 45%, transparent 70%),
+    radial-gradient(circle 15vmax at 78% 66%, rgba(139,92,246,0.34) 0%, rgba(139,92,246,0.09) 45%, transparent 70%);
+}
+[data-skin="glass"] .bg-grid::before {
+  background:
+    radial-gradient(circle 13vmax at 16% 78%, rgba(45,212,191,0.24) 0%, rgba(45,212,191,0.06) 45%, transparent 70%),
+    radial-gradient(circle 9vmax at 60% 22%,  rgba(245,158,11,0.13) 0%, transparent 70%),
+    radial-gradient(circle 11vmax at 90% 92%, rgba(56,189,248,0.20) 0%, transparent 70%);
+}
+[data-skin="glass"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  @keyframes orb-drift-a {
+    from { transform: translate3d(-4%, -3%, 0) scale(1); }
+    to   { transform: translate3d(6%, 7%, 0) scale(1.12); }
+  }
+  @keyframes orb-drift-b {
+    from { transform: translate3d(5%, 4%, 0) scale(1.08); }
+    to   { transform: translate3d(-6%, -6%, 0) scale(1); }
+  }
+  [data-skin="glass"] .bg-canvas::before { animation: orb-drift-a 46s ease-in-out infinite alternate; }
+  [data-skin="glass"] .bg-grid::before   { animation: orb-drift-b 62s ease-in-out infinite alternate; }
+}
+
+/* ── Panes ── */
+[data-skin="glass"] .card,
+[data-skin="glass"] .contact-card,
+[data-skin="glass"] .case-study-card,
+[data-skin="glass"] .hero-snapshot,
+[data-skin="glass"] .senna-block {
+  position: relative;
+  background: var(--g-sheen), var(--g-fill);
+  -webkit-backdrop-filter: var(--g-frost);
+  backdrop-filter: var(--g-frost);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: var(--g-spec), var(--g-shadow);
+}
+
+/* Specular rim: bright where light enters (top-left) and exits (bottom-right) */
+[data-skin="glass"] .card::before,
+[data-skin="glass"] .contact-card::before,
+[data-skin="glass"] .case-study-card::before,
+[data-skin="glass"] .hero-snapshot::before,
+[data-skin="glass"] #site-header > nav::before,
+[data-skin="glass"] #mobile-menu::before {
+  content: '';
+  position: absolute; inset: 0; height: auto;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--g-rim);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+/* Pointer glint: light sliding across the pane (position set in script.js) */
+[data-skin="glass"] .card::after,
+[data-skin="glass"] .contact-card::after,
+[data-skin="glass"] .case-study-card::after,
+[data-skin="glass"] .hero-snapshot::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(440px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(var(--tint), 0.17) 0%,
+      rgba(255,255,255,0.05) 34%,
+      transparent 66%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+[data-skin="glass"] .card:hover::after,
+[data-skin="glass"] .contact-card:hover::after,
+[data-skin="glass"] .case-study-card:hover::after,
+[data-skin="glass"] .hero-snapshot:hover::after { opacity: 1; }
+
+/* Accent per pane (same semantic colours as the classic skin) */
+[data-skin="glass"] .glow-emerald { --tint: 52, 211, 153; }
+[data-skin="glass"] .glow-violet  { --tint: 167, 139, 250; }
+[data-skin="glass"] .glow-amber   { --tint: 251, 191, 36; }
+
+html[data-skin="glass"] .card-hover:hover,
+html[data-skin="glass"] .card-hover.glow-emerald:hover,
+html[data-skin="glass"] .card-hover.glow-violet:hover,
+html[data-skin="glass"] .card-hover.glow-amber:hover {
+  border-color: rgba(var(--tint), 0.30);
+  box-shadow:
+    var(--g-spec),
+    0 0 0 1px rgba(var(--tint), 0.10),
+    0 30px 70px -22px rgba(0,0,0,0.7),
+    0 0 44px -6px rgba(var(--tint), 0.22);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Keep the staggered scroll reveal, but let hover respond instantly */
+  html[data-skin="glass"] .reveal-d1 { --rd: 0.06s; }
+  html[data-skin="glass"] .reveal-d2 { --rd: 0.12s; }
+  html[data-skin="glass"] .reveal-d3 { --rd: 0.18s; }
+  html[data-skin="glass"] .reveal-d4 { --rd: 0.24s; }
+  html[data-skin="glass"] .reveal-d5 { --rd: 0.30s; }
+  html[data-skin="glass"] .reveal-d6 { --rd: 0.36s; }
+  html[data-skin="glass"] .reveal-d7 { --rd: 0.42s; }
+  html.js[data-skin="glass"] .card-hover {
+    transition:
+      opacity 0.45s ease var(--rd, 0s),
+      transform 0.45s cubic-bezier(.2,.7,.2,1) var(--rd, 0s),
+      border-color 0.25s ease,
+      box-shadow 0.3s ease;
+  }
+  html.js[data-skin="glass"] .card-hover.visible:hover {
+    transform: translateY(-3px);
+    transition-delay: 0s;
+  }
+}
+
+/* A section that fades as a whole would stop its panes from seeing the
+   page behind them mid-fade (they would pop from clear to frosted), so
+   in this skin only the panes themselves animate in. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js[data-skin="glass"] section.reveal {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+/* ── Header: a floating glass capsule ── */
+[data-skin="glass"] #site-header,
+[data-skin="glass"] #site-header.glass {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: 0;
+  pointer-events: none; /* only the capsule and menu catch clicks */
+}
+[data-skin="glass"] #site-header > nav {
+  pointer-events: auto;
+  position: relative;
+  width: calc(100% - 1.5rem);
+  margin-top: 10px;
+  padding: 0.4rem 0.5rem 0.4rem 1.35rem;
+  border-radius: 9999px;
+  background: var(--g-sheen), rgba(11, 19, 36, 0.46);
+  -webkit-backdrop-filter: blur(26px) saturate(185%) brightness(1.08);
+  backdrop-filter: blur(26px) saturate(185%) brightness(1.08);
+  box-shadow: var(--g-spec), 0 18px 44px -18px rgba(0,0,0,0.7), 0 2px 6px rgba(0,0,0,0.25);
+}
+[data-skin="glass"] #site-header.header-hidden { transform: translateY(-130%); }
+
+[data-skin="glass"] #site-header > nav > a:first-child { white-space: nowrap; }
+[data-skin="glass"] .nav-link { padding: 6px 10px; margin: 0 -7px; border-radius: 9999px; transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease; }
+[data-skin="glass"] .nav-link::after { display: none; }
+[data-skin="glass"] .nav-link:hover,
+[data-skin="glass"] .nav-link:focus-visible {
+  background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.07);
+}
+
+[data-skin="glass"] #mobile-menu {
+  pointer-events: auto;
+  top: calc(100% + 8px); left: 0.75rem; right: 0.75rem;
+  border: 0;
+  border-radius: 1.5rem;
+  background: var(--g-sheen), rgba(9, 16, 31, 0.66);
+  -webkit-backdrop-filter: blur(30px) saturate(185%);
+  backdrop-filter: blur(30px) saturate(185%);
+  box-shadow: var(--g-spec), 0 30px 60px -16px rgba(0,0,0,0.75);
+}
+[data-skin="glass"] #mobile-menu nav { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+/* ── Buttons, chips and pills: small pieces of glass ── */
+[data-skin="glass"] .chip,
+[data-skin="glass"] .pill,
+[data-skin="glass"] .eyebrow,
+[data-skin="glass"] .tint-neutral,
+[data-skin="glass"] footer p,
+[data-skin="glass"] .contact-card a.px-3,
+[data-skin="glass"] .contact-card a.w-11 {
+  background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 100%);
+  border: 1px solid rgba(255,255,255,0.13);
+  box-shadow: var(--g-spec-sm), 0 4px 14px -6px rgba(0,0,0,0.5);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(170%);
+}
+/* Inside a pane (already a backdrop root) there is nothing new to frost */
+[data-skin="glass"] :is(.card, .hero-snapshot, .case-study-card, .contact-card, .billboard-section, #site-header) :is(.chip, .pill, .eyebrow, .tint-neutral, a.w-11, a.px-3) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+[data-skin="glass"] a.chip:hover,
+[data-skin="glass"] button.chip:hover,
+[data-skin="glass"] a.pill:hover,
+[data-skin="glass"] .contact-card a.px-3:hover,
+[data-skin="glass"] .contact-card a.w-11:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%);
+  border-color: rgba(255,255,255,0.24);
+}
+
+/* Section eyebrows become small glass labels */
+[data-skin="glass"] .eyebrow {
+  display: block;
+  width: -moz-fit-content; width: fit-content;
+  padding: 0.38rem 0.95rem;
+  border-radius: 9999px;
+}
+[data-skin="glass"] .text-center > .eyebrow { margin-left: auto; margin-right: auto; }
+
+/* Primary action: blue-tinted glass */
+[data-skin="glass"] .btn-primary {
+  background: linear-gradient(180deg, rgba(96,165,250,0.62) 0%, rgba(37,99,235,0.60) 55%, rgba(29,78,216,0.66) 100%);
+  border: 1px solid rgba(147,197,253,0.42);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(190%);
+  box-shadow:
+    var(--g-spec-sm),
+    inset 0 -8px 14px -8px rgba(191,219,254,0.30),
+    0 12px 30px -10px rgba(37,99,235,0.75),
+    0 2px 6px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 1px rgba(8,20,60,0.35);
+}
+[data-skin="glass"] .btn-primary:hover {
+  background: linear-gradient(180deg, rgba(125,185,255,0.72) 0%, rgba(59,130,246,0.68) 55%, rgba(37,99,235,0.72) 100%);
+  box-shadow:
+    var(--g-spec-sm),
+    inset 0 -8px 14px -8px rgba(191,219,254,0.38),
+    0 14px 36px -8px rgba(59,130,246,0.85),
+    0 2px 6px rgba(0,0,0,0.25);
+}
+/* Bright "clear" glass for the single lightest action */
+[data-skin="glass"] .btn-light {
+  background: linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(226,235,250,0.78) 100%);
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -8px 14px -8px rgba(148,180,235,0.55),
+    0 12px 30px -10px rgba(148,190,255,0.5),
+    0 2px 6px rgba(0,0,0,0.25);
+}
+[data-skin="glass"] .btn-light:hover { background: linear-gradient(180deg, #fff 0%, rgba(236,243,255,0.9) 100%); }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-skin="glass"] :is(.btn-primary, .btn-light, a.pill, a.chip, button.chip, .contact-card a.w-11) {
+    transition: transform 0.18s cubic-bezier(.2,.7,.2,1), background 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+  }
+  [data-skin="glass"] :is(.btn-primary, .btn-light, a.pill):hover { transform: translateY(-1px); }
+  [data-skin="glass"] :is(.btn-primary, .btn-light, a.pill, a.chip, button.chip, .contact-card a.w-11):active { transform: scale(0.965); }
+}
+
+/* ── Tinted glass: icon wells, stat tiles, badges ── */
+[data-skin="glass"] :is(.tint-blue, .tint-blue-border, .tile-blue, .case-metric-card, .case-number) { --c: 59, 130, 246; }
+[data-skin="glass"] :is(.tint-emerald, .tint-emerald-border, .tile-emerald, .otw-badge) { --c: 16, 185, 129; }
+[data-skin="glass"] :is(.tint-violet, .tint-violet-border, .tile-violet) { --c: 139, 92, 246; }
+[data-skin="glass"] :is(.tile-amber, .award-badge) { --c: 245, 158, 11; }
+
+[data-skin="glass"] :is(.tint-blue, .tint-emerald, .tint-violet, .tint-blue-border, .tint-emerald-border, .tint-violet-border, .award-badge, .otw-badge) {
+  background: linear-gradient(145deg, rgba(var(--c), 0.34) 0%, rgba(var(--c), 0.10) 60%, rgba(var(--c), 0.18) 100%);
+  border: 1px solid rgba(var(--c), 0.34);
+  box-shadow:
+    var(--g-spec-sm),
+    inset 0 -6px 10px -6px rgba(var(--c), 0.55),
+    0 8px 18px -8px rgba(var(--c), 0.55);
+}
+[data-skin="glass"] a.tint-blue-border:hover {
+  background: linear-gradient(145deg, rgba(var(--c), 0.46) 0%, rgba(var(--c), 0.18) 60%, rgba(var(--c), 0.28) 100%);
+}
+[data-skin="glass"] :is(.tile-blue, .tile-emerald, .tile-violet, .tile-amber, .case-metric-card) {
+  background: linear-gradient(150deg, rgba(var(--c), 0.20) 0%, rgba(var(--c), 0.05) 55%, rgba(var(--c), 0.11) 100%);
+  border: 1px solid rgba(var(--c), 0.26);
+  box-shadow:
+    var(--g-spec-sm),
+    inset 0 0 24px rgba(var(--c), 0.07),
+    0 10px 24px -14px rgba(0,0,0,0.6);
+}
+[data-skin="glass"] .avatar-chip {
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: var(--g-spec-sm), 0 6px 14px -8px rgba(0,0,0,0.6);
+}
+[data-skin="glass"] .case-number,
+[data-skin="glass"] .case-flow-index {
+  box-shadow: var(--g-spec-sm), 0 6px 16px -8px rgba(var(--flow-rgb, 96, 165, 250), 0.6);
+}
+[data-skin="glass"] .accent-line {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.14);
+}
+
+/* ── Hero ── */
+[data-skin="glass"] .senna-block {
+  width: -moz-fit-content; width: fit-content;
+  padding: 0.9rem 1.15rem;
+  border-radius: 1rem;
+  border-left: 2px solid rgba(96,165,250,0.75);
+}
+[data-skin="glass"] .hero-snapshot {
+  background: var(--g-sheen), rgba(10, 18, 34, 0.30);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
+  box-shadow: var(--g-spec), 0 34px 80px -20px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.25);
+}
+@media (min-width: 1024px) {
+  /* The portrait dissolves into the scene (mask) instead of being painted
+     over with the old flat background colour, so orbs show through the fade. */
+  [data-skin="glass"] .hero-portrait-shell {
+    background: transparent;
+    box-shadow: none;
+    clip-path: none; /* the mask's right-hand fade replaces the hard crop */
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.14) 8%, rgba(0,0,0,0.9) 38%, #000 58%, #000 80%, transparent 90%),
+      linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.24) 10%, #000 42%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.14) 8%, rgba(0,0,0,0.9) 38%, #000 58%, #000 80%, transparent 90%),
+      linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.24) 10%, #000 42%);
+    mask-composite: intersect;
+  }
+  [data-skin="glass"] .hero-portrait-shell::after { display: none; }
+}
+@media (max-width: 1023px) {
+  /* Stacked layout: the portrait sits in a glass frame */
+  [data-skin="glass"] .hero-portrait-shell {
+    border: 1px solid rgba(255,255,255,0.20);
+    box-shadow: 0 0 0 6px rgba(255,255,255,0.045), var(--g-shadow);
+  }
+}
+
+/* ── Selected work ── */
+[data-skin="glass"] .case-study-card {
+  background: var(--g-sheen), rgba(11, 20, 38, 0.46);
+  border-color: rgba(147,197,253,0.10);
+}
+[data-skin="glass"] .case-evidence {
+  background: linear-gradient(180deg, rgba(59,130,246,0.10), rgba(59,130,246,0.02)), rgba(4, 9, 20, 0.30);
+  border-left-color: rgba(255,255,255,0.10);
+  box-shadow: inset 1px 0 0 rgba(255,255,255,0.05);
+}
+
+/* Case selector: real tabs of glass. The selected tab is lit in its case colour. */
+[data-skin="glass"] .case-tab {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%), rgba(13, 22, 41, 0.30);
+  border: 1px solid rgba(255,255,255,0.10);
+  -webkit-backdrop-filter: blur(14px) saturate(175%);
+  backdrop-filter: blur(14px) saturate(175%);
+  box-shadow: var(--g-spec-sm), 0 10px 26px -14px rgba(0,0,0,0.65);
+}
+[data-skin="glass"] .case-tab:hover,
+[data-skin="glass"] .case-tab[aria-selected="true"] {
+  background:
+    linear-gradient(180deg, rgba(var(--case-rgb), 0.30) 0%, rgba(var(--case-rgb), 0.08) 100%),
+    rgba(13, 22, 41, 0.30);
+  border-color: rgba(var(--case-rgb), 0.45);
+}
+[data-skin="glass"] .case-tab[aria-selected="true"] {
+  box-shadow:
+    var(--g-spec-sm),
+    inset 0 -8px 14px -8px rgba(var(--case-rgb), 0.45),
+    0 14px 34px -12px rgba(var(--case-rgb), 0.55);
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-skin="glass"] .case-tab { transition: transform 0.18s cubic-bezier(.2,.7,.2,1), background 0.25s ease, box-shadow 0.3s ease, border-color 0.25s ease; }
+  [data-skin="glass"] .case-tab:hover { transform: translateY(-1px); }
+  [data-skin="glass"] .case-tab:active { transform: scale(0.98); }
+}
+/* Themed cases carry their own colour through the glass */
+[data-skin="glass"] .case-panel { --tint: var(--case-rgb, 96, 165, 250); }
+[data-skin="glass"] .case-panel[class*="case-theme-"] { border-color: rgba(var(--case-rgb), 0.12); }
+[data-skin="glass"] .case-panel[class*="case-theme-"]::before { background: var(--g-rim); }
+[data-skin="glass"] .case-panel[class*="case-theme-"] :is(.case-number, .case-metric-card) { --c: var(--case-rgb); }
+
+/* ── Experience: one accent per employer ── */
+[data-skin="glass"] .company-card { --tint: var(--company-rgb, 96, 165, 250); }
+[data-skin="glass"] .company-icon {
+  --c: var(--company-rgb, 96, 165, 250);
+  background: linear-gradient(145deg, rgba(var(--c), 0.34) 0%, rgba(var(--c), 0.10) 60%, rgba(var(--c), 0.18) 100%);
+  border: 1px solid rgba(var(--c), 0.34);
+  box-shadow: var(--g-spec-sm), 0 8px 18px -8px rgba(var(--c), 0.55);
+}
+[data-skin="glass"] .company-logo {
+  background: linear-gradient(180deg, #fff 0%, #e6edf8 100%);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -4px 6px -4px rgba(120,150,200,0.6), 0 6px 14px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.25);
+}
+
+/* ── Billboard: a full-width slab ── */
+[data-skin="glass"] .billboard-section {
+  background: linear-gradient(135deg, rgba(59,130,246,0.13) 0%, rgba(255,255,255,0.02) 55%, rgba(139,92,246,0.07) 100%), rgba(12, 21, 40, 0.34);
+  -webkit-backdrop-filter: var(--g-frost);
+  backdrop-filter: var(--g-frost);
+  border-top: 1px solid rgba(255,255,255,0.20);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    inset 0 1.5px 1px -0.5px rgba(255,255,255,0.55),
+    inset 0 -1.5px 1px -0.5px rgba(255,255,255,0.30),
+    inset 0 8px 14px -8px rgba(255,255,255,0.22),
+    inset 0 -18px 26px -20px rgba(0,0,0,0.6),
+    inset 0 0 60px rgba(255,255,255,0.025),
+    0 30px 60px -30px rgba(0,0,0,0.6);
+}
+
+/* ── Contact ── */
+[data-skin="glass"] .contact-card {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(59,130,246,0.20) 0%, transparent 60%),
+    var(--g-sheen), var(--g-fill);
+  border-color: rgba(147,197,253,0.14);
+  border-radius: 2rem;
+}
+
+/* ── Footer ── */
+[data-skin="glass"] footer p {
+  width: -moz-fit-content; width: fit-content;
+  margin: 0 auto;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+}
+
+/* ── Smaller screens: lighter frost (cheaper on phone GPUs) ── */
+@media (max-width: 767px) {
+  [data-skin="glass"] { --g-blur: 16px; }
+}
+
+/* ── Fallbacks: no backdrop-filter, or the visitor asked for less transparency ── */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-skin="glass"] { --g-fill: rgba(13, 22, 41, 0.88); }
+  [data-skin="glass"] #site-header > nav,
+  [data-skin="glass"] #mobile-menu { background: rgba(11, 19, 36, 0.96); }
+  [data-skin="glass"] .hero-snapshot { background: rgba(10, 18, 34, 0.82); }
+  [data-skin="glass"] .billboard-section { background: rgba(12, 21, 40, 0.85); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  [data-skin="glass"] { --g-fill: #0d1629; --g-frost: none; }
+  [data-skin="glass"] #site-header > nav,
+  [data-skin="glass"] #mobile-menu,
+  [data-skin="glass"] .hero-snapshot,
+  [data-skin="glass"] .case-study-card,
+  [data-skin="glass"] .billboard-section {
+    background: #0d1629;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  [data-skin="glass"] :is(.chip, .pill, .eyebrow, footer p, .btn-primary) {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  [data-skin="glass"] .btn-primary { background: #2563eb; }
+}
