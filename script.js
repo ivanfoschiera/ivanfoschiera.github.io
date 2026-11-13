@@ -56,6 +56,10 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
 if (!reducedMotion.matches && ('IntersectionObserver' in window)) {
   const animCount = (el, target, prefix, suffix, decimals, dur) => {
     const start = performance.now();
+    // Numbers that sit inline (e.g. "70% → 99.7%") hold their final width
+    // while counting, so the arrow and the neighbouring number stay put.
+    const inline = getComputedStyle(el).display === 'inline-block';
+    if (inline) el.style.minWidth = el.offsetWidth + 'px';
     (function step(ts) {
       const p = Math.min((ts - start) / dur, 1);
       const ease = 1 - Math.pow(1 - p, 3);
@@ -64,6 +68,7 @@ if (!reducedMotion.matches && ('IntersectionObserver' in window)) {
         : Math.round(ease * target);
       el.textContent = prefix + value + suffix;
       if (p < 1) requestAnimationFrame(step);
+      else if (inline) el.style.minWidth = '';
     })(performance.now());
   };
   const countObs = new IntersectionObserver(entries => {
@@ -347,19 +352,65 @@ if (document.documentElement.dataset.skin === 'glass' && document.documentElemen
     el.style.backdropFilter = 'url(#' + f.id + ')' + (blur ? ' blur(' + blur + 'px)' : '') + ' saturate(' + sat + ') brightness(' + lens.bright + ')';
   }
 
-  const pending = new Map();
-  let timer = 0;
-  const flush = () => { timer = 0; pending.forEach((cfg, el) => apply(el, cfg[0], cfg[1])); pending.clear(); };
+  // Building a lens means decoding a map image and compiling an SVG filter on
+  // the GPU. Doing that for every slab at once on load stalled the page for a
+  // second or two, right while the hero card animates in. So lenses are built
+  // lazily: only for slabs on or near the screen, one at a time, and not until
+  // the entrance animation and the stat count-up have finished. Until a slab
+  // has its lens it simply shows the CSS frost from the stylesheet.
+  const START_DELAY = 1700;   // ms after load: hero fade-in + count-up are done
+  const STEP = 40;            // ms between lenses, so frames keep flowing
+  const NEAR = 500;           // px beyond the viewport to prepare ahead of scrolling
+  const dirty = new Set();    // slabs whose lens is missing or out of date
+  const queue = [];
+  let started = false, stepping = false, sweepQueued = false;
+
+  const step = () => {
+    const el = queue.shift();
+    if (!el) { stepping = false; return; }
+    el._queued = false;
+    apply(el, el._cfg[0], el._cfg[1]);
+    setTimeout(step, STEP);
+  };
+  const sweep = () => {
+    sweepQueued = false;
+    if (!started) return;
+    const vh = window.innerHeight;
+    dirty.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.width < 8 || r.height < 8) return;          // hidden (e.g. inactive case tab)
+      if (r.bottom < -NEAR || r.top > vh + NEAR) return; // far off screen: later
+      dirty.delete(el);
+      if (!el._queued) {
+        el._queued = true;
+        // On-screen slabs go first
+        if (r.bottom > 0 && r.top < vh) queue.unshift(el); else queue.push(el);
+      }
+    });
+    if (queue.length && !stepping) { stepping = true; setTimeout(step, 0); }
+  };
+  const requestSweep = () => {
+    if (!sweepQueued) { sweepQueued = true; setTimeout(sweep, 120); }
+  };
+
+  // Size changes (including a hidden slab becoming visible) mark a lens stale
   const ro = new ResizeObserver(entries => {
-    entries.forEach(e => { if (e.target._cfg) pending.set(e.target, e.target._cfg); });
-    if (!timer) timer = setTimeout(flush, 60);
+    entries.forEach(e => { if (e.target._cfg) dirty.add(e.target); });
+    requestSweep();
   });
   groups.forEach(([sel, blur, sat]) => {
     document.querySelectorAll(sel).forEach(el => {
       // Glass nested inside a slab has no page behind it to bend
       if (el.parentElement && el.parentElement.closest(slabs)) return;
       el._cfg = [blur, sat];
+      dirty.add(el);
       ro.observe(el);
     });
   });
+  window.addEventListener('scroll', requestSweep, { passive: true });
+  window.addEventListener('resize', requestSweep, { passive: true });
+
+  const begin = () => setTimeout(() => { started = true; requestSweep(); }, START_DELAY);
+  if (document.readyState === 'complete') begin();
+  else window.addEventListener('load', begin, { once: true });
 })();
