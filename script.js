@@ -186,8 +186,9 @@ if (caseSelector) {
 }
 
 // Glass skin: a glint follows the pointer across each pane (see glass.css).
-// Purely decorative; skipped on touch devices and in the classic skin.
-if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hover: hover)').matches) {
+// Purely decorative; skipped on touch devices, in the classic skin, and in the
+// soft glass skin (which has no pointer light at all).
+if (document.documentElement.dataset.skin === 'glass' && document.documentElement.dataset.glass !== 'soft' && window.matchMedia('(hover: hover)').matches) {
   const panes = '.card, .contact-card, .case-study-card, .hero-snapshot';
   document.addEventListener('pointermove', e => {
     const pane = e.target instanceof Element ? e.target.closest(panes) : null;
@@ -219,9 +220,48 @@ if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hov
   const defs = svg.appendChild(document.createElementNS(NS, 'defs'));
   document.body.appendChild(svg);
 
+  // Soft glass (the default) leans on the lens instead of highlights: no frost,
+  // no brightness lift, and a physically shaped rim (see bezel below).
+  const soft = root.dataset.glass === 'soft';
+  const lens = soft
+    ? { bandMax: 36, bandOfHalf: 0.46, bandOfRadius: 2.2, depth: 1.05, bright: 1 }
+    : { bandMax: 24, bandOfHalf: 0.36, bandOfRadius: 1.3, depth: 0.9, bright: 1.06 };
+
+  // Soft glass bezel: how far a ray is shifted at each point across the rim,
+  // for a slab whose edge is rounded like a squircle. Height of the surface at
+  // x (0 = outer edge, 1 = where the slab goes flat) is (1 - (1-x)^4)^(1/4);
+  // its slope gives the surface normal, Snell's law (air 1.0 -> glass 1.5)
+  // gives the bend, and the shift is the glass thickness there times the tan
+  // of that bend. The result is nearly zero at the very edge, peaks just
+  // inside it and eases to nothing, which is what makes the rim read as thick
+  // glass instead of a soft smear. Normalised to a 0..1 lookup table.
+  const bezel = new Float32Array(257);
+  (function () {
+    let peak = 0;
+    for (let i = 0; i <= 256; i++) {
+      const x = i / 256, u = 1 - x, body = 1 - u * u * u * u;
+      if (body <= 0) { bezel[i] = 0; continue; }
+      const height = Math.pow(body, 0.25);
+      const slope = (u * u * u) / Math.pow(body, 0.75);
+      const inAngle = Math.atan(slope);
+      const outAngle = Math.asin(Math.sin(inAngle) / 1.5);
+      bezel[i] = height * Math.tan(inAngle - outAngle);
+      if (bezel[i] > peak) peak = bezel[i];
+    }
+    for (let i = 0; i <= 256; i++) bezel[i] /= peak;
+  })();
+
   // [selector, frost in px once refraction is on, saturation]. Frost is kept
   // light here: a clear slab is what lets the bent edge show.
-  const groups = [
+  const groups = soft ? [
+    ['.card, .contact-card, .case-study-card, .senna-block', 0, 1.25],
+    ['.hero-snapshot', 2.5, 1.3],
+    ['#site-header > nav', 4, 1.35],
+    ['#mobile-menu', 16, 1.6],
+    ['.billboard-section', 0, 1.25],
+    ['#top .btn-primary, #top a.pill, #top .chip, .eyebrow, footer p', 0, 1.25],
+    ['.case-tab', 0, 1.25]
+  ] : [
     ['.card, .contact-card, .case-study-card, .senna-block', 3, 1.8],
     ['.hero-snapshot', 8, 1.8],
     ['#site-header > nav', 8, 1.85],
@@ -238,23 +278,32 @@ if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hov
   // Lens map: R/G hold the x/y offset (128 = none). Inside the rim band the
   // sample point is pushed toward the slab's interior, strongest at the edge.
   function lensMap(w, h, r, band, depth) {
-    const q = Math.min(1, 520 / Math.max(w, h), 0.5 * Math.max(1, 60 / Math.min(w, h)));
+    // Soft glass has a sharp peak just inside the edge, so it needs a finer map
+    const q = soft ? Math.min(1, 720 / Math.max(w, h))
+      : Math.min(1, 520 / Math.max(w, h), 0.5 * Math.max(1, 60 / Math.min(w, h)));
     const cw = Math.max(2, Math.round(w * q)), ch = Math.max(2, Math.round(h * q));
     canvas.width = cw; canvas.height = ch;
     const img = ctx.createImageData(cw, ch);
     const d = img.data, hx = w / 2, hy = h / 2;
+    // Distance to the edge uses the real corner radius; the bend direction
+    // uses a rounder concentric corner (at least as wide as the band), so a
+    // band wider than the radius turns the corner without a crease.
+    const rd = Math.min(Math.max(r, band), hx, hy);
     for (let j = 0; j < ch; j++) {
-      const py = (j + 0.5) / q - hy, ay = Math.abs(py) - (hy - r);
+      const py = (j + 0.5) / q - hy, ay = Math.abs(py) - (hy - r), by = Math.abs(py) - (hy - rd);
       for (let i = 0; i < cw; i++) {
-        const px = (i + 0.5) / q - hx, ax = Math.abs(px) - (hx - r);
+        const px = (i + 0.5) / q - hx, ax = Math.abs(px) - (hx - r), bx = Math.abs(px) - (hx - rd);
         let nx = 0, ny = 0, dist;
-        if (ax > 0 && ay > 0) {
-          const len = Math.hypot(ax, ay) || 1;
-          dist = r - len; nx = ax / len; ny = ay / len;
-        } else if (ax > ay) { dist = r - ax; nx = 1; }
-        else { dist = r - ay; ny = 1; }
+        if (ax > 0 && ay > 0) dist = r - Math.hypot(ax, ay);
+        else dist = r - Math.max(ax, ay);
+        if (bx > 0 && by > 0) { const len = Math.hypot(bx, by) || 1; nx = bx / len; ny = by / len; }
+        else if (bx > by) nx = 1;
+        else ny = 1;
         let m = 0;
-        if (dist >= 0 && dist < band) { const t = 1 - dist / band; m = t * t; }
+        if (dist >= 0 && dist < band) {
+          if (soft) m = bezel[Math.round(dist / band * 256)];
+          else { const t = 1 - dist / band; m = t * t; }
+        }
         const k = (j * cw + i) * 4;
         d[k]     = 128 - Math.round(127 * m * nx * Math.sign(px));
         d[k + 1] = 128 - Math.round(127 * m * ny * Math.sign(py));
@@ -270,9 +319,9 @@ if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hov
     if (w < 8 || h < 8) return;
     const half = Math.min(w, h) / 2;
     const r = Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0, half);
-    let band = Math.max(8, Math.min(24, half * 0.36));
-    if (r > 0) band = Math.min(band, Math.max(8, r * 1.3));
-    const map = lensMap(w, h, r, band, band * 0.9);
+    let band = Math.max(8, Math.min(lens.bandMax, half * lens.bandOfHalf));
+    if (r > 0) band = Math.min(band, Math.max(8, r * lens.bandOfRadius));
+    const map = lensMap(w, h, r, band, band * lens.depth);
 
     let f = el._lens;
     if (!f) {
@@ -295,7 +344,7 @@ if (document.documentElement.dataset.skin === 'glass' && window.matchMedia('(hov
     im.setAttribute('width', w); im.setAttribute('height', h);
     im.setAttribute('href', map.url);
     dm.setAttribute('scale', map.scale);
-    el.style.backdropFilter = 'url(#' + f.id + ') blur(' + blur + 'px) saturate(' + sat + ') brightness(1.06)';
+    el.style.backdropFilter = 'url(#' + f.id + ')' + (blur ? ' blur(' + blur + 'px)' : '') + ' saturate(' + sat + ') brightness(' + lens.bright + ')';
   }
 
   const pending = new Map();

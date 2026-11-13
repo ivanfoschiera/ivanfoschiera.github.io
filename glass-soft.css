@@ -1,0 +1,223 @@
+/* ============================================================
+   foschiera.com — "Soft glass" skin (the default)
+   A quieter tuning of the glass skin. It loads after glass.css and
+   only overrides it, so it needs both attributes on <html>:
+
+     <html data-skin="glass" data-glass="soft">   soft glass (default)
+     <html data-skin="glass">                     bold glass  (?skin=glass)
+     <html>                                       classic     (?skin=classic)
+
+   The idea: the glass is read from how it bends the page around its
+   perimeter (the lens in script.js), not from white highlights. So
+   here the slabs are clearer and less frosted, the rim is a faint
+   hairline instead of a bright bevel, and nothing lights up or lifts
+   under the pointer.
+   ============================================================ */
+
+[data-skin="glass"][data-glass="soft"] {
+  /* Fallback frost for browsers without the lens (Safari, Firefox, phones).
+     Where the lens runs, script.js sets an even lighter frost inline. */
+  --g-blur: 2px;
+  --g-frost: blur(var(--g-blur)) saturate(130%);
+  --g-fill: rgba(10, 17, 33, 0.10);
+  --g-sheen: linear-gradient(135deg,
+      rgba(255,255,255,0.045) 0%,
+      rgba(255,255,255,0.012) 34%,
+      rgba(255,255,255,0.004) 64%,
+      rgba(255,255,255,0.022) 100%);
+  /* The rim is a crisp 1px line that changes with the angle to the light
+     (top-left): bright where the edge faces the light, nearly gone on the
+     sides that run along it, and lit again where light leaves the slab at
+     bottom-right. Crisp and uneven reads as a real edge; an even white
+     outline reads as a drawn border. */
+  --g-rim: linear-gradient(135deg,
+      rgba(255,255,255,0.58) 0%,
+      rgba(255,255,255,0.20) 16%,
+      rgba(255,255,255,0.035) 42%,
+      rgba(255,255,255,0.03) 62%,
+      rgba(255,255,255,0.14) 86%,
+      rgba(255,255,255,0.34) 100%);
+  /* Depth without white: a hard hairline on the lit edge, then the bevel is
+     modelled in shade. The far (bottom-right) inner edge falls into shadow,
+     the near one catches a little light, both kept inside the lens band. */
+  --g-spec:
+      inset 1px 1px 0 -0.5px rgba(255,255,255,0.20),
+      inset -1px -1px 0 -0.5px rgba(255,255,255,0.10),
+      inset 7px 8px 12px -10px rgba(255,255,255,0.16),
+      inset -9px -11px 16px -11px rgba(0,0,0,0.60),
+      inset 0 0 0 1px rgba(0,0,0,0.10);
+  --g-spec-sm:
+      inset 1px 1px 0 -0.5px rgba(255,255,255,0.24),
+      inset -1px -1px 0 -0.5px rgba(255,255,255,0.11),
+      inset 3px 4px 6px -5px rgba(255,255,255,0.16),
+      inset -4px -5px 8px -5px rgba(0,0,0,0.50);
+  /* A grounded shadow lifts the slab off the page */
+  --g-shadow:
+      0 22px 44px -22px rgba(0,0,0,0.70),
+      0 6px 14px -8px rgba(0,0,0,0.45),
+      0 1px 2px rgba(0,0,0,0.30);
+}
+
+/* ── No light show under the pointer ── */
+[data-skin="glass"][data-glass="soft"] :is(.card, .contact-card, .case-study-card, .hero-snapshot)::after {
+  display: none;
+}
+html[data-skin="glass"][data-glass="soft"] .card-hover:hover,
+html[data-skin="glass"][data-glass="soft"] .card-hover.glow-emerald:hover,
+html[data-skin="glass"][data-glass="soft"] .card-hover.glow-violet:hover,
+html[data-skin="glass"][data-glass="soft"] .card-hover.glow-amber:hover {
+  border-color: rgba(var(--tint), 0.22);
+  box-shadow: var(--g-spec), var(--g-shadow);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js[data-skin="glass"][data-glass="soft"] .card-hover.visible:hover { transform: none; }
+  [data-skin="glass"][data-glass="soft"] :is(.btn-primary, .btn-light, a.pill, .case-tab):hover { transform: none; }
+}
+
+/* ── Panes: clearer, with a quieter edge ── */
+[data-skin="glass"][data-glass="soft"] :is(.card, .contact-card, .case-study-card, .hero-snapshot, .senna-block) {
+  border-color: rgba(255,255,255,0.02);
+}
+[data-skin="glass"][data-glass="soft"] .case-study-card {
+  background: var(--g-sheen), rgba(10, 17, 33, 0.13);
+  border-color: rgba(255,255,255,0.045);
+}
+[data-skin="glass"][data-glass="soft"] .case-panel[class*="case-theme-"] { border-color: rgba(var(--case-rgb), 0.08); }
+[data-skin="glass"][data-glass="soft"] .case-evidence,
+[data-skin="glass"][data-glass="soft"] .case-panel[class*="case-theme-"] .case-evidence {
+  background: linear-gradient(180deg, rgba(var(--case-rgb, 59, 130, 246), 0.05), rgba(var(--case-rgb, 59, 130, 246), 0.01)), rgba(4, 9, 20, 0.16);
+  box-shadow: none;
+}
+/* Over the portrait the numbers still need a little body behind them */
+[data-skin="glass"][data-glass="soft"] .hero-snapshot {
+  background: var(--g-sheen), rgba(9, 16, 31, 0.22);
+  -webkit-backdrop-filter: blur(5px) saturate(135%);
+  backdrop-filter: blur(5px) saturate(135%);
+  box-shadow: var(--g-spec), 0 26px 60px -26px rgba(0,0,0,0.6);
+}
+[data-skin="glass"][data-glass="soft"] .senna-block { border-left: 2px solid rgba(96,165,250,0.6); }
+[data-skin="glass"][data-glass="soft"] .contact-card {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(59,130,246,0.09) 0%, transparent 60%),
+    var(--g-sheen), var(--g-fill);
+  border-color: rgba(255,255,255,0.045);
+}
+
+/* ── Header and menu: page content passes beneath, so they keep more body ── */
+[data-skin="glass"][data-glass="soft"] #site-header > nav {
+  background: var(--g-sheen), rgba(10, 17, 33, 0.30);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: var(--g-spec), 0 14px 34px -20px rgba(0,0,0,0.65);
+}
+[data-skin="glass"][data-glass="soft"] #mobile-menu {
+  box-shadow: var(--g-spec), 0 26px 54px -18px rgba(0,0,0,0.7);
+}
+[data-skin="glass"][data-glass="soft"] .nav-link:hover,
+[data-skin="glass"][data-glass="soft"] .nav-link:focus-visible {
+  background: rgba(255,255,255,0.07);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* ── Small glass: pills, chips, labels ── */
+[data-skin="glass"][data-glass="soft"] :is(.chip, .pill, .eyebrow, .tint-neutral, footer p, .contact-card a.px-3, .contact-card a.w-11) {
+  background: linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.018) 100%);
+  border-color: rgba(255,255,255,0.075);
+  box-shadow: var(--g-spec-sm), 0 3px 10px -6px rgba(0,0,0,0.45);
+}
+[data-skin="glass"][data-glass="soft"] :is(a.chip, button.chip, a.pill, .contact-card a.w-11, .contact-card a.px-3):hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.04) 100%);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ── Buttons: tinted glass without the gloss ── */
+[data-skin="glass"][data-glass="soft"] .btn-primary {
+  background: linear-gradient(180deg, rgba(59,130,246,0.56) 0%, rgba(37,99,235,0.58) 100%);
+  border-color: rgba(147,197,253,0.24);
+  box-shadow: var(--g-spec-sm), 0 8px 20px -12px rgba(37,99,235,0.6);
+  text-shadow: none;
+}
+[data-skin="glass"][data-glass="soft"] .btn-primary:hover {
+  background: linear-gradient(180deg, rgba(79,146,250,0.66) 0%, rgba(47,109,240,0.68) 100%);
+  box-shadow: var(--g-spec-sm), 0 8px 20px -12px rgba(37,99,235,0.6);
+}
+[data-skin="glass"][data-glass="soft"] .btn-light {
+  background: linear-gradient(180deg, rgba(255,255,255,0.90) 0%, rgba(236,241,250,0.84) 100%);
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 20px -12px rgba(0,0,0,0.6);
+}
+[data-skin="glass"][data-glass="soft"] .btn-light:hover { background: rgba(255,255,255,0.96); }
+
+/* ── Tinted glass: colour stays, glow and gloss go ── */
+[data-skin="glass"][data-glass="soft"] :is(.tint-blue, .tint-emerald, .tint-violet, .tint-blue-border, .tint-emerald-border, .tint-violet-border, .award-badge, .otw-badge, .company-icon) {
+  background: linear-gradient(145deg, rgba(var(--c), 0.19) 0%, rgba(var(--c), 0.08) 100%);
+  border-color: rgba(var(--c), 0.20);
+  box-shadow: var(--g-spec-sm);
+}
+[data-skin="glass"][data-glass="soft"] a.tint-blue-border:hover {
+  background: linear-gradient(145deg, rgba(var(--c), 0.28) 0%, rgba(var(--c), 0.13) 100%);
+}
+[data-skin="glass"][data-glass="soft"] :is(.tile-blue, .tile-emerald, .tile-violet, .tile-amber, .case-metric-card) {
+  background: linear-gradient(150deg, rgba(var(--c), 0.11) 0%, rgba(var(--c), 0.04) 100%);
+  border-color: rgba(var(--c), 0.16);
+  box-shadow: var(--g-spec-sm);
+}
+[data-skin="glass"][data-glass="soft"] .avatar-chip {
+  border-color: rgba(255,255,255,0.09);
+  box-shadow: var(--g-spec-sm);
+}
+[data-skin="glass"][data-glass="soft"] :is(.case-number, .case-flow-index) { box-shadow: var(--g-spec-sm); }
+[data-skin="glass"][data-glass="soft"] .accent-line { box-shadow: none; }
+[data-skin="glass"][data-glass="soft"] .company-logo {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 4px 10px -8px rgba(0,0,0,0.7);
+}
+
+/* ── Case tabs ── */
+[data-skin="glass"][data-glass="soft"] .case-tab {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.012) 100%), rgba(10, 17, 33, 0.09);
+  border-color: rgba(255,255,255,0.065);
+  -webkit-backdrop-filter: blur(2px) saturate(130%);
+  backdrop-filter: blur(2px) saturate(130%);
+  box-shadow: var(--g-spec-sm), 0 8px 20px -16px rgba(0,0,0,0.6);
+}
+[data-skin="glass"][data-glass="soft"] .case-tab:hover,
+[data-skin="glass"][data-glass="soft"] .case-tab[aria-selected="true"] {
+  background: linear-gradient(180deg, rgba(var(--case-rgb), 0.17) 0%, rgba(var(--case-rgb), 0.06) 100%), rgba(12, 20, 38, 0.15);
+  border-color: rgba(var(--case-rgb), 0.30);
+}
+[data-skin="glass"][data-glass="soft"] .case-tab[aria-selected="true"] {
+  box-shadow: var(--g-spec-sm), 0 8px 20px -16px rgba(0,0,0,0.6);
+}
+
+/* ── Billboard slab ── */
+[data-skin="glass"][data-glass="soft"] .billboard-section {
+  background: linear-gradient(135deg, rgba(59,130,246,0.055) 0%, rgba(255,255,255,0.008) 55%, rgba(139,92,246,0.03) 100%), rgba(10, 17, 33, 0.09);
+  border-top-color: rgba(255,255,255,0.10);
+  border-bottom-color: rgba(255,255,255,0.05);
+  box-shadow:
+    inset 0 1px 0 -0.5px rgba(255,255,255,0.30),
+    inset 0 8px 12px -10px rgba(255,255,255,0.14),
+    inset 0 -12px 16px -11px rgba(0,0,0,0.55),
+    0 26px 50px -30px rgba(0,0,0,0.70);
+}
+
+@media (max-width: 767px) {
+  [data-skin="glass"][data-glass="soft"] { --g-blur: 2px; }
+}
+
+/* ── Fallbacks keep the same behaviour as the bold skin ── */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-skin="glass"][data-glass="soft"] { --g-fill: rgba(13, 22, 41, 0.88); }
+  [data-skin="glass"][data-glass="soft"] :is(.case-study-card, .hero-snapshot, .billboard-section, .case-tab) { background: rgba(12, 21, 40, 0.88); }
+  [data-skin="glass"][data-glass="soft"] #site-header > nav { background: rgba(11, 19, 36, 0.96); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  [data-skin="glass"][data-glass="soft"] { --g-fill: #0d1629; --g-frost: none; }
+  [data-skin="glass"][data-glass="soft"] :is(#site-header > nav, .hero-snapshot, .case-study-card, .billboard-section, .case-tab, .contact-card) {
+    background: #0d1629;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  [data-skin="glass"][data-glass="soft"] .btn-primary { background: #2563eb; }
+}

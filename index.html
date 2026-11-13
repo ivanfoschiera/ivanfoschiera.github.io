@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-skin="glass">
+<html lang="en" data-skin="glass" data-glass="soft">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -30,10 +30,19 @@
   <link rel="preload" href="assets/ivan-foschiera-portrait.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/tailwind.css" />
   <link rel="stylesheet" href="style.css?v=5" />
-  <!-- Glass skin: scoped to <html data-skin="glass">. Remove that attribute (or open ?skin=classic) for the classic look. -->
-  <link rel="stylesheet" href="glass.css" />
-  <script>if (new URLSearchParams(location.search).get('skin') === 'classic') document.documentElement.removeAttribute('data-skin');</script>
-  <script src="script.js?v=6" defer></script>
+  <!-- Skins, set by attributes on <html>:
+       data-skin="glass" data-glass="soft" = soft glass (default) · data-skin="glass" = bold glass · neither = classic.
+       Preview any of them with ?skin=soft, ?skin=glass or ?skin=classic. -->
+  <link rel="stylesheet" href="glass.css?v=2" />
+  <link rel="stylesheet" href="glass-soft.css?v=2" />
+  <script>
+    (function () {
+      var skin = new URLSearchParams(location.search).get('skin'), html = document.documentElement;
+      if (skin === 'classic') { html.removeAttribute('data-skin'); html.removeAttribute('data-glass'); }
+      else if (skin === 'glass') html.removeAttribute('data-glass');
+    })();
+  </script>
+  <script src="script.js?v=9" defer></script>
 
   <script type="application/ld+json">
   {
